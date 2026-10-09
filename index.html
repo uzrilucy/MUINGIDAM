@@ -177,6 +177,22 @@ main{min-width:0}
 .member img{width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:50% 12%}
 .member small{color:var(--mute);font-size:11.5px}
 .member:hover{border-color:var(--red);background:var(--red-soft)}
+.uw{width:324px;align-self:start}
+.uwt{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.uwt button{border:0;background:transparent;padding:4px 10px 7px;font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--mute);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.uwt button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--red)}
+.uwt span{margin-left:auto;align-self:center;font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--mute);padding-bottom:4px}
+.uws{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.uws button{border:1px solid var(--line);background:var(--card2);border-radius:20px;padding:2px 10px;font-size:12px;color:var(--sub);cursor:pointer}
+.uws button[aria-pressed="true"]{background:var(--night);color:var(--cream);border-color:var(--night)}
+.uw[data-mode="tag"] .unis,.uw:not([data-mode="tag"]) .utags{display:none}
+.utags{display:grid;gap:8px}
+.utag{background:var(--card2);border:1px solid var(--line2);border-radius:3px}
+.utag header{display:flex;align-items:center;justify-content:space-between;padding:5px 6px 5px 10px;border-bottom:1px solid var(--line2);font-size:12px;font-weight:700;color:var(--sub)}
+.utag header i{font-style:normal;display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;background:var(--gold);vertical-align:1px}
+.utag header i.a{background:var(--teal)}
+.utag button{border:1px solid var(--night);background:var(--night);color:var(--cream);font-size:11.5px;padding:2px 9px;border-radius:2px;cursor:pointer}
+.utag pre{margin:0;padding:7px 10px 8px;font-family:ui-monospace,'D2Coding',Consolas,monospace;font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;color:var(--sub);max-height:7.6em;overflow:auto}
 .unis{display:flex;gap:4px;align-self:start}
 .unis figure{margin:0;width:78px;text-align:center}
 .unis img{width:78px;aspect-ratio:340/497;object-fit:cover;background:radial-gradient(ellipse at 50% 92%,rgba(60,40,20,.18),transparent 60%),linear-gradient(var(--card2),var(--paper2));border-radius:2px;cursor:zoom-in;transition:transform .2s}
@@ -217,8 +233,8 @@ dialog.cm::backdrop{background:rgba(10,16,18,.72);backdrop-filter:blur(3px)}
 .cmw{display:grid;grid-template-columns:380px minmax(0,1fr);height:min(820px,calc(100vh - 40px))}
 .cmv{position:relative;background:var(--cmvbg);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
 .cmv:before{content:attr(data-hj);position:absolute;top:18px;left:16px;writing-mode:vertical-rl;font-family:var(--serif);font-weight:900;font-size:64px;letter-spacing:.06em;color:var(--ink);opacity:.07}
-.cmv img{position:relative;height:94%;width:auto;max-width:92%;object-fit:contain;margin-bottom:3%;filter:drop-shadow(0 18px 18px rgba(40,25,10,.22))}
-.cmv img.bust{width:100%;height:100%;max-width:none;margin:0;object-fit:cover;filter:none}
+.cmv img{position:absolute;left:50%;bottom:3%;height:88%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 18px 18px rgba(40,25,10,.22))}
+.cmv img.bust{left:0;bottom:0;transform:none;width:100%;height:100%;object-fit:cover;filter:none}
 .vt{position:absolute;left:12px;bottom:12px;display:flex;gap:4px;z-index:2}
 .vt button{border:1px solid rgba(31,27,22,.25);background:rgba(250,246,236,.86);border-radius:2px;padding:3px 9px;font-size:12px;cursor:pointer;color:#3c342a}
 .vt button[aria-pressed="true"]{background:#16252a;color:#efe3c5;border-color:#16252a}
@@ -317,6 +333,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   .lines{grid-template-columns:1fr}
   .tia{grid-template-columns:1fr}
   .fac{grid-template-columns:1fr}
+  .uw{width:auto;max-width:100%}
   .unis{overflow-x:auto}
   .routes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cmw{grid-template-columns:1fr;height:auto;max-height:calc(100vh - 20px)}
@@ -364,7 +381,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   </ul>
   <div class="side-foot">
     <div class="theme" role="group" aria-label="화면 밝기"><button type="button" data-theme-set="light">晝 낮</button><button type="button" data-theme-set="dark">夜 밤</button></div>
-    SillyTavern 우선 제작 · 배포 준비 중<br>등장하는 왕조·문파·인물은 모두 창작된 설정입니다.
+    SillyTavern · 배포 준비 중<br>등장하는 왕조·문파·인물은 모두 창작된 설정입니다.
   </div>
 </aside>
 <main id="main">
@@ -401,7 +418,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
       <p class="lead2">시작은 고르기만 하면 됩니다. 어느 길이든 큰 사건과 이어지고, 청하진이 아니어도 괜찮습니다. 자세한 안내는 <a class="lnk" href="#system">플레이</a>에 있습니다.</p>
       <div class="routes" id="routesHome"></div>
     </div>
-    <footer class="site">《무림강호인연기담》은 SillyTavern을 우선으로 제작 중인 여성향 무협 다인 시뮬레이션입니다. 로맨스의 대상이 되는 인물은 모두 성인입니다. 전투·부상·죽음 등 무협 특유의 묘사가 포함됩니다. 등장하는 왕조·연호·사건·인물은 모두 창작된 설정이며 실존 역사와 관계없습니다. 설정은 제작 과정에서 바뀔 수 있습니다.</footer>
+    <footer class="site">《무림강호인연기담》은 SillyTavern용 여성향 무협 다인 시뮬레이션입니다. 로맨스의 대상이 되는 인물은 모두 성인입니다. 전투·부상·죽음 등 무협 특유의 묘사가 포함됩니다. 등장하는 왕조·연호·사건·인물은 모두 창작된 설정이며 실존 역사와 관계없습니다. 설정은 제작 과정에서 바뀔 수 있습니다.</footer>
   </div>
 </section>
 
@@ -658,6 +675,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 
 <script src="data/world.js"></script>
 <script src="data/characters.js"></script>
+<script src="data/uniforms.js"></script>
 <script>
 'use strict';
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -708,7 +726,15 @@ $('#coreGrid').innerHTML=C.filter(c=>c.core).map(c=>`<a class="mini" href="#c/${
 
 /* 세력 */
 const memberChip=c=>`<a class="member" href="#c/${c.id}"><img src="${img(c.id)}" alt="" loading="lazy">${esc(c.name)} <small>${esc(c.role.split('·')[0])}</small></a>`;
-function uniFig(slug,label,sx){return `<figure><img src="img/uni/${slug}_${label}_${sx}.webp" alt="" loading="lazy" data-zoom><figcaption>${label==='formal'?'정복':'활동'} · ${sx==='m'?'남':'여'}</figcaption></figure>`;}
+const UT=window.MUIN_UNITAGS||{},UV=[['formal','m'],['formal','f'],['active','m'],['active','f']];
+const uvName=(k,x)=>(k==='formal'?'정복':'활동복')+' · '+(x==='m'?'남':'여');
+function uniFig(slug,label,sx){return `<figure><img src="img/uni/${slug}_${label}_${sx}.webp" alt="${uvName(label,sx)}" loading="lazy" data-zoom><figcaption>${label==='formal'?'정복':'활동'} · ${sx==='m'?'남':'여'}</figcaption></figure>`;}
+function uniList(f){return f.unis?f.unis.map((s,i)=>({s,n:f.uniNames[i]})):f.uni?[{s:f.uni,n:''}]:[];}
+function uniPanel(list){if(!list.length)return '';
+  return `<div class="uw" data-mode="img"><div class="uwt" role="tablist"><button type="button" role="tab" data-ut="img" aria-selected="true">복식</button><button type="button" role="tab" data-ut="tag" aria-selected="false">NAI 태그</button><span>服飾</span></div>
+   ${list.length>1?`<div class="uws">${list.map((u,i)=>`<button type="button" data-us="${i}" aria-pressed="${i?'false':'true'}">${esc(u.n)}</button>`).join('')}</div>`:''}
+   ${list.map((u,i)=>`<div class="uwp" data-up="${i}"${i?' hidden':''}><div class="unis">${UV.map(v=>uniFig(u.s,v[0],v[1])).join('')}</div>
+     <div class="utags">${UV.map(v=>{const k=`${u.s}_${v[0]}_${v[1]}`;return UT[k]?`<div class="utag"><header><span><i${v[0]==='active'?' class="a"':''}></i>${uvName(v[0],v[1])}</span><button type="button" data-uc="${k}">복사</button></header><pre>${esc(UT[k])}</pre></div>`:'';}).join('')}</div></div>`).join('')}</div>`;}
 $('#fjump').innerHTML=G.map(g=>`<a class="chip" href="#f/${g.key}">${g.name} <b style="color:var(--red)">${g.count}</b></a>`).join('');
 $('#factionList').innerHTML=G.map(g=>{
   let body='';
@@ -723,14 +749,20 @@ $('#factionList').innerHTML=G.map(g=>{
      <div class="lines"><div class="card"><h3>정복파</h3><p>무림맹을 굴복시키고 점령을 기정사실로 만들려 한다. 교주의 지금 계획과 가장 가깝다.</p></div><div class="card"><h3>복수파</h3><p>전쟁의 가해자를 처단해야 한다고 주장한다. 대상과 증거를 따지는 이와 무차별 보복을 원하는 이가 갈린다.</p></div><div class="card"><h3>정착파</h3><p>안전한 통행과 교도의 생업을 원한다. 협정을 바라지만 군사적 압박을 협상 수단으로 받아들이는 이도 있다.</p></div></div>
      <p class="note">노선은 고정된 성격이 아니다. 교도의 충성도 모두 같지 않다 — 교리, 교주, 함께 자란 사람, 가족의 생계, 빚진 은혜가 저마다 다른 이유가 된다. 한 사람의 마음을 돌려도 조직 전체가 멈추지는 않는다.</p>
      <div class="fac" style="margin-top:14px"><div><h3>천라교 사람들 <small>天羅敎 · 32</small></h3><div class="members">${ms.map(memberChip).join('')}</div></div>
-      <div class="unis">${f.unis.map((u,i)=>`<figure><img src="img/uni/${u}_formal_m.webp" alt="" loading="lazy" data-zoom><figcaption>${f.uniNames[i]}</figcaption></figure>`).join('')}</div></div>`;
+      ${uniPanel(uniList(f))}</div>`;
   } else {
     body=g.factions.map(f=>{const ms=C.filter(c=>c.faction===f.key);
-      const unis=f.uni?[uniFig(f.uni,'formal','m'),uniFig(f.uni,'formal','f'),uniFig(f.uni,'active','m')].join('')+(f.uni2?`<figure><img src="img/uni/${f.uni2}_formal_m.webp" alt="" loading="lazy" data-zoom><figcaption>관문 수비군</figcaption></figure>`:''):'';
+      const unis=uniPanel(uniList(f));
       const dl=[['무공 · 운영',f.emph],['살림',f.base],['안고 있는 일',f.issue]].filter(x=>x[1]).map(x=>`<dt>${x[0]}</dt><dd>${esc(x[1])}</dd>`).join('');
-      return `<article class="fac" id="fac-${esc(f.key)}"><div><h3>${esc(f.key)} <small>${f.hanja}</small><em>${esc(f.home)}</em></h3><dl>${dl}</dl>${f.note?`<p class="fn">${esc(f.note)}</p>`:''}<div class="members">${ms.map(memberChip).join('')}</div></div>${unis?`<div class="unis">${unis}</div>`:''}</article>`;}).join('');
+      return `<article class="fac" id="fac-${esc(f.key)}"><div><h3>${esc(f.key)} <small>${f.hanja}</small><em>${esc(f.home)}</em></h3><dl>${dl}</dl>${f.note?`<p class="fn">${esc(f.note)}</p>`:''}<div class="members">${ms.map(memberChip).join('')}</div></div>${unis}</article>`;}).join('');
   }
   return `<section class="fgroup" id="g-${g.key}"><div class="fgh"><h2>${g.name}</h2><span class="hj">${g.hanja}</span><span class="cnt">${g.count}<small>인</small></span></div><p class="fglead">${esc(g.lead)}</p>${body}</section>`;}).join('');
+
+async function copyText(t,msg){try{await navigator.clipboard.writeText(t);toast(msg);}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(msg);}catch(_){toast('복사 실패 — 직접 선택해 주세요');}a.remove();}}
+$('#factionList').addEventListener('click',e=>{const b=e.target.closest('[data-ut],[data-us],[data-uc]');if(!b)return;const w=b.closest('.uw');
+  if(b.dataset.ut){w.dataset.mode=b.dataset.ut;$$('[data-ut]',w).forEach(x=>x.setAttribute('aria-selected',String(x===b)));}
+  else if(b.dataset.us){$$('[data-us]',w).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));$$('[data-up]',w).forEach(p=>p.hidden=p.dataset.up!==b.dataset.us);}
+  else copyText(UT[b.dataset.uc],'복식 태그를 복사했다');});
 
 /* 인물 명부 */
 const gc=$('#gchips');let curG='';
@@ -769,10 +801,10 @@ function openChar(id){const c=BY[id];if(!c)return;curId=id;
      <details class="spoil"><summary>시그니처 설렘 장면 · 깊은 유대 이후 (스포일러)</summary><p>${esc(c.signature)}</p></details>
      <p class="note">대사는 말투와 온도를 보여 주는 예시다. 실제 대화에서는 장면에 맞게 새로 말한다.</p></div>
    <div class="tp" data-tp="r">${kv([['기존 인연',rich(c.ties)||'아직 이어진 인연이 없다.'],['관계의 조건',rich(c.cond)],['같은 소속',C.filter(x=>x.faction===c.faction&&x.id!==c.id).map(x=>`<a class="lnk" href="#c/${x.id}">${esc(x.name)}</a>`).join(' · ')]])}</div>
-   <div class="tp" data-tp="n">${tags}<p class="note">외형과 의복을 합친 NAI 태그(공개용). 퀄리티 태그는 넣지 않았다.</p></div>
+   <div class="tp" data-tp="n">${tags}<p class="note">외형과 의복을 합친 NAI 태그</p></div>
    <div class="nav2"><a href="#c/${prev.id}">← <b>${esc(prev.name)}</b></a><a href="#c/${next.id}"><b>${esc(next.name)}</b> →</a></div>`;
   $$('.tabs button',dlg).forEach(b=>b.onclick=()=>{$$('.tabs button',dlg).forEach(x=>x.setAttribute('aria-selected',String(x===b)));$$('.tp',dlg).forEach(p=>p.classList.toggle('on',p.dataset.tp===b.dataset.t));});
-  $$('[data-copy]',dlg).forEach(b=>b.onclick=async()=>{const t=c.tags[+b.dataset.copy].tag;try{await navigator.clipboard.writeText(t);toast('태그를 복사했다');}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('태그를 복사했다');}catch(_){toast('복사 실패 — 직접 선택해 주세요');}a.remove();}});
+  $$('[data-copy]',dlg).forEach(b=>b.onclick=()=>copyText(c.tags[+b.dataset.copy].tag,'태그를 복사했다'));
   $('#cmc').scrollTop=0;if(!dlg.open)dlg.showModal();document.title=`${c.name} · 무림강호인연기담`;}
 function closeChar(){if(dlg.open)dlg.close();}
 $('#cmx').onclick=()=>{location.hash=lastPage;};
