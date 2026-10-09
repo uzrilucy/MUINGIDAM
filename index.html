@@ -48,6 +48,9 @@ button{font:inherit;color:inherit}
 .side:after{content:'';position:absolute;top:0;bottom:0;right:3px;width:1px;background:var(--line);opacity:.7}
 .brand{display:block;text-decoration:none;padding:0 30px 18px}
 .brand img{width:150px;margin:0 auto;filter:var(--logo)}
+.brand .logo-dk{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand .logo-lt{display:none}:root:not([data-theme="light"]) .brand .logo-dk{display:block}}
+:root[data-theme="dark"] .brand .logo-lt{display:none}:root[data-theme="dark"] .brand .logo-dk{display:block}
 .brand small{display:block;text-align:center;margin-top:10px;font-size:11px;letter-spacing:.36em;color:var(--mute)}
 .nav{list-style:none;margin:8px 0 0;padding:0 16px;display:grid;gap:3px}
 .nav a{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:4px;text-decoration:none;color:var(--sub);font-size:14.5px;font-weight:600;letter-spacing:.02em;transition:background .2s,color .2s}
@@ -78,7 +81,7 @@ main{min-width:0}
 .sec{padding:42px 0 10px}
 .sh{display:flex;align-items:baseline;gap:12px;margin:0 0 20px}
 .sh b{font-family:var(--serif);font-size:15px;font-weight:700;color:#fbefe0;background:var(--red);width:30px;height:30px;display:grid;place-items:center;border-radius:3px;flex:0 0 30px;transform:translateY(-2px)}
-.sh h2{margin:0;font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:-.01em}
+.sh h2{margin:0;font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
 .sh span{font-size:13px;color:var(--mute);letter-spacing:.08em}
 .sh:after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);align-self:center}
 .lead2{max-width:720px;color:var(--sub);margin:0 0 22px}
@@ -206,6 +209,82 @@ main{min-width:0}
 .tia{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
 .lines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .lines .card{border-top:3px solid var(--red)}
+/* ── 여정 셈 */
+.trip{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start}
+.tmap{background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden;position:relative}
+.tbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line2);background:var(--card2)}
+.tmodes{display:flex;gap:3px;flex-wrap:wrap}
+.tmodes button{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:2px;padding:5px 11px 5px 6px;font-size:13px;font-weight:700;color:var(--sub);cursor:pointer;transition:border-color .2s,background .2s}
+.tmodes button b{font-family:var(--serif);font-size:13px;width:22px;height:22px;display:grid;place-items:center;border-radius:2px;background:var(--paper2);color:var(--ink)}
+.tmodes button[aria-checked="true"]{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.tmodes button[aria-checked="true"] b{background:var(--red);color:#fbefe0}
+.tmods{display:flex;gap:5px;flex-wrap:wrap}
+.tmods label{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--sub);border:1px solid var(--line);border-radius:20px;padding:3px 10px 3px 8px;cursor:pointer;background:var(--card);user-select:none}
+.tmods input{accent-color:var(--red);margin:0}
+.tmods label:has(input:checked){border-color:var(--gold);background:var(--gold-soft);color:var(--ink)}
+#tSvg{display:block;width:100%;height:auto;background:
+  radial-gradient(60% 50% at 20% 30%,rgba(168,130,63,.07),transparent 70%),
+  radial-gradient(50% 45% at 80% 75%,rgba(45,103,99,.06),transparent 70%)}
+#tSvg .rg{font-family:var(--serif);font-weight:900;font-size:86px;fill:var(--ink);opacity:.055;letter-spacing:.08em;pointer-events:none}
+#tSvg .rgk{font-family:var(--sans);font-size:15px;font-weight:700;fill:var(--mute);letter-spacing:.3em;opacity:.8;pointer-events:none}
+#tSvg .e{fill:none;stroke-linecap:round;transition:opacity .3s}
+#tSvg .e.road{stroke:var(--sub);stroke-width:1.6;opacity:.42}
+#tSvg .e.mount{stroke:var(--sub);stroke-width:1.8;stroke-dasharray:1 6;opacity:.6}
+#tSvg .e.river{stroke:var(--teal);stroke-width:3;opacity:.5}
+#tSvg .e.pass{stroke:var(--gold);stroke-width:1.8;stroke-dasharray:9 5;opacity:.75}
+#tSvg .e.desert{stroke:var(--gold);stroke-width:2;stroke-dasharray:1 5;opacity:.85}
+#tSvg .el{font-family:var(--sans);font-size:14px;font-weight:700;fill:var(--mute);paint-order:stroke;stroke:var(--card);stroke-width:4px;text-anchor:middle;pointer-events:none;transition:fill .3s}
+#tSvg .path{fill:none;stroke:var(--red);stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;opacity:.9;stroke-dasharray:10 7;animation:tflow 1.1s linear infinite;pointer-events:none}
+#tSvg .path.halo{stroke:var(--red);stroke-width:12;opacity:.13;stroke-dasharray:none;animation:none}
+@keyframes tflow{to{stroke-dashoffset:-17}}
+#tSvg .el.on{fill:var(--red)}
+#tSvg .n{cursor:pointer;outline:none}
+#tSvg .n circle.d{fill:var(--card);stroke:var(--ink);stroke-width:1.6;transition:all .2s}
+#tSvg .n circle.hit{fill:transparent}
+#tSvg .n text{font-family:var(--serif);font-size:19px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:5px;stroke-linejoin:round}
+#tSvg .n:hover circle.d,#tSvg .n:focus-visible circle.d{stroke:var(--red);stroke-width:2.4}
+#tSvg .n:focus-visible text{fill:var(--red)}
+#tSvg .n.hub circle.d{stroke:var(--red);stroke-width:2.2}
+#tSvg .n.hub circle.ring{fill:none;stroke:var(--red);stroke-width:1;opacity:.45;stroke-dasharray:2 3}
+#tSvg .n.via circle.d{fill:var(--red-soft);stroke:var(--red)}
+#tSvg .n.pick circle.d{fill:var(--red);stroke:var(--red)}
+#tSvg .n .badge{display:none}
+#tSvg .n.pick .badge{display:block}
+#tSvg .n .badge circle{fill:var(--ink)}
+#tSvg .n .badge text{font-family:var(--sans);font-size:13px;font-weight:800;fill:var(--paper);stroke:none;text-anchor:middle}
+.tsw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tswh{display:none;margin:0;padding:6px 0 0;text-align:center;font-size:11.5px;color:var(--mute)}
+.tlegend{display:flex;flex-wrap:wrap;gap:6px 14px;padding:10px 14px;border-top:1px solid var(--line2);font-size:12px;color:var(--mute);align-items:center}
+.tlegend span{display:flex;align-items:center;gap:6px}
+.tlegend i{display:inline-block;width:24px;height:0;border-top:2px solid var(--sub)}
+.tlegend .lg-road{opacity:.6}.tlegend .lg-mount{border-top-style:dotted;border-top-width:3px}
+.tlegend .lg-river{border-top:3px solid var(--teal)}.tlegend .lg-pass{border-top:2px dashed var(--gold)}.tlegend .lg-desert{border-top:3px dotted var(--gold)}
+.tlegend em{font-style:normal;margin-left:auto}
+.tside{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:18px 18px 16px;position:sticky;top:16px}
+.ttot{padding-bottom:14px;border-bottom:1px solid var(--line2)}
+.ttot small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;color:var(--mute)}
+.ttot .big{font-family:var(--serif);font-size:30px;font-weight:900;line-height:1.25;margin-top:4px;color:var(--ink)}
+.ttot .big em{font-style:normal;color:var(--red)}
+.ttot .sub{font-size:12.5px;color:var(--sub);margin-top:4px}
+.ttot .idle{font-family:var(--serif);font-size:15px;color:var(--sub);line-height:1.7}
+.ttot .idle b{color:var(--red)}
+.tlegs{list-style:none;margin:12px 0 0;padding:0;max-height:330px;overflow:auto}
+.tlegs li{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:2px 10px;padding:7px 0;font-size:13px;border-bottom:1px dashed var(--line2)}
+.tlegs li:last-child{border-bottom:0}
+.tlegs li i{width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--sub)}
+.tlegs li i.river{background:var(--teal)}.tlegs li i.mount{background:transparent;border:2px dotted var(--sub);width:10px;height:10px}.tlegs li i.pass,.tlegs li i.desert{background:var(--gold)}
+.tlegs li b{font-family:var(--serif);color:var(--ink)}
+.tlegs li span{color:var(--sub);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tlegs li p{grid-column:2/-1;margin:0;font-size:11.5px;color:var(--mute)}
+.tlegs li.stop{grid-template-columns:14px 1fr;padding:6px 0 4px;border-bottom:0}
+.tlegs li.stop i{background:var(--red);border-radius:2px;transform:rotate(45deg)}
+.tlegs li.stop b{color:var(--red)}
+.tbtns{display:flex;gap:6px;margin-top:12px}
+.tbtns button{flex:1;border:1px solid var(--line);background:var(--card2);border-radius:2px;padding:7px 8px;font-size:12.5px;color:var(--sub);cursor:pointer}
+.tbtns button:hover:not(:disabled){border-color:var(--red);color:var(--red)}
+.tbtns button:disabled{opacity:.45;cursor:default}
+.tnote{margin:12px 0 0;font-size:12px;color:var(--mute);line-height:1.65;padding-left:10px;border-left:2px solid var(--gold)}
+.tnote:empty{display:none}
 /* ── 인물 */
 .tools{position:sticky;top:0;z-index:5;background:var(--paper);padding:14px 0 12px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .tools input,.tools select{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:3px;padding:8px 12px}
@@ -338,6 +417,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   .lines{grid-template-columns:1fr}
   .tia{grid-template-columns:1fr}
   .fac{grid-template-columns:1fr}
+  .trip{grid-template-columns:1fr}.tside{position:static}
   .uw{width:auto;max-width:100%}
   .unis{overflow-x:auto}
   .routes{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -362,6 +442,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   .kv{grid-template-columns:1fr;gap:2px 0}.kv dd{margin-bottom:10px}
   .cmh h2{font-size:28px}
   .fac{padding:18px 16px}
+  #tSvg{width:720px;max-width:none}.tswh{display:block}.tbar{padding:10px}
   .fac dl{grid-template-columns:1fr;gap:0}.fac dd{margin-bottom:6px}
   .quote{padding:20px 18px 18px 22px}.quote p{font-size:17px}
   .tbl{font-size:13px}.tbl th,.tbl td{padding:9px 10px}
@@ -374,7 +455,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 <div class="scrim" id="scrim"></div>
 <div class="shell">
 <aside class="side" id="side">
-  <a class="brand" href="#home"><img src="img/site/logo.png" alt="무림강호 인연기담"><small>因緣奇談 · 設定集</small></a>
+  <a class="brand" href="#home"><img class="logo-lt" src="img/site/logo.png" alt="무림강호 인연기담"><img class="logo-dk" src="img/site/logo_dark.png" alt="무림강호 인연기담"><small>因緣奇談 · 設定集</small></a>
   <ul class="nav" id="nav">
     <li><a href="#home"><b>首</b>처음<small>HOME</small></a></li>
     <li><a href="#world"><b>世</b>세계<small>WORLD</small></a></li>
@@ -480,6 +561,26 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
         <tr><td>서남 ↔ 서역</td><td>18~25일</td><td>계절성 산악로. 안내자와 보급 계획 필요</td></tr>
       </tbody></table></div>
       <p class="note">상인·표행의 보통 속도다. 숙련된 단독 기마는 줄일 수 있고, 부상·짐·우회·눈·홍수·봉쇄는 늘린다. 경공은 추격과 지형 돌파에 강하지만 장거리 여행의 피로와 보급을 없애지 않는다.</p>
+    </div>
+    <div class="sec" id="w-trip" style="padding-top:34px">
+      <div class="sh"><b>行</b><h2>여정 셈</h2><span>지명을 차례로 누르면 걸리는 날을 센다</span></div>
+      <div class="trip">
+        <div class="tmap">
+          <div class="tbar">
+            <div class="tmodes" role="radiogroup" aria-label="이동 수단" id="tModes"></div>
+            <div class="tmods" id="tMods"></div>
+          </div>
+          <div class="tsw"><svg id="tSvg" viewBox="26 62 970 572" role="img" aria-label="대연 강호 이동 지도"></svg></div><p class="tswh">← 지도를 옆으로 밀어 볼 수 있다 →</p>
+          <div class="tlegend"><span><i class="lg-road"></i>관도</span><span><i class="lg-mount"></i>산길 · 잔도</span><span><i class="lg-river"></i>수로</span><span><i class="lg-pass"></i>관문길</span><span><i class="lg-desert"></i>사막 · 초원길</span><em>숫자는 상단·표행 기준 일수</em></div>
+        </div>
+        <aside class="tside" aria-live="polite">
+          <div class="ttot" id="tTot"></div>
+          <ol class="tlegs" id="tLegs"></ol>
+          <div class="tbtns"><button type="button" id="tUndo">한 걸음 되돌리기</button><button type="button" id="tReset">처음부터</button></div>
+          <p class="tnote" id="tNote"></p>
+        </aside>
+      </div>
+      <p class="note">작품 속 기준표를 옮긴 계산기다. 길 위에서 생기는 일 — 검문, 봉쇄, 습격, 길동무 — 은 이 숫자에 들어 있지 않다. 서술자도 같은 기준으로 날짜를 흘리고, 같은 날 먼 지역의 인물을 편의상 한자리에 모으지 않는다.</p>
     </div>
   </div>
 
@@ -629,12 +730,12 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 <!-- ═════════ 錄 플레이 ═════════ -->
 <section class="page" id="p-system" data-page="system"><div class="wrap">
   <header class="phead"><div class="wm">錄</div><div class="eyebrow">第六卷 · HOW TO PLAY</div><h1 class="ptitle">강호에 들어서는 법</h1>
-    <p class="plead">서술자 카드 한 장에 로어북과 상태창이 함께 들어 있다. 이 카드는 한 사람이 아니라 강호 전체와 144인을 운영하는 서술자다.</p><div class="rule"><i>◆</i></div></header>
+    <p class="plead">서술자 카드 한 장에 월드인포와 상태창이 함께 들어 있다. 이 카드는 한 사람이 아니라 강호 전체와 144인을 운영하는 서술자다.</p><div class="rule"><i>◆</i></div></header>
   <div class="sec">
     <div class="sh"><b>始</b><h2>시작하기</h2><span>SillyTavern</span></div>
     <ol class="steps">
-      <li><b>카드 가져오기</b> — 캐릭터 가져오기로 서술자 카드(PNG)를 불러온다.</li>
-      <li><b>정규식 · 로어북 허용</b> — 카드를 열면 “정규식을 허용할까요?”와 “내장 로어북을 가져올까요?”가 뜬다. 둘 다 예.</li>
+      <li><b>카드 가져오기</b> — 캐릭터 가져오기로 무림강호인연기담.png 를 불러온다.</li>
+      <li><b>정규식 · 월드인포 허용</b> — 카드를 열면 “정규식을 허용할까요?”와 “내장 월드인포를 가져올까요?”가 뜬다. 둘 다 예.</li>
       <li><b>페르소나 적기</b> — 신분·출신·실력·외모를 적어 두면 시작이 매끄럽다. 비워 둔 부분은 서술자가 마음대로 정하지 않는다.</li>
       <li><b>시작 고르기</b> — 첫 메시지에서 아래 시작 가운데 하나를 고르거나, 원하는 장소·신분·목표를 자유롭게 적는다.</li>
     </ol>
@@ -659,7 +760,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   <div class="sec">
     <div class="sh"><b>圖</b><h2>NAI 태그</h2></div>
     <div class="grid g2">
-      <div class="card"><h3>인물마다 기본복 · 대체복</h3><p>인물 명부에서 인물을 열고 <b>태그</b> 탭을 누르면 외형과 의복을 합친 태그를 복사할 수 있다. 퀄리티 태그는 넣지 않았다. 쓰는 그림체 프리셋에 맞춰 붙여 쓰면 된다.</p></div>
+      <div class="card"><h3>인물마다 기본복 · 대체복</h3><p>인물 명부에서 인물을 열고 <b>태그</b> 탭을 누르면 외형과 의복을 합친 태그를 복사할 수 있다.</p></div>
       <div class="card"><h3>세력 정복 · 활동복</h3><p>세력 페이지의 복식 그림은 각 세력의 공통 디자인이다. 인물은 이 바탕 위에 신분과 개인의 습관을 더해 입는다.</p></div>
     </div>
   </div>
@@ -725,6 +826,115 @@ const EV=[['E01','돌아오지 않은 표행','청하표국 서행대가 실종�
  ['E04','같은 맹약의 다른 사본','청하맹약의 기록과 증언이 서로 어긋난다. 양쪽 모두의 책임이 드러날지도 모른다.','증거 보호, 증언, 교섭, 은폐, 인물 구출','노선 변화 · 지도부 분열 · 공적 정당성 · 정적의 반격'],
  ['E05','누구의 강호인가','확보한 거점과 동맹에 따라 결전, 혹은 협상의 국면이 온다.','전투, 거점 탈환, 정변 저지·지원, 통행 협정, 구호','전쟁 지속 · 휴전 · 교권 교체 · 세력 재편']];
 $('#eventList').innerHTML=EV.map(e=>`<div class="card" style="display:grid;grid-template-columns:84px minmax(0,1fr);gap:18px"><div><div class="hj" style="font-size:22px;margin:0">${e[0]}</div></div><div><h3>${e[1]}</h3><p>${e[2]}</p><dl class="kv" style="margin-top:12px;font-size:13.5px;grid-template-columns:72px 1fr"><dt>개입</dt><dd>${e[3]}</dd><dt>남는 것</dt><dd>${e[4]}</dd></dl></div></div>`).join('');
+
+/* 여정 셈 */
+(function(){
+const svg=$('#tSvg');if(!svg)return;
+const NS='http://www.w3.org/2000/svg';
+// id, 이름, 권역, x, y, 이름 위치(r/l/t/b), 메모
+const N=[
+ ['qh','청하진','하남',595,338,'b','시작 거점. 낙양에서 반나절 남쪽'],['ly','낙양','하남',583,282,'t','무림맹 · 개방'],['ss','숭산','하남',668,302,'r','소림'],
+ ['bj','북정성','하북',652,150,'l','관군'],['tm','철마보','하북',752,114,'r','하북팽가'],
+ ['ca','장안','관중',425,286,'t',''],['hs','화산','관중',486,306,'b','화산파'],['zn','종남산','관중',405,334,'l','종남파'],['sh','서하관','관중',330,250,'t','서쪽 관문'],
+ ['wd','무당산','호북',492,412,'l','무당파'],['ys','양수진','호북',598,440,'b','강과 육로의 환승지'],
+ ['jl','금릉','강남',832,410,'t','남궁세가'],['ql','청류항','강남',782,466,'b','상단 · 수운'],['hw','회운장','강남',874,480,'r','제갈세가'],
+ ['cd','성도','서남',338,470,'r','사천당가'],['qc','청성','서남',270,436,'l','청성파'],['em','아미','서남',296,530,'l','아미파'],['dc','점창','서남',226,592,'r','점창파'],
+ ['kt','공동','서역',250,212,'t','공동파'],['hsd','흑사도','서역',148,250,'l','역참 사이가 먼 사막길'],['ts','천산','서역',118,120,'r','천라교 총단'],['kl','곤륜','서역',78,360,'r','곤륜파']];
+// a, b, 최소일, 최대일, 길 종류, 메모, (수로) 하류 쪽 지점
+const E=[
+ ['ly','qh',.5,.5,'road',''],['ly','ss',1,1.5,'road',''],['qh','ss',1,1.5,'road',''],
+ ['ly','hs',4,5.5,'road','서하관 방향의 중계역을 지난다'],['hs','ca',1,1.5,'road',''],['ca','zn',.5,1,'mount',''],['ca','sh',1.5,2,'road','관문 앞 마지막 역참들'],
+ ['ly','bj',4.5,7.5,'road','관군 검문과 군수 호송이 잦다'],['bj','tm',1,2,'road',''],
+ ['qh','ys',3.5,5,'river','육로와 나룻배를 갈아탄다','ys'],['ys','wd',1,1.5,'mount',''],
+ ['ys','ql',4.5,7,'river','수위와 수적에 따라 흔들린다','ql'],['ql','jl',.5,1,'river','','ql'],['jl','hw',.5,1,'road',''],['ql','hw',.5,1,'road',''],
+ ['zn','cd',7,10,'mount','산길과 잔도. 짐이 무거우면 늦어진다'],['cd','qc',.5,1,'road',''],['cd','em',1.5,2,'road',''],['em','dc',4.5,6.5,'mount','남쪽 산길. 끊긴 구간이 있다'],
+ ['cd','ys',7.5,11,'river','장강 상류의 협곡 물길','ys'],
+ ['sh','kt',3,5,'pass','관문 검문. 통행증이 필요하다'],['kt','hsd',4,7,'desert','역참 간격이 길어 보급이 관건'],['hsd','ts',4,7,'desert','천산 남쪽 거점권으로 들어간다'],['hsd','kl',5,8,'mount',''],
+ ['qc','kl',17,24,'mount','계절에 따라 막히는 산악로. 안내자가 필요하다']];
+const MODES=[['walk','步','도보'],['cara','鏢','표행 · 상단'],['horse','馬','단독 기마'],['boat','舟','수운'],['qing','輕','경공']];
+const MUL={walk:{road:1,mount:1.05,river:1.2,pass:1,desert:1.1},cara:{road:1,mount:1,river:1,pass:1,desert:1},
+  horse:{road:.6,mount:.85,river:.8,pass:.65,desert:.7}};
+const TYPE={road:'관도',mount:'산길',river:'수로',pass:'관문길',desert:'사막길'};
+const MODS=[['heavy','무거운 짐'],['hurt','부상'],['storm','눈 · 홍수']];
+const BY={};N.forEach(n=>BY[n[0]]={id:n[0],name:n[1],reg:n[2],x:n[3],y:n[4],lp:n[5],memo:n[6],adj:[]});
+E.forEach((e,i)=>{const o={i,a:e[0],b:e[1],mn:e[2],mx:e[3],t:e[4],memo:e[5]||'',down:e[6]||null};E[i]=o;BY[o.a].adj.push(o);BY[o.b].adj.push(o);});
+let mode='cara',mods=new Set(),picks=[];
+const el=(t,a,p)=>{const x=document.createElementNS(NS,t);for(const k in a)x.setAttribute(k,a[k]);if(p)p.appendChild(x);return x;};
+// 곡선
+function geo(e){const A=BY[e.a],B=BY[e.b];const mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y,L=Math.hypot(dx,dy)||1;
+  const k=e.t==='river'?.12:e.t==='mount'?.07:e.t==='desert'?-.05:0;const cx=mx-dy/L*L*k,cy=my+dx/L*L*k;
+  return {d:`M${A.x} ${A.y}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${B.x} ${B.y}`,r:`M${B.x} ${B.y}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${A.x} ${A.y}`,lx:(A.x+2*cx+B.x)/4,ly:(A.y+2*cy+B.y)/4};}
+// 그리기
+const RG=[['西域','서역',150,300],['關中','관중',390,226],['河南','하남',640,252],['河北','하북',800,215],['湖北','호북',520,500],['江南','강남',880,560],['西南','서남',230,520]];
+const gR=el('g',{},svg);RG.forEach(r=>{el('text',{class:'rg',x:r[2],y:r[3],'text-anchor':'middle'},gR).textContent=r[0];el('text',{class:'rgk',x:r[2],y:r[3]+28,'text-anchor':'middle'},gR).textContent=r[1];});
+const gE=el('g',{},svg),gP=el('g',{},svg),gL=el('g',{},svg),gN=el('g',{},svg);
+E.forEach(e=>{e.g=geo(e);el('path',{class:'e '+e.t,d:e.g.d},gE);const t=el('text',{class:'el',x:e.g.lx.toFixed(1),y:(e.g.ly+5).toFixed(1)},gL);
+  t.textContent=e.mn===e.mx?(e.mn<1?'반나절':e.mn):`${e.mn}~${e.mx}`;e.lab=t;});
+N.forEach(n=>{const o=BY[n[0]];const g=el('g',{class:'n'+(o.id==='qh'?' hub':''),tabindex:0,role:'button','aria-label':`${o.name} (${o.reg})`,'data-n':o.id},gN);
+  if(o.id==='qh')el('circle',{class:'ring',cx:o.x,cy:o.y,r:16},g);
+  el('circle',{class:'hit',cx:o.x,cy:o.y,r:22},g);el('circle',{class:'d',cx:o.x,cy:o.y,r:o.id==='qh'?9.5:7.5},g);
+  const off={r:[15,7,'start'],l:[-15,7,'end'],t:[0,-15,'middle'],b:[0,29,'middle']}[o.lp];
+  el('text',{x:o.x+off[0],y:o.y+off[1],'text-anchor':off[2]},g).textContent=o.name;
+  const bd=el('g',{class:'badge'},g);el('circle',{cx:o.x+10,cy:o.y-10,r:10},bd);const bt=el('text',{x:o.x+10,y:o.y-5.5},bd);o.bt=bt;o.g=g;
+  const tt=el('title',{},g);tt.textContent=`${o.name} · ${o.reg}${o.memo?' — '+o.memo:''}`;});
+// 비용
+function legCost(e,from){const to=e.a===from?e.b:e.a;const m=mode==='qing'?'walk':mode;let f;
+  if(m==='boat')f=e.t==='river'?(e.down?(to===e.down?.5:.85):.6):MUL.walk[e.t];else f=MUL[m][e.t];
+  let x=1;if(mods.has('heavy'))x*=(m==='cara'?1.15:(m==='boat'&&e.t==='river')?1:1.3);
+  if(mods.has('hurt'))x*=1.35;if(mods.has('storm'))x*=(e.t==='mount'||e.t==='pass'?1.32:e.t==='river'&&m==='boat'?1.25:1.15);
+  return {mn:e.mn*f*x,mx:e.mx*f*x,to};}
+function route(s,t){const dist={},prev={},seen=new Set();N.forEach(n=>dist[n[0]]=Infinity);dist[s]=0;
+  while(true){let u=null,best=Infinity;for(const k in dist)if(!seen.has(k)&&dist[k]<best){best=dist[k];u=k;}if(u===null||u===t)break;seen.add(u);
+    BY[u].adj.forEach(e=>{const c=legCost(e,u),v=c.to,w=(c.mn+c.mx)/2;if(dist[u]+w<dist[v]-1e-9){dist[v]=dist[u]+w;prev[v]={e,u};}});}
+  const legs=[];let v=t;while(v!==s){const p=prev[v];if(!p)return null;legs.unshift({e:p.e,from:p.u,to:v,...legCost(p.e,p.u)});v=p.u;}return legs;}
+// 표기
+function fmt(x){if(x<.99){const s=Math.max(1,Math.round(x*12));return s>=6&&s<=6?'반나절':s+'시진';}const r=Math.round(x*2)/2;return (Math.floor(r)+(r%1?'일 반':'일'));}
+function rng(a,b){const A=fmt(a),B=fmt(b);return A===B?A:`${A} ~ ${B}`;}
+function qing(d){return mods.has('hurt')?d:Math.min(d,1.5)*.45+Math.max(0,d-1.5)*.9;}
+// 그리기 갱신
+function render(){gP.innerHTML='';E.forEach(e=>e.lab.classList.remove('on'));
+  N.forEach(n=>{const o=BY[n[0]];o.g.classList.remove('pick','via');});
+  const cnt={};picks.forEach((p,i)=>{const o=BY[p];o.g.classList.add('pick');(cnt[p]=cnt[p]||[]).push(i+1);o.bt.textContent=cnt[p].length>1?cnt[p][0]+'·':cnt[p][0];});
+  const tot=$('#tTot'),legsEl=$('#tLegs');$('#tUndo').disabled=!picks.length;$('#tReset').disabled=!picks.length;
+  const notes=[];
+  const MN={walk:'혼자 걷는 보통 걸음이다. 짐이 가볍고 길을 아는 경우.',cara:'작품 기준표의 수치 그대로다. 짐수레와 호위를 낀 상인 · 표행의 속도.',
+    horse:'말을 바꿔 탈 역참이 있는 관도에서 가장 빠르다. 산길과 잔도에서는 말이 오히려 짐이 된다.',
+    boat:'수로 구간만 배로 간다. 물길을 따라 내려가면 빠르고, 거슬러 오르면 느리다. 나머지 길은 걸어서 셈한다.',
+    qing:'처음 하루 남짓은 경공으로 크게 줄지만, 그 뒤로는 피로와 내공 소모 때문에 걷는 것과 거의 같아진다. 장거리의 피로와 보급은 없애지 못한다.'};
+  notes.push(MN[mode]);
+  if(picks.length<2){legsEl.innerHTML='';tot.innerHTML=picks.length?`<div class="idle"><b>${BY[picks[0]].name}</b>에서 출발한다.<br>다음 목적지를 누르면 길을 잇는다.</div>`:`<div class="idle">지도에서 <b>출발지</b>를 누르고, 이어서 목적지를 차례로 누른다. 들를 곳은 몇 군데든 이어진다.<br><small style="letter-spacing:0;font-weight:400;font-size:12.5px">시작 거점은 청하진.</small></div>`;
+    $('#tNote').textContent=notes.join(' ');return;}
+  let all=[],html='',mn=0,mx=0,bmn=0,bmx=0,types=new Set();
+  for(let i=0;i<picks.length-1;i++){const s=picks[i],t=picks[i+1];if(s===t)continue;const L=route(s,t);if(!L)continue;
+    html+=`<li class="stop"><i></i><b>${BY[s].name}</b></li>`;
+    L.forEach(l=>{all.push(l);types.add(l.e.t);mn+=l.mn;mx+=l.mx;bmn+=l.e.mn;bmx+=l.e.mx;
+      const dirTxt=l.e.t==='river'&&mode==='boat'?(l.to===l.e.down?' · 물길을 따라':' · 물길을 거슬러'):'';
+      const lmn=mode==='qing'?null:l.mn,lmx=mode==='qing'?null:l.mx;
+      html+=`<li><i class="${l.e.t}"></i><div>${BY[l.from].name} → <b>${BY[l.to].name}</b></div><span>${lmn===null?TYPE[l.e.t]:rng(lmn,lmx)}</span><p>${TYPE[l.e.t]}${dirTxt}${l.e.memo?' · '+l.e.memo:''}</p></li>`;
+      const g=l.e.g;el('path',{class:'path halo',d:l.from===l.e.a?g.d:g.r},gP);el('path',{class:'path',d:l.from===l.e.a?g.d:g.r},gP);l.e.lab.classList.add('on');
+      if(l.to!==t)BY[l.to].g.classList.add('via');});}
+  html+=`<li class="stop"><i></i><b>${BY[picks[picks.length-1]].name}</b></li>`;
+  if(mode==='qing'){mn=qing(mn);mx=qing(mx);}
+  legsEl.innerHTML=html;
+  const name=MODES.find(m=>m[0]===mode)[2];
+  tot.innerHTML=`<small>${name} · ${picks.length>2?`${picks.length-1}구간`:'편도'}</small><div class="big">${rng(mn,mx).split(' ~ ').map(x=>`<em>${x}</em>`).join(' ~ ')}</div><div class="sub">${picks.map(p=>BY[p].name).join(' → ')}${mode!=='cara'||mods.size?`<br>표행 기준이면 ${rng(bmn,bmx)}`:''}</div>`;
+  if(types.has('pass'))notes.push('서하관 같은 관문에서는 통행증과 검문으로 반나절 이상 묶일 수 있다.');
+  if(types.has('desert'))notes.push('사막길은 역참 사이가 멀어 물과 식량을 넉넉히 챙겨야 한다.');
+  if(mods.has('hurt')&&mode==='qing')notes.push('부상 중에 경공을 쓰면 내상이 깊어진다. 걷는 속도로 셈했다.');
+  if(mods.has('storm')&&types.has('river'))notes.push('홍수철에는 나루가 닫혀 며칠씩 발이 묶이기도 한다.');
+  $('#tNote').textContent=notes.join(' ');}
+// 컨트롤
+$('#tModes').innerHTML=MODES.map(m=>`<button type="button" role="radio" data-m="${m[0]}" aria-checked="${m[0]===mode}"><b>${m[1]}</b>${m[2]}</button>`).join('');
+$('#tMods').innerHTML=MODS.map(m=>`<label><input type="checkbox" data-mod="${m[0]}">${m[1]}</label>`).join('');
+$('#tModes').addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(!b)return;mode=b.dataset.m;$$('#tModes button').forEach(x=>x.setAttribute('aria-checked',String(x===b)));render();});
+$('#tMods').addEventListener('change',e=>{const c=e.target;c.checked?mods.add(c.dataset.mod):mods.delete(c.dataset.mod);render();});
+const pick=id=>{if(picks[picks.length-1]===id)return;picks.push(id);render();};
+gN.addEventListener('click',e=>{const g=e.target.closest('.n');if(g)pick(g.dataset.n);});
+gN.addEventListener('keydown',e=>{if(e.key!=='Enter'&&e.key!==' ')return;const g=e.target.closest('.n');if(g){e.preventDefault();pick(g.dataset.n);}});
+$('#tUndo').onclick=()=>{picks.pop();render();};$('#tReset').onclick=()=>{picks=[];render();};
+render();
+window.__trip={route,pick:id=>pick(id),reset:()=>{picks=[];render();},setMode:m=>{mode=m;render();},state:()=>({mode,picks:[...picks]})};
+})();
 
 /* 핵심 12인 */
 $('#coreGrid').innerHTML=C.filter(c=>c.core).map(c=>`<a class="mini" href="#c/${c.id}"><img src="${img(c.id)}" alt="${esc(c.name)}" loading="lazy"><span>${esc(c.name)}<small>${esc(c.attr[0])}</small></span></a>`).join('');
