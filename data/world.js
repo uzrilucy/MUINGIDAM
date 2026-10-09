@@ -39,7 +39,7 @@ window.MUIN_GROUPS = [
       { key: '백초곡', hanja: '百草谷', home: '청하진 · 서남', uni: 'baekcho', emph: '의술과 약초', base: '진료와 약재', issue: '돌아온 표사의 치료와 약재 수급' },
       { key: '장인', hanja: '匠人', home: '청하진', emph: '병기, 수레와 기관, 복식과 호송 장비', base: '주문 제작과 수리', issue: '평소와 다른 주문들' },
       { key: '청류객잔·주민', hanja: '淸流客棧', home: '청하진', emph: '객잔, 나루, 장터', base: '숙박과 생업', issue: '오래 머문 손님들의 방값과 마을의 생계' },
-      { key: '관부', hanja: '官府', home: '청하진 · 서하관', unis: ['magistrate', 'passguard'], uniNames: ['포쾌 · 포두', '관문 수비군'], emph: '세금, 치안, 관문 수비', base: '왕조의 관직', issue: '실종 사건 수사와 맹의 조사 사이' }
+      { key: '관부', hanja: '官府', home: '청하진 · 서하관', unis: ['magistrate', 'constable', 'passguard'], uniNames: ['문관', '무관 · 포두·포쾌', '관문 수비군'], emph: '세금, 치안, 관문 수비', base: '왕조의 관직', issue: '실종 사건 수사와 맹의 조사 사이' }
     ] },
   { key: 'free', name: '독립', hanja: '獨立', count: 8, lead: '등 뒤에 조직이 없는 사람들. 대신 저마다 놓지 못한 실 한 가닥을 쥐고 있다.',
     factions: [
