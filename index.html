@@ -62,7 +62,33 @@ button{font:inherit;color:inherit}
 .side-foot{margin-top:auto;padding:18px 26px 0;font-size:11.5px;line-height:1.7;color:var(--mute)}
 .theme{display:flex;gap:6px;margin-bottom:12px}
 .theme button{flex:1;padding:6px 0;border:1px solid var(--line);background:var(--card);border-radius:3px;cursor:pointer;font-family:var(--serif);font-size:13px;color:var(--sub)}
-.theme button[aria-pressed="true"]{background:var(--night);color:var(--cream);border-color:var(--night)}
+.theme button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+/* ── 배경음악 */
+.bgm{margin-bottom:12px;padding:10px 10px 9px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--sub)}
+.bgm-row{display:flex;align-items:center;gap:10px}
+.bgm-play{flex:0 0 34px;width:34px;height:34px;border-radius:50%;border:1px solid var(--red);background:var(--red);color:#fbefe0;display:grid;place-items:center;cursor:pointer;padding:0;position:relative;transition:transform .2s,box-shadow .2s}
+.bgm-play:hover{transform:scale(1.06);box-shadow:0 0 0 4px var(--red-soft)}
+.bgm-play svg{width:13px;height:13px;fill:currentColor}
+.bgm-play .ic-pause{display:none}
+.bgm.on .bgm-play .ic-play{display:none}.bgm.on .bgm-play .ic-pause{display:block}
+.bgm.load .bgm-play:after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid transparent;border-top-color:var(--gold);animation:bgmspin .8s linear infinite}
+@keyframes bgmspin{to{transform:rotate(360deg)}}
+.bgm-info{flex:1;min-width:0;line-height:1.35}
+.bgm-info small{display:block;font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--mute)}
+.bgm-info b{display:block;font-family:var(--serif);font-size:13.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bgm-eq{display:flex;align-items:flex-end;gap:2px;height:14px;flex:0 0 auto}
+.bgm-eq i{width:3px;height:3px;background:var(--gold);border-radius:1px;transition:height .3s}
+.bgm.on .bgm-eq i{animation:bgmeq 1.1s ease-in-out infinite}
+.bgm.on .bgm-eq i:nth-child(2){animation-delay:-.35s;animation-duration:.9s}
+.bgm.on .bgm-eq i:nth-child(3){animation-delay:-.7s;animation-duration:1.3s}
+.bgm.on .bgm-eq i:nth-child(4){animation-delay:-.2s;animation-duration:1s}
+@keyframes bgmeq{0%,100%{height:3px}50%{height:14px}}
+.bgm-vol{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:10.5px;color:var(--mute)}
+.bgm-vol input{flex:1;min-width:0;height:16px;margin:0;accent-color:var(--red);cursor:pointer}
+.topbar .bgm-mini{margin-left:10px;position:relative}
+.topbar .bgm-mini.on{border-color:var(--gold);color:var(--gold)}
+.topbar .bgm-mini.on:after{content:'';position:absolute;right:4px;top:4px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+@media (prefers-reduced-motion:reduce){.bgm.on .bgm-eq i{animation:none;height:9px}}
 .topbar{display:none}
 main{min-width:0}
 .page{display:none;animation:fade .45s ease}
@@ -451,7 +477,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 </style>
 </head>
 <body>
-<div class="topbar"><button type="button" id="menuBtn" aria-label="메뉴 열기">☰</button><b>무림강호인연기담</b><small>設定集</small></div>
+<div class="topbar"><button type="button" id="menuBtn" aria-label="메뉴 열기">☰</button><b>무림강호인연기담</b><small>設定集</small><button type="button" class="bgm-mini" id="bgmMini" aria-label="배경음악 재생">♪</button></div>
 <div class="scrim" id="scrim"></div>
 <div class="shell">
 <aside class="side" id="side">
@@ -466,6 +492,14 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
     <li><a href="#system"><b>錄</b>플레이<small>PLAY</small></a></li>
   </ul>
   <div class="side-foot">
+    <div class="bgm" id="bgm">
+      <div class="bgm-row">
+        <button type="button" class="bgm-play" id="bgmPlay" aria-label="배경음악 재생"><svg class="ic-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5v9l7.5-4.5z"/></svg><svg class="ic-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 1.5h2.6v9H2.5zM6.9 1.5h2.6v9H6.9z"/></svg></button>
+        <div class="bgm-info"><small id="bgmTag">BGM · 晝</small><b id="bgmTitle">나루의 한낮</b></div>
+        <span class="bgm-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+      <label class="bgm-vol">음량<input type="range" id="bgmVol" min="0" max="100" value="60" aria-label="배경음악 음량"></label>
+    </div>
     <div class="theme" role="group" aria-label="화면 밝기"><button type="button" data-theme-set="light">晝 낮</button><button type="button" data-theme-set="dark">夜 밤</button></div>
     SillyTavern · 배포 준비 중<br>등장하는 왕조·문파·인물은 모두 창작된 설정입니다.
   </div>
@@ -794,9 +828,57 @@ function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clea
 
 /* 테마 */
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-function applyTheme(t){if(t)document.documentElement.dataset.theme=t;const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');$$('[data-theme-set]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeSet===cur)));}
+function applyTheme(t){if(t)document.documentElement.dataset.theme=t;const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');$$('[data-theme-set]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeSet===cur)));window.__bgmSync&&window.__bgmSync();}
 applyTheme(store.get('muin-theme'));
 $$('[data-theme-set]').forEach(b=>b.onclick=()=>{store.set('muin-theme',b.dataset.themeSet);applyTheme(b.dataset.themeSet);});
+/* 배경음악 — 낮·밤 테마를 따라 바뀌고, 바꿀 때는 천천히 겹쳐 넘어간다 */
+const BGM=(()=>{
+  const T={day:{src:'audio/muin_day.mp3',title:'나루의 한낮',han:'晝',len:4032000/44100},
+           night:{src:'audio/muin_night.mp3',title:'등불이 켜지면',han:'夜',len:4379586/44100}};
+  const box=$('#bgm'),btn=$('#bgmPlay'),vol=$('#bgmVol'),mini=$('#bgmMini');
+  let ctx=null,master=null,playing=false,want=false,curKey=null,cur=null,bufs={},fallback=null,busy=false;
+  const themeKey=()=>(document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark'?'night':'day';
+  const v0=parseFloat(store.get('muin-bgm-vol'));vol.value=isNaN(v0)?60:v0;
+  const gainFor=()=>Math.pow(vol.value/100,2)*.9;
+  function label(){const k=themeKey();$('#bgmTag').textContent='BGM · '+T[k].han;$('#bgmTitle').textContent=T[k].title;}
+  function ui(){box.classList.toggle('on',playing);btn.setAttribute('aria-label',playing?'배경음악 멈춤':'배경음악 재생');
+    if(mini){mini.classList.toggle('on',playing);mini.setAttribute('aria-label',playing?'배경음악 멈춤':'배경음악 재생');}}
+  async function load(k){if(bufs[k])return bufs[k];const r=await fetch(T[k].src);if(!r.ok)throw new Error('load');bufs[k]=await ctx.decodeAudioData(await r.arrayBuffer());return bufs[k];}
+  function voice(k){const b=bufs[k],s=ctx.createBufferSource(),g=ctx.createGain();s.buffer=b;s.loop=true;
+    const d=b.getChannelData(0);let off=0;for(let i=0;i<4096&&i<d.length;i++){if(Math.abs(d[i])>1e-4){off=i;break;}}
+    s.loopStart=off/b.sampleRate;s.loopEnd=Math.min(b.duration,s.loopStart+T[k].len);
+    s.connect(g);g.connect(master);g.gain.value=0;s.start(0,s.loopStart);return {k,s,g};}
+  function fadeTo(v,g,sec){const t=ctx.currentTime;g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(g.gain.value,t);g.gain.linearRampToValueAtTime(v,t+sec);}
+  async function swap(k,sec){
+    box.classList.add('load');
+    try{await load(k);}catch(e){box.classList.remove('load');toast('배경음악을 불러오지 못했다');playing=false;want=false;ui();return;}
+    box.classList.remove('load');if(!want)return;
+    const old=cur;cur=voice(k);curKey=k;fadeTo(1,cur.g,sec);
+    if(old){fadeTo(0,old.g,sec);setTimeout(()=>{try{old.s.stop();}catch(_){}},sec*1000+120);}
+    meta(k);}
+  function meta(k){if('mediaSession' in navigator&&window.MediaMetadata){navigator.mediaSession.metadata=new MediaMetadata({title:T[k].title,artist:'무림강호인연기담',album:'因緣奇談 BGM'});}}
+  async function play(){want=true;
+    if(!ctx){const AC=window.AudioContext||window.webkitAudioContext;
+      if(!AC){if(!fallback){fallback=new Audio(T[themeKey()].src);fallback.loop=true;}fallback.volume=gainFor();fallback.play();playing=true;ui();return;}
+      ctx=new AC();master=ctx.createGain();master.gain.value=gainFor();master.connect(ctx.destination);}
+    if(ctx.state==='suspended')await ctx.resume();
+    playing=true;ui();const k=themeKey();
+    if(!cur||curKey!==k)await swap(k,cur?1.8:1.2);else fadeTo(1,cur.g,.6);}
+  function pause(){want=false;playing=false;ui();
+    if(fallback&&!ctx){fallback.pause();return;}
+    if(cur){fadeTo(0,cur.g,.5);setTimeout(()=>{if(!want&&ctx)ctx.suspend();},560);}}
+  function toggle(){playing?pause():play();}
+  btn.onclick=toggle;if(mini)mini.onclick=toggle;
+  vol.oninput=()=>{store.set('muin-bgm-vol',vol.value);if(master)master.gain.setTargetAtTime(gainFor(),ctx.currentTime,.05);if(fallback)fallback.volume=gainFor();};
+  function sync(){label();if(!playing)return;const k=themeKey();
+    if(fallback&&!ctx){fallback.src=T[k].src;fallback.play();return;}
+    if(curKey!==k&&!busy){busy=true;swap(k,2.2).finally(()=>busy=false);}}
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',sync);
+  if('mediaSession' in navigator){try{navigator.mediaSession.setActionHandler('play',play);navigator.mediaSession.setActionHandler('pause',pause);}catch(_){}}
+  label();ui();
+  return {sync,play,pause,state:()=>({playing,curKey,ctx:ctx&&ctx.state,loop:cur&&[cur.s.loopStart,cur.s.loopEnd]})};
+})();
+window.__bgmSync=BGM.sync;
 
 /* 지역 · 경지 · 시작 */
 const REG=[
