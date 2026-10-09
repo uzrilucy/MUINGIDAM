@@ -425,7 +425,8 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 }
 @media (max-width:900px){
   .shell{grid-template-columns:1fr}
-  .side{position:fixed;inset:0 auto 0 0;width:270px;z-index:40;transform:translateX(-102%);transition:transform .3s;box-shadow:20px 0 40px -20px rgba(0,0,0,.5)}
+  body:before{z-index:-1}.shell{z-index:auto}
+  .side{position:fixed;inset:0 auto 0 0;height:auto;max-height:100dvh;width:min(290px,86vw);z-index:45;transform:translateX(-102%);transition:transform .3s;box-shadow:20px 0 40px -20px rgba(0,0,0,.5);overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
   .side.open{transform:none}
   .scrim{position:fixed;inset:0;background:rgba(10,16,18,.5);z-index:39;display:none}
   .scrim.on{display:block}
@@ -1115,13 +1116,16 @@ $('#lb').onclick=()=>$('#lb').classList.remove('on');
 
 /* 메뉴 */
 const side=$('#side'),scrim=$('#scrim');
-$('#menuBtn').onclick=()=>{side.classList.add('open');scrim.classList.add('on');};
-scrim.onclick=()=>{side.classList.remove('open');scrim.classList.remove('on');};
+function menu(open){side.classList.toggle('open',open);scrim.classList.toggle('on',open);$('#menuBtn').setAttribute('aria-expanded',String(open));document.documentElement.style.overflow=open?'hidden':'';}
+$('#menuBtn').onclick=()=>menu(!side.classList.contains('open'));
+scrim.onclick=()=>menu(false);
+side.addEventListener('click',e=>{if(e.target.closest('.nav a,.brand'))menu(false);});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&side.classList.contains('open'))menu(false);});
 
 /* 라우터 */
 const PAGES=['home','world','factions','people','events','romance','system'];
 function route(){let h=decodeURIComponent(location.hash.slice(1))||'home';
-  side.classList.remove('open');scrim.classList.remove('on');
+  menu(false);
   if(h.startsWith('c/')){const id=h.slice(2);if(BY[id]){if(!$('.page.on'))show(lastPage);openChar(id);return;}h='people';}
   const fromModal=dlg.open;closeChar();let anchor=null;
   if(h.startsWith('f/')){anchor='g-'+h.slice(2);h='factions';}
