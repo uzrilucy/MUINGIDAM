@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>무림강호인연기담 · 설정집</title>
+<meta name="description" content="여성향 무협 오픈월드 다인 시뮬레이션 《무림강호인연기담》의 세계와 고유 인물 144인의 설정집.">
+<meta property="og:title" content="무림강호인연기담 · 설정집">
+<meta property="og:description" content="나루에 등불이 켜지면, 강호의 인연이 시작된다. 고유 인물 144인의 여성향 무협 오픈월드.">
+<meta property="og:image" content="img/promo/hero.jpg">
+<meta name="theme-color" content="#16252a">
+<link rel="icon" href="img/site/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --paper:#f3ecdf;--paper2:#ebe2cf;--card:#faf6ec;--card2:#f6efe1;--line:#d8caae;--line2:#e5dac4;
+  --ink:#1f1b16;--sub:#5b5246;--mute:#8a7f70;--red:#a8262b;--red-soft:#f4e3da;--gold:#a8823f;--gold-soft:#efe3c8;
+  --teal:#2d6763;--teal-soft:#dbe8e4;--indigo:#34507a;--night:#16252a;--night2:#1f3439;--cream:#efe3c5;--cream2:#c9bb98;
+  --shadow:0 18px 40px -26px rgba(48,30,12,.55);--hostile:#3d3833;--cmvbg:radial-gradient(120% 60% at 50% 100%,rgba(70,94,96,.28),transparent 70%),linear-gradient(180deg,#efe3cf,#e2d4bb);--logo:drop-shadow(0 6px 10px rgba(40,25,10,.18));
+  --serif:'Noto Serif KR','Nanum Myeongjo','AppleMyungjo','Batang',serif;
+  --sans:'Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#11191b;--paper2:#162124;--card:#1a2629;--card2:#1e2c2f;--line:#2f4044;--line2:#253538;
+  --ink:#ece3d0;--sub:#b9ad97;--mute:#86806f;--red:#d0564d;--red-soft:#3a2224;--gold:#c9a463;--gold-soft:#2c2a20;
+  --teal:#6aaea4;--teal-soft:#1d3634;--indigo:#8aa6cf;--shadow:0 18px 40px -24px rgba(0,0,0,.8);--hostile:#a39a8d;--cmvbg:radial-gradient(120% 60% at 50% 100%,rgba(106,174,164,.16),transparent 70%),linear-gradient(180deg,#1b2a2d,#132022);--logo:drop-shadow(0 0 14px rgba(239,227,197,.28)) drop-shadow(0 6px 10px rgba(0,0,0,.5));color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11191b;--paper2:#162124;--card:#1a2629;--card2:#1e2c2f;--line:#2f4044;--line2:#253538;
+  --ink:#ece3d0;--sub:#b9ad97;--mute:#86806f;--red:#d0564d;--red-soft:#3a2224;--gold:#c9a463;--gold-soft:#2c2a20;
+  --teal:#6aaea4;--teal-soft:#1d3634;--indigo:#8aa6cf;--shadow:0 18px 40px -24px rgba(0,0,0,.8);--hostile:#a39a8d;--cmvbg:radial-gradient(120% 60% at 50% 100%,rgba(106,174,164,.16),transparent 70%),linear-gradient(180deg,#1b2a2d,#132022);--logo:drop-shadow(0 0 14px rgba(239,227,197,.28)) drop-shadow(0 6px 10px rgba(0,0,0,.5));color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.8;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+body:before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.55;background-image:repeating-linear-gradient(0deg,rgba(120,90,50,.03) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(120,90,50,.022) 0 1px,transparent 1px 7px)}
+
+a{color:inherit}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+.serif{font-family:var(--serif)}
+/* ── 레이아웃 */
+.shell{position:relative;z-index:1;display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;background:var(--paper2);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:26px 0 18px;overflow:auto}
+.side:after{content:'';position:absolute;top:0;bottom:0;right:3px;width:1px;background:var(--line);opacity:.7}
+.brand{display:block;text-decoration:none;padding:0 30px 18px}
+.brand img{width:150px;margin:0 auto;filter:var(--logo)}
+.brand small{display:block;text-align:center;margin-top:10px;font-size:11px;letter-spacing:.36em;color:var(--mute)}
+.nav{list-style:none;margin:8px 0 0;padding:0 16px;display:grid;gap:3px}
+.nav a{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:4px;text-decoration:none;color:var(--sub);font-size:14.5px;font-weight:600;letter-spacing:.02em;transition:background .2s,color .2s}
+.nav a b{flex:0 0 30px;height:30px;display:grid;place-items:center;font-family:var(--serif);font-size:15px;font-weight:700;color:var(--red);border:1px solid var(--line);border-radius:3px;background:var(--card);transition:all .2s}
+.nav a small{margin-left:auto;font-size:10.5px;letter-spacing:.14em;color:var(--mute);font-weight:500}
+.nav a:hover{background:var(--card);color:var(--ink)}
+.nav a[aria-current="page"]{background:var(--card);color:var(--ink);box-shadow:inset 3px 0 0 var(--red)}
+.nav a[aria-current="page"] b{background:var(--red);border-color:var(--red);color:#fbefe0}
+.side-foot{margin-top:auto;padding:18px 26px 0;font-size:11.5px;line-height:1.7;color:var(--mute)}
+.theme{display:flex;gap:6px;margin-bottom:12px}
+.theme button{flex:1;padding:6px 0;border:1px solid var(--line);background:var(--card);border-radius:3px;cursor:pointer;font-family:var(--serif);font-size:13px;color:var(--sub)}
+.theme button[aria-pressed="true"]{background:var(--night);color:var(--cream);border-color:var(--night)}
+.topbar{display:none}
+main{min-width:0}
+.page{display:none;animation:fade .45s ease}
+.page.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.wrap{max-width:1000px;margin:0 auto;padding:0 44px}
+/* ── 공통 머리 */
+.phead{position:relative;padding:72px 0 30px;overflow:hidden}
+.phead .wm{position:absolute;right:-10px;top:10px;font-family:var(--serif);font-weight:900;font-size:220px;line-height:1;color:var(--ink);opacity:.045;pointer-events:none;user-select:none}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.42em;color:var(--red)}
+.ptitle{margin:10px 0 0;font-family:var(--serif);font-size:44px;font-weight:900;line-height:1.25;letter-spacing:-.02em}
+.plead{margin:16px 0 0;max-width:640px;font-size:16px;color:var(--sub)}
+.rule{display:flex;align-items:center;gap:10px;margin:26px 0 0;color:var(--gold)}
+.rule:before,.rule:after{content:'';height:1px;width:60px;background:currentColor}
+.rule i{font-style:normal;font-size:9px}
+.sec{padding:42px 0 10px}
+.sh{display:flex;align-items:baseline;gap:12px;margin:0 0 20px}
+.sh b{font-family:var(--serif);font-size:15px;font-weight:700;color:#fbefe0;background:var(--red);width:30px;height:30px;display:grid;place-items:center;border-radius:3px;flex:0 0 30px;transform:translateY(-2px)}
+.sh h2{margin:0;font-family:var(--serif);font-size:26px;font-weight:700;letter-spacing:-.01em}
+.sh span{font-size:13px;color:var(--mute);letter-spacing:.08em}
+.sh:after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);align-self:center}
+.lead2{max-width:720px;color:var(--sub);margin:0 0 22px}
+.quote{position:relative;margin:0 0 24px;padding:26px 30px 24px 34px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);box-shadow:var(--shadow)}
+.quote p{margin:0;font-family:var(--serif);font-size:20px;font-weight:700;line-height:1.7}
+.quote small{display:block;margin-top:10px;color:var(--sub);font-size:14.5px;line-height:1.8}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:20px 20px 18px;position:relative}
+.card h3{margin:0;font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.45}
+.card p{margin:8px 0 0;font-size:14px;color:var(--sub);line-height:1.8}
+.card .hj{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--red);line-height:1;margin-bottom:12px}
+.card.top{border-top:3px solid var(--ink)}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);border:1px solid var(--line)}
+.tbl th,.tbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line2);vertical-align:top}
+.tbl th{font-size:12px;letter-spacing:.12em;color:var(--mute);font-weight:700;background:var(--card2)}
+.tbl td:first-child{font-family:var(--serif);font-weight:700;white-space:nowrap}
+.tblw{overflow-x:auto;border-radius:3px}
+.note{font-size:13px;color:var(--mute);margin:10px 0 0}
+.chip{display:inline-block;padding:3px 10px;border:1px solid var(--line);background:var(--card);border-radius:2px;font-size:12.5px;color:var(--sub);line-height:1.5}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:3px;font-weight:700;font-size:14.5px;text-decoration:none;cursor:pointer;border:1px solid var(--red);background:var(--red);color:#fbefe0;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px -10px rgba(168,38,43,.7)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:rgba(239,227,197,.45)}
+/* ── 홈 히어로 */
+.hero{position:relative;background:var(--night);color:var(--cream);overflow:hidden}
+.hero:before{content:'';position:absolute;inset:0;background:url(img/promo/hero.jpg) center 30%/cover;filter:blur(28px) saturate(1.1);opacity:.32;transform:scale(1.15)}
+.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#14232a 18%,rgba(20,35,42,.72) 58%,rgba(20,35,42,.2))}
+.hero .in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;max-width:1080px;margin:0 auto;padding:64px 44px 60px}
+.hero .kick{font-size:12px;letter-spacing:.42em;color:var(--gold);font-weight:700}
+.hero h1{margin:16px 0 0;font-family:var(--serif);font-weight:900;font-size:58px;line-height:1.12;letter-spacing:-.02em;color:#f6ebd2}
+.hero h1 small{display:block;font-size:22px;font-weight:600;letter-spacing:.32em;color:var(--cream2);margin-bottom:10px}
+.hero .tag{margin:22px 0 0;font-family:var(--serif);font-size:20px;line-height:1.7;color:var(--cream)}
+.hero .sub{margin:12px 0 0;font-size:15px;color:var(--cream2);max-width:460px}
+.stats{display:flex;gap:10px;margin:28px 0 0;flex-wrap:wrap}
+.stats div{flex:1 1 0;min-width:120px;padding:12px 16px 10px;border:1px solid rgba(201,164,99,.35);background:rgba(18,32,36,.55);backdrop-filter:blur(3px)}
+.stats b{display:block;font-family:var(--serif);font-size:28px;font-weight:900;color:var(--gold);line-height:1}
+.stats span{font-size:12.5px;color:var(--cream2)}
+.hero .acts{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.cover{position:relative;justify-self:center;width:min(380px,100%)}
+.cover img{width:100%;border-radius:2px;box-shadow:0 30px 60px -20px rgba(0,0,0,.75),0 0 0 1px rgba(201,164,99,.35)}
+.cover:before{content:'';position:absolute;inset:-12px;border:1px solid rgba(201,164,99,.28);border-radius:3px}
+.soon{position:absolute;right:-14px;top:22px;background:var(--red);color:#fbefe0;font-family:var(--serif);font-weight:700;font-size:13px;letter-spacing:.2em;padding:6px 12px 6px 14px;box-shadow:0 6px 14px -6px rgba(0,0,0,.6);transform:rotate(3deg)}
+.feat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.feat .card{padding:22px 20px 20px}
+.feat .num{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--red);letter-spacing:.2em}
+.core{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.mini{position:relative;display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:2px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.mini img{aspect-ratio:3/4;object-fit:cover;width:100%;background:#d6d2ca}
+.mini span{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 8px;background:linear-gradient(transparent,rgba(16,24,26,.86));color:#f6ebd2;font-family:var(--serif);font-weight:700;font-size:15px}
+.mini span small{display:block;font-family:var(--sans);font-weight:500;font-size:11px;color:var(--cream2)}
+.mini:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+/* ── 연표 */
+.tl{position:relative;margin:6px 0 0}
+.tl .row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:0}
+.tl .when{padding:2px 18px 0 0;text-align:right;font-family:var(--serif);font-weight:700;color:var(--gold);font-size:15px}
+.tl .what{position:relative;border-left:2px solid var(--line);padding:0 0 26px 24px}
+.tl .what:before{content:'';position:absolute;left:-6px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--gold)}
+.tl .what h4{margin:0;font-family:var(--serif);font-size:17px}
+.tl .what p{margin:4px 0 0;color:var(--sub);font-size:14.5px}
+.tl .row.now .when{color:var(--red)}.tl .row.now .what{border-left-color:var(--red)}.tl .row.now .what:before{border-color:var(--red);background:var(--red)}
+/* ── 지도 카드 */
+.region h3 small{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--mute);margin-left:6px;letter-spacing:.04em}
+.region dl{margin:10px 0 0;display:grid;grid-template-columns:44px 1fr;gap:4px 8px;font-size:13.5px}
+.region dt{color:var(--mute);font-weight:700;font-size:12px;letter-spacing:.08em;padding-top:2px}
+.region dd{margin:0;color:var(--sub)}
+.region.hub{border-color:var(--red);background:linear-gradient(var(--card),var(--card2))}
+.hubbadge{position:absolute;right:14px;top:14px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--red);border:1px solid var(--red);padding:1px 7px;border-radius:2px}
+/* ── 경지 사다리 */
+.ladder{display:grid;gap:8px}
+.rung{display:grid;grid-template-columns:110px 1fr minmax(0,1.2fr);gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);padding:12px 18px;position:relative;overflow:hidden}
+.rung:before{content:'';position:absolute;left:0;top:0;bottom:0;width:var(--w);background:linear-gradient(90deg,rgba(168,38,43,.10),rgba(168,38,43,.02));pointer-events:none}
+.rung b{position:relative;font-family:var(--serif);font-size:17px}
+.rung b small{display:block;font-family:var(--sans);font-size:11px;font-weight:600;color:var(--mute);letter-spacing:.1em}
+.rung span{position:relative;font-size:13.5px;color:var(--ink)}
+.rung em{position:relative;font-style:normal;font-size:13px;color:var(--mute)}
+.rung.top{border-color:var(--red)}.rung.top b{color:var(--red)}
+/* ── 세력 */
+.fgroup{padding:40px 0 6px}
+.fgh{display:flex;align-items:flex-end;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+.fgh h2{margin:0;font-family:var(--serif);font-size:30px;font-weight:900;letter-spacing:-.01em}
+.fgh .hj{font-family:var(--serif);font-size:15px;color:var(--mute);letter-spacing:.3em}
+.fgh .cnt{margin-left:auto;font-family:var(--serif);font-weight:700;color:var(--red);font-size:22px}
+.fgh .cnt small{font-size:12px;color:var(--mute);margin-left:2px}
+.fglead{color:var(--sub);margin:0 0 18px;max-width:720px}
+.fjump{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.fjump a{text-decoration:none}
+.fac{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px 24px;margin-bottom:12px;scroll-margin-top:20px}
+.fac h3{margin:0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-family:var(--serif);font-size:22px}
+.fac h3 small{font-size:14px;color:var(--mute);font-weight:600;letter-spacing:.2em}
+.fac h3 em{font-style:normal;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--teal);border:1px solid var(--teal);border-radius:10px;padding:0 8px}
+.fac dl{margin:12px 0 0;display:grid;grid-template-columns:86px 1fr;gap:6px 12px;font-size:14px}
+.fac dt{color:var(--mute);font-size:12px;font-weight:700;letter-spacing:.1em;padding-top:2px}
+.fac dd{margin:0;color:var(--sub)}
+.fac .fn{margin:12px 0 0;font-size:13px;color:var(--mute);padding-left:10px;border-left:2px solid var(--line)}
+.members{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.member{display:inline-flex;align-items:center;gap:7px;padding:3px 10px 3px 3px;background:var(--card2);border:1px solid var(--line);border-radius:20px;text-decoration:none;font-size:13px;color:var(--ink);transition:border-color .2s,background .2s}
+.member img{width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:50% 12%}
+.member small{color:var(--mute);font-size:11.5px}
+.member:hover{border-color:var(--red);background:var(--red-soft)}
+.unis{display:flex;gap:4px;align-self:start}
+.unis figure{margin:0;width:78px;text-align:center}
+.unis img{width:78px;aspect-ratio:340/497;object-fit:cover;background:radial-gradient(ellipse at 50% 92%,rgba(60,40,20,.18),transparent 60%),linear-gradient(var(--card2),var(--paper2));border-radius:2px;cursor:zoom-in;transition:transform .2s}
+.unis img:hover{transform:scale(1.04)}
+.unis figcaption{font-size:11px;color:var(--mute);margin-top:3px}
+.tia{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px}
+.lines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lines .card{border-top:3px solid var(--red)}
+/* ── 인물 */
+.tools{position:sticky;top:0;z-index:5;background:var(--paper);padding:14px 0 12px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tools input,.tools select{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:3px;padding:8px 12px}
+.tools input{flex:1 1 220px;min-width:0}
+.gchips{display:flex;flex-wrap:wrap;gap:5px;width:100%}
+.gchips button{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:4px 12px;font-size:13px;cursor:pointer;color:var(--sub)}
+.gchips button[aria-pressed="true"]{background:var(--night);color:var(--cream);border-color:var(--night)}
+.tools label{white-space:nowrap;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);cursor:pointer}
+.tools .count{margin-left:auto;font-size:13px;color:var(--mute)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:14px;padding:20px 0 60px}
+.cc{display:flex;flex-direction:column;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;content-visibility:auto;contain-intrinsic-size:340px}
+.cc .ph{position:relative;aspect-ratio:3/4;background:#d6d2ca;overflow:hidden}
+.cc .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cc .ph .star{position:absolute;left:8px;top:8px;background:var(--red);color:#fbefe0;font-size:10.5px;font-weight:700;letter-spacing:.1em;padding:1px 6px;border-radius:2px}
+.cc .hook{position:absolute;inset:auto 0 0 0;padding:40px 12px 10px;background:linear-gradient(transparent,rgba(14,22,24,.92));color:#f1e6cd;font-family:var(--serif);font-size:12.5px;line-height:1.6;opacity:0;transform:translateY(8px);transition:all .3s}
+.cc:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold)}
+.cc:hover .ph img{transform:scale(1.04)}
+.cc:hover .hook{opacity:1;transform:none}
+.cc .bd{padding:10px 12px 12px}
+.cc .af{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--red)}
+.cc .nm{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.3}
+.cc .nm small{font-size:12px;color:var(--mute);font-weight:400;margin-left:5px}
+.cc .ti{font-size:12px;color:var(--sub);font-family:var(--serif);margin-top:2px}
+.cc .at{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.cc .at span{font-size:11px;padding:1px 6px;border:1px solid var(--line);border-radius:2px;color:var(--sub);background:var(--card2)}
+.empty{padding:40px 0;text-align:center;color:var(--mute);font-family:var(--serif)}
+/* ── 인물 모달 */
+dialog.cm{padding:0;border:0;max-width:1080px;width:calc(100% - 40px);max-height:calc(100vh - 40px);background:var(--paper);color:var(--ink);border-radius:4px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);overflow:hidden}
+dialog.cm::backdrop{background:rgba(10,16,18,.72);backdrop-filter:blur(3px)}
+.cmw{display:grid;grid-template-columns:380px minmax(0,1fr);height:min(820px,calc(100vh - 40px))}
+.cmv{position:relative;background:var(--cmvbg);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.cmv:before{content:attr(data-hj);position:absolute;top:18px;left:16px;writing-mode:vertical-rl;font-family:var(--serif);font-weight:900;font-size:64px;letter-spacing:.06em;color:var(--ink);opacity:.07}
+.cmv img{position:relative;height:94%;width:auto;max-width:92%;object-fit:contain;margin-bottom:3%;filter:drop-shadow(0 18px 18px rgba(40,25,10,.22))}
+.cmv img.bust{width:100%;height:100%;max-width:none;margin:0;object-fit:cover;filter:none}
+.vt{position:absolute;left:12px;bottom:12px;display:flex;gap:4px;z-index:2}
+.vt button{border:1px solid rgba(31,27,22,.25);background:rgba(250,246,236,.86);border-radius:2px;padding:3px 9px;font-size:12px;cursor:pointer;color:#3c342a}
+.vt button[aria-pressed="true"]{background:#16252a;color:#efe3c5;border-color:#16252a}
+.cmc{overflow:auto;padding:30px 34px 34px;position:relative}
+.cmx{position:absolute;right:14px;top:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:18px;line-height:1;z-index:3}
+.cmh .af{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--red)}
+.cmh h2{margin:4px 0 0;font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.2}
+.cmh h2 small{font-size:17px;color:var(--mute);font-weight:400;margin-left:10px}
+.cmh .ti{font-family:var(--serif);color:var(--sub);margin-top:4px}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.facts span{font-size:12.5px;padding:2px 9px;background:var(--card);border:1px solid var(--line);border-radius:2px;color:var(--sub)}
+.attrs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.attrs span{font-size:12.5px;font-weight:700;padding:3px 10px;border:1px solid var(--red);color:var(--red);background:var(--red-soft);border-radius:2px}
+.hookq{margin:16px 0 0;padding:14px 18px;background:var(--card);border-left:3px solid var(--red);font-family:var(--serif);font-size:15.5px;line-height:1.85}
+.imp{margin:12px 0 0;font-size:14px;color:var(--sub)}
+.imp b{color:var(--gold);font-weight:700;margin-right:6px}
+.tabs{display:flex;gap:2px;margin:22px 0 0;border-bottom:1px solid var(--line);position:sticky;top:-30px;background:var(--paper);z-index:2;padding-top:6px}
+.tabs button{border:0;background:transparent;padding:9px 14px 10px;font-size:14px;font-weight:700;color:var(--mute);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--red)}
+.tp{display:none;padding-top:16px}.tp.on{display:block}
+.kv{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px 16px;font-size:14.5px}
+.kv dt{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--mute);padding-top:3px}
+.kv dd{margin:0;color:var(--ink);line-height:1.85}
+.kv dd .olabel{display:inline-block;font-size:12px;color:var(--gold);font-weight:700;margin-right:6px}
+.lnk{color:var(--red);text-decoration:none;border-bottom:1px dotted var(--red);font-weight:600}
+.say{display:grid;gap:8px;margin-bottom:16px}
+.say div{padding:12px 16px;border-left:3px solid var(--line);background:var(--card)}
+.say div.l2{border-left-color:var(--red);background:var(--card2)}
+.say small{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--mute)}
+.say .l2 small{color:var(--red)}
+.say p{margin:3px 0 0;font-family:var(--serif);font-size:15px}
+.say .l2 p{font-weight:700}
+details.spoil{margin-top:14px;border:1px dashed var(--line);border-radius:3px;background:var(--card)}
+details.spoil summary{cursor:pointer;padding:10px 14px;font-size:13.5px;font-weight:700;color:var(--sub);list-style:none}
+details.spoil summary::-webkit-details-marker{display:none}
+details.spoil summary:before{content:'▸ ';color:var(--red)}
+details.spoil[open] summary:before{content:'▾ '}
+details.spoil p{margin:0;padding:0 16px 14px;font-family:var(--serif);font-size:14.5px;line-height:1.9}
+.tagbox{margin-bottom:12px;background:var(--card);border:1px solid var(--line);border-radius:3px}
+.tagbox header{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:1px solid var(--line2);font-size:13px;font-weight:700;color:var(--sub)}
+.tagbox button{border:1px solid var(--night);background:var(--night);color:var(--cream);font-size:12px;padding:3px 10px;border-radius:2px;cursor:pointer}
+.tagbox pre{margin:0;padding:10px 12px;font-family:ui-monospace,'D2Coding',Consolas,monospace;font-size:12px;line-height:1.65;white-space:pre-wrap;word-break:break-word;color:var(--sub);max-height:160px;overflow:auto}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:26px;padding-top:16px;border-top:1px solid var(--line)}
+.nav2 a{font-size:13px;text-decoration:none;color:var(--sub)}
+.nav2 a b{font-family:var(--serif);color:var(--ink)}
+/* ── 설렘 */
+.stages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.stage{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);padding:14px 12px 12px}
+.stage b{font-family:var(--serif);font-size:16px;color:var(--c)}
+.stage .thr{position:relative;height:10px;margin:10px 0 8px}
+.stage .thr:before{content:'';position:absolute;left:0;right:0;top:4px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 4px,transparent 4px 7px)}
+.stage .thr i{position:absolute;left:0;top:4px;height:2px;width:var(--p);background:var(--c)}
+.stage .thr i:after{content:'';position:absolute;right:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.stage p{margin:0;font-size:12.5px;color:var(--sub);line-height:1.7}
+.reg td:nth-child(3){font-family:var(--serif);color:var(--ink)}
+/* ── 시스템 */
+.shot{background:var(--card);border:1px solid var(--line);padding:14px;border-radius:3px;box-shadow:var(--shadow)}
+.shot img{width:100%;border-radius:2px}
+.routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.routes .card h3{font-size:16px}
+.routes .card h3 b{color:var(--red);font-size:12px;margin-right:6px}
+.routes .card p.to{color:var(--red);font-size:13px;margin-top:4px}
+.steps{counter-reset:s;display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:14px 16px 14px 56px;background:var(--card);border:1px solid var(--line);border-radius:3px;font-size:14.5px;color:var(--sub)}
+.steps li:before{content:counter(s);position:absolute;left:16px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--night);color:var(--cream);font-family:var(--serif);font-weight:700;display:grid;place-items:center;font-size:13px}
+.steps li b{color:var(--ink)}
+footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute);line-height:1.9}
+.lightbox{position:fixed;inset:0;background:rgba(10,16,18,.86);display:none;place-items:center;z-index:50;cursor:zoom-out}
+.lightbox.on{display:grid}
+.lightbox img{max-height:90vh;max-width:90vw;background:radial-gradient(ellipse at 50% 90%,rgba(255,255,255,.12),transparent 60%)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--night);color:var(--cream);padding:9px 16px;border-radius:20px;font-size:13px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+/* ── 반응형 */
+@media (max-width:1100px){
+  .feat{grid-template-columns:repeat(2,minmax(0,1fr))}.core{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .stages{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero h1{font-size:48px}
+}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .side{position:fixed;inset:0 auto 0 0;width:270px;z-index:40;transform:translateX(-102%);transition:transform .3s;box-shadow:20px 0 40px -20px rgba(0,0,0,.5)}
+  .side.open{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(10,16,18,.5);z-index:39;display:none}
+  .scrim.on{display:block}
+  .topbar{display:flex;position:sticky;top:0;z-index:30;align-items:center;gap:12px;padding:10px 16px;background:var(--night);color:var(--cream);border-bottom:2px solid var(--gold)}
+  .topbar button{border:1px solid rgba(239,227,197,.35);background:transparent;color:var(--cream);width:36px;height:34px;border-radius:3px;font-size:16px;cursor:pointer}
+  .topbar b{font-family:var(--serif);font-size:16px;letter-spacing:.06em}
+  .topbar small{margin-left:auto;font-size:11px;letter-spacing:.3em;color:var(--gold)}
+  .wrap{padding:0 18px}
+  .hero .in{grid-template-columns:1fr;padding:40px 20px 44px;gap:30px}
+  .cover{width:min(300px,82%);order:-1}
+  .hero h1{font-size:40px}.hero h1 small{font-size:17px}
+  .phead{padding:46px 0 22px}.phead .wm{font-size:140px}
+  .ptitle{font-size:32px}
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lines{grid-template-columns:1fr}
+  .tia{grid-template-columns:1fr}
+  .fac{grid-template-columns:1fr}
+  .unis{overflow-x:auto}
+  .routes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cmw{grid-template-columns:1fr;height:auto;max-height:calc(100vh - 20px)}
+  dialog.cm{width:calc(100% - 16px);max-height:calc(100vh - 16px)}
+  .cmw{display:block;overflow:auto;max-height:calc(100vh - 16px)}
+  .cmv{height:420px}
+  .cmc{overflow:visible;padding:24px 20px 28px}
+  .tabs{top:0}
+  .rung{grid-template-columns:90px 1fr}.rung em{grid-column:1/-1}
+}
+@media (max-width:560px){
+  body{font-size:15px}
+  .stats{gap:6px}.stats div{min-width:0;padding:10px 10px 8px}.stats b{font-size:22px}.stats span{font-size:11px;line-height:1.5;display:block;margin-top:4px}
+  .cmx{position:fixed;top:16px;right:16px;background:var(--card);box-shadow:0 4px 12px -4px rgba(0,0,0,.4)}
+  .g2,.g3,.g4,.feat,.routes{grid-template-columns:1fr}
+  .core{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stages{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .cc .nm{font-size:16px}
+  .tl .row{grid-template-columns:78px minmax(0,1fr)}.tl .when{font-size:13px;padding-right:12px}
+  .kv{grid-template-columns:1fr;gap:2px 0}.kv dd{margin-bottom:10px}
+  .cmh h2{font-size:28px}
+  .fac{padding:18px 16px}
+  .fac dl{grid-template-columns:1fr;gap:0}.fac dd{margin-bottom:6px}
+  .quote{padding:20px 18px 18px 22px}.quote p{font-size:17px}
+  .tbl{font-size:13px}.tbl th,.tbl td{padding:9px 10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="topbar"><button type="button" id="menuBtn" aria-label="메뉴 열기">☰</button><b>무림강호인연기담</b><small>設定集</small></div>
+<div class="scrim" id="scrim"></div>
+<div class="shell">
+<aside class="side" id="side">
+  <a class="brand" href="#home"><img src="img/site/logo.png" alt="무림강호 인연기담"><small>因緣奇談 · 設定集</small></a>
+  <ul class="nav" id="nav">
+    <li><a href="#home"><b>首</b>처음<small>HOME</small></a></li>
+    <li><a href="#world"><b>世</b>세계<small>WORLD</small></a></li>
+    <li><a href="#factions"><b>勢</b>세력<small>FACTIONS</small></a></li>
+    <li><a href="#people"><b>人</b>인물<small>144</small></a></li>
+    <li><a href="#events"><b>事</b>사건<small>EVENTS</small></a></li>
+    <li><a href="#romance"><b>情</b>설렘<small>ROMANCE</small></a></li>
+    <li><a href="#system"><b>錄</b>플레이<small>PLAY</small></a></li>
+  </ul>
+  <div class="side-foot">
+    <div class="theme" role="group" aria-label="화면 밝기"><button type="button" data-theme-set="light">晝 낮</button><button type="button" data-theme-set="dark">夜 밤</button></div>
+    SillyTavern 우선 제작 · 배포 준비 중<br>등장하는 왕조·문파·인물은 모두 창작된 설정입니다.
+  </div>
+</aside>
+<main id="main">
+
+<!-- ═════════ 首 처음 ═════════ -->
+<section class="page" id="p-home" data-page="home">
+  <div class="hero"><div class="in">
+    <div>
+      <div class="kick">因緣奇談 · 女性向 武俠 OPEN WORLD</div>
+      <h1><small>무림강호</small>인연기담</h1>
+      <p class="tag">나루에 등불이 켜지면,<br>강호의 인연이 시작된다.</p>
+      <p class="sub">검과 의리, 생업과 인연으로 저마다의 삶을 지키는 사람들. 당신도 그중 한 사람으로 강호에 들어섭니다.</p>
+      <div class="stats"><div><b>144</b><span>고유 인물 · 남 108 여 36</span></div><div><b>7</b><span>경지 · 비무인에서 화경까지</span></div><div><b>5</b><span>갈래 사건 · 가변 결말</span></div></div>
+      <div class="acts"><a class="btn" href="#people">인물 명부 보기</a><a class="btn ghost" href="#world">세계 둘러보기</a></div>
+    </div>
+    <div class="cover"><img src="img/promo/hero.jpg" alt="해 질 녘 나루에서 등을 보인 검객"><span class="soon">COMING SOON</span></div>
+  </div></div>
+  <div class="wrap">
+    <div class="sec">
+      <div class="sh"><b>特</b><h2>이 강호에서는</h2></div>
+      <div class="feat">
+        <div class="card"><div class="num">壹</div><h3>누구를 만나도, 설렌다</h3><p>144명 전원에게 저마다의 설렘 문법이 있습니다. 매력의 결도, 다가오는 방식도, 무너지는 순간도 모두 다릅니다.</p></div>
+        <div class="card"><div class="num">貳</div><h3>무엇으로 살아도, 강호다</h3><p>문파 제자, 세가 자제, 표사, 의원, 상인, 사파와 마교, 낭인, 은거 고수. 무공을 모르는 약재상도 어엿한 주인공입니다.</p></div>
+        <div class="card"><div class="num">參</div><h3>강호는 기다려 주지 않는다</h3><p>천라교의 계획은 실제 조건이 갖춰질 때만 한 걸음씩 나아갑니다. 길목을 끊으면, 정말로 늦춰집니다.</p></div>
+        <div class="card"><div class="num">肆</div><h3>정해지지 않은 결말</h3><p>다섯 갈래의 사건은 순서대로 깨는 장(章)이 아닙니다. 어디서 실마리를 잡든, 결말은 당신과 강호가 함께 정합니다.</p></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="sh"><b>緣</b><h2>먼저 만나는 열두 사람</h2><span>핵심 인물</span></div>
+      <div class="core" id="coreGrid"></div>
+    </div>
+    <div class="sec">
+      <div class="sh"><b>始</b><h2>어디에서, 누구로 시작할까</h2></div>
+      <p class="lead2">시작은 고르기만 하면 됩니다. 어느 길이든 큰 사건과 이어지고, 청하진이 아니어도 괜찮습니다. 자세한 안내는 <a class="lnk" href="#system">플레이</a>에 있습니다.</p>
+      <div class="routes" id="routesHome"></div>
+    </div>
+    <footer class="site">《무림강호인연기담》은 SillyTavern을 우선으로 제작 중인 여성향 무협 다인 시뮬레이션입니다. 로맨스의 대상이 되는 인물은 모두 성인입니다. 전투·부상·죽음 등 무협 특유의 묘사가 포함됩니다. 등장하는 왕조·연호·사건·인물은 모두 창작된 설정이며 실존 역사와 관계없습니다. 설정은 제작 과정에서 바뀔 수 있습니다.</footer>
+  </div>
+</section>
+
+<!-- ═════════ 世 세계 ═════════ -->
+<section class="page" id="p-world" data-page="world"><div class="wrap">
+  <header class="phead"><div class="wm">世</div><div class="eyebrow">第一卷 · WORLD</div><h1 class="ptitle">대연(大延)의 강호</h1>
+    <p class="plead">가상 왕조 대연이 다스리는 시대. 오랜 휴전 아래 번영하던 강호에서, 마교가 서쪽 길목을 다시 장악하기 시작했다.</p><div class="rule"><i>◆</i></div></header>
+
+  <div class="sec" id="w-order">
+    <div class="quote"><p>“강호는 왕조의 지도 위에 겹쳐 있는 사람들의 질서다.”</p><small>사람들은 검과 의리, 생업과 인연으로 자기 삶을 지키며, 플레이어도 그중 한 사람으로 강호에 들어선다.</small></div>
+    <div class="grid g4">
+      <div class="card top"><div class="hj">官</div><h3>관부</h3><p>세금과 치안, 군역. 살인·탈세·불법 무장 이동에는 따로 권한을 가진다.</p></div>
+      <div class="card top"><div class="hj">門</div><h3>문파</h3><p>무공의 전승과 제자의 보호. 이름이 같아도 살림과 고민은 저마다 다르다.</p></div>
+      <div class="card top"><div class="hj">家</div><h3>세가</h3><p>토지와 혈연. 가문의 위신과 후계가 곧 정치다.</p></div>
+      <div class="card top"><div class="hj">鏢</div><h3>상단 · 표국</h3><p>물자와 이동. 길이 막히면 가장 먼저 흔들리는 사람들.</p></div>
+    </div>
+    <p class="note">어느 하나도 모든 지역을 완전히 지배하지 않는다.</p>
+  </div>
+
+  <div class="sec" id="w-hyeop">
+    <div class="sh"><b>俠</b><h2>협이란</h2></div>
+    <div class="grid g2">
+      <div class="card"><h3>약속과 책임을 행동으로 감당하는 태도</h3><p>이 작품에서 협(俠)은 간판이 아니다. 정파라는 이름이 협의를 보증하지 않으며, 사파 출신도 협의를 행할 수 있다.</p></div>
+      <div class="card"><h3>그러나 기록은 남는다</h3><p>사건의 피해와 가해는 소속에 관계없이 구체적으로 기록된다. 좋은 사람의 나쁜 선택도, 나쁜 이름의 좋은 선택도.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="w-history">
+    <div class="sh"><b>史</b><h2>연표</h2><span>경화 17년 4월 3일, 초봄</span></div>
+    <div class="tl">
+      <div class="row"><div class="when">20년 전</div><div class="what"><h4>서하전쟁</h4><p>마교와 중원 연합의 전쟁. 유족과 전쟁고아, 빚과 실종자, 그리고 승전의 공적이 남았다.</p></div></div>
+      <div class="row"><div class="when">18년 전</div><div class="what"><h4>청하맹약</h4><p>서쪽 관문에서의 무력 진출이 멈췄다. 통행과 교역은 제한적으로 재개됐지만 사절 왕래와 무장 이동은 통제된다. 피해 보상과 포로 귀환의 일부는 아직 끝나지 않았고, 각 세력은 자기에게 유리한 기록을 남겼다.</p></div></div>
+      <div class="row"><div class="when">8년 전</div><div class="what"><h4>표국의 전성기</h4><p>중원 교역이 넓어지며 연합의 관심은 군비에서 돈과 후계 문제로 옮겨 갔다.</p></div></div>
+      <div class="row"><div class="when">2년 전</div><div class="what"><h4>새 교주</h4><p>전임 교주가 죽고 연무진이 뒤를 이었다. 교내 숙청과 군제 개편이 이어졌지만, 중원은 남의 집안일로 여겼다.</p></div></div>
+      <div class="row"><div class="when">6개월 전</div><div class="what"><h4>서쪽 길목</h4><p>서쪽 표행이 늦어지고 호송비가 뛰었다. 마교가 협상과 포섭, 그리고 살인을 섞어 길목을 확보하기 시작했다.</p></div></div>
+      <div class="row now"><div class="when">지금</div><div class="what"><h4>경화 17년 4월 3일</h4><p>돌아오지 않던 표행의 생존자가 청하진으로 돌아왔다. 플레이어가 접근할 수 있는 여러 이야기 가운데 하나다.</p></div></div>
+    </div>
+    <p class="note">연호는 이야기 속 달력이며 현실의 날짜와 관계없다. 숨겨진 진상이 밝혀져도 지금의 침략에 대한 책임이 사라지지는 않는다.</p>
+  </div>
+
+  <div class="sec" id="w-map">
+    <div class="sh"><b>地</b><h2>지리와 이동</h2><span>일곱 권역</span></div>
+    <p class="lead2">도시와 길목, 산채와 나루가 생활과 사건의 실제 무대다. 지도는 실제 거리의 재현이 아니라 이 작품의 기준이다.</p>
+    <div class="grid g2" id="regions"></div>
+    <div class="sec" style="padding-top:26px">
+      <div class="tblw"><table class="tbl"><thead><tr><th>구간</th><th>평시 보통 여행</th><th>특징</th></tr></thead><tbody>
+        <tr><td>하남 ↔ 관중</td><td>5~7일</td><td>서하관 방향의 중계역을 경유</td></tr>
+        <tr><td>하남 ↔ 호북</td><td>4~6일</td><td>육로와 강의 환승으로 선택지가 생김</td></tr>
+        <tr><td>하남 ↔ 하북</td><td>5~8일</td><td>관군 검문과 군수 호송이 많음</td></tr>
+        <tr><td>호북 ↔ 강남</td><td>5~8일</td><td>수로가 유리하나 수위와 수적의 영향</td></tr>
+        <tr><td>관중 ↔ 서남</td><td>8~12일</td><td>산길과 잔도, 짐이 무거우면 지연</td></tr>
+        <tr><td>강남 ↔ 서남</td><td>12~18일</td><td>장거리 수운과 산길을 조합</td></tr>
+        <tr><td>관중 ↔ 서역</td><td>12~20일</td><td>관문 이후 역참 간격이 길고 보급이 중요</td></tr>
+        <tr><td>서남 ↔ 서역</td><td>18~25일</td><td>계절성 산악로. 안내자와 보급 계획 필요</td></tr>
+      </tbody></table></div>
+      <p class="note">상인·표행의 보통 속도다. 숙련된 단독 기마는 줄일 수 있고, 부상·짐·우회·눈·홍수·봉쇄는 늘린다. 경공은 추격과 지형 돌파에 강하지만 장거리 여행의 피로와 보급을 없애지 않는다.</p>
+    </div>
+  </div>
+
+  <div class="sec" id="w-martial">
+    <div class="sh"><b>武</b><h2>무공과 경지</h2><span>일곱 단계</span></div>
+    <p class="lead2">경지는 전투 능력의 대략적인 범위다. 같은 경지라도 내공의 양, 초식의 이해, 실전 숙련, 몸과 마음의 상태가 다르다. 무공을 모르는 상인·의원·장인도 정상적으로 플레이할 수 있다.</p>
+    <div class="ladder" id="ladder"></div>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card"><h3>경지 차이</h3><p>한 단계 차이는 상성과 준비로 뒤집을 여지가 있다. 큰 차이를 넘으려면 포위·매복·뚜렷한 약점·제한된 목적 같은 조건이 필요하다. 사랑이나 분노만으로 경지 차이는 사라지지 않는다.</p></div>
+      <div class="card"><h3>싸움의 목적</h3><p>살해, 제압, 구출, 지연, 탈출은 서로 다른 싸움이다. 싸움은 호흡·무게·거리·소리·상처로 그려지고, 소모와 부상은 다음 장면까지 남는다.</p></div>
+      <div class="card"><h3>수련과 기연</h3><p>숙련은 연습과 교정, 실전의 시행착오로 자란다. 돌파는 쌓인 준비와 깨달음이 실제 사건에서 맞물릴 때만 온다. 비급을 얻는 일과 이해하는 일은 다르고, 영약에도 몸이 감당할 양이 있다.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="w-strange">
+    <div class="sh"><b>奇</b><h2>기이함의 경계</h2></div>
+    <p class="lead2">수수께끼의 대부분은 무공과 약재, 기관과 지형, 착각과 숨은 사람의 짓이다. 정말 설명되지 않는 일은 세계의 법칙을 바꾸지 않는 소수의 예외로만 남는다.</p>
+    <div class="grid g3">
+      <div class="card"><div class="hj">鐘</div><h3>폐사의 종소리</h3><p>안개 낀 어느 새벽, 종이 없는 종루에서 소리가 난다. 과거 사건의 단서일 뿐, 미래를 알려 주거나 불러낼 수는 없다.</p></div>
+      <div class="card"><div class="hj">劍</div><h3>오래된 검의 울림</h3><p>묻힌 옛 주인의 유품 가까이에서 미세하게 떤다. 싸움을 돕거나 스스로 움직이지 않는다.</p></div>
+      <div class="card"><div class="hj">夢</div><h3>사경의 꿈</h3><p>죽음 직전에 꾼 꿈이 오래된 기록과 겹친다. 해석은 불확실하고, 되살아남이나 반복되는 엿보기의 수단이 아니다.</p></div>
+    </div>
+    <p class="note">마교의 힘과 침략 계획도 인간의 무공과 조직력에서 나온다. 사람들이 귀신이나 운명을 말해도, 그것이 곧 사실이 되지는 않는다.</p>
+  </div>
+
+  <div class="sec" id="w-life">
+    <div class="sh"><b>錢</b><h2>생활과 경제</h2><span>1냥 = 1,000문</span></div>
+    <div class="grid g2">
+      <div class="tblw"><table class="tbl"><thead><tr><th>항목</th><th>가격</th></tr></thead><tbody>
+        <tr><td>소박한 한 끼</td><td>10~20문</td></tr><tr><td>객잔 공동 숙박 하루</td><td>30~60문</td></tr><tr><td>개인 방 하루</td><td>100~200문</td></tr><tr><td>약초 채집·짐 운반 품삯</td><td>80~150문</td></tr>
+        <tr><td>평범한 의원의 진료</td><td>200~500문 · 약값 별도</td></tr><tr><td>품질 좋은 보통 검</td><td>5~15냥</td></tr><tr><td>승용 말</td><td>20~50냥</td></tr><tr><td>짧은 표행의 참가 보수</td><td>3~8냥</td></tr>
+      </tbody></table></div>
+      <div class="grid" style="align-content:start">
+        <div class="card"><h3>값이 없는 것들</h3><p>명품 병기, 비급, 희귀 약재, 정치적인 정보는 가격표에 없다. 소유권과 진품 여부, 전승 조건, 거래 상대가 값을 정한다.</p></div>
+        <div class="card"><h3>외상과 인맥</h3><p>돈은 실제 거래로만 오간다. 대신 인맥이 외상과 할인, 거절과 유예를 만들고, 그것은 빚과 약속으로 남는다.</p></div>
+        <div class="card"><h3>사람들의 삶</h3><p>농사와 생업, 계절과 가족의 일. 모든 객잔 주인이 은거 고수이거나 모든 상인이 첩자는 아니다.</p></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═════════ 勢 세력 ═════════ -->
+<section class="page" id="p-factions" data-page="factions"><div class="wrap">
+  <header class="phead"><div class="wm">勢</div><div class="eyebrow">第二卷 · FACTIONS</div><h1 class="ptitle">강호를 나눈 여덟 갈래</h1>
+    <p class="plead">정파와 세가, 맹과 개방, 사파와 마교, 그리고 그 사이에서 살아가는 사람들. 이름을 누르면 인물 명부가 열린다.</p><div class="rule"><i>◆</i></div></header>
+  <div class="fjump" id="fjump"></div>
+  <img src="img/promo/factions.jpg" alt="세력별 정복" style="width:100%;border:1px solid var(--line);border-radius:3px;margin-top:10px">
+  <div id="factionList"></div>
+</div></section>
+
+<!-- ═════════ 人 인물 ═════════ -->
+<section class="page" id="p-people" data-page="people"><div class="wrap">
+  <header class="phead"><div class="wm">人</div><div class="eyebrow">第三卷 · 144 PEOPLE</div><h1 class="ptitle">강호 명부</h1>
+    <p class="plead">고유 인물 144인. 모두 성인이며, 모두에게 저마다의 설렘이 있다. 카드를 누르면 상세 설정이 열린다.</p></header>
+  <div class="tools">
+    <input id="q" type="search" placeholder="이름 · 한자 · 소속 · 매력 속성 검색" aria-label="검색">
+    <select id="sx" aria-label="성별"><option value="">남녀 모두</option><option value="남">남성</option><option value="여">여성</option></select>
+    <select id="so" aria-label="정렬"><option value="core">핵심 인물 먼저</option><option value="roster">소속 순서</option><option value="name">이름 순</option></select><label><input type="checkbox" id="coreOnly"> 핵심 12인</label>
+    <span class="count" id="cnt"></span>
+    <div class="gchips" id="gchips"></div>
+  </div>
+  <div class="cgrid" id="cgrid"></div>
+</div></section>
+
+<!-- ═════════ 事 사건 ═════════ -->
+<section class="page" id="p-events" data-page="events"><div class="wrap">
+  <header class="phead"><div class="wm">事</div><div class="eyebrow">第四卷 · MAIN EPISODE</div><h1 class="ptitle">서쪽에서 오는 그림자</h1>
+    <p class="plead">메인 이야기는 다섯 갈래의 사건 묶음이다. 권장 발견 순서일 뿐 반드시 차례대로 깨는 장(章)이 아니며, 참여 방식과 결과는 정해져 있지 않다.</p><div class="rule"><i>◆</i></div></header>
+  <div class="sec">
+    <div class="quote"><p>청하표국은 실종 대원의 생사를 찾고 있다.</p><small>생존자 한백은 위중해 직접 말할 수 없고, 그가 가져온 장부 한 장에는 원래 적재 목록에 없는 쇠못 상자가 적혀 있다. 같은 시기 청류객잔에는 서행 수레바퀴를 고치는 낯선 손님이 머문다. 상단의 공개 기록, 생존자의 상태, 길목의 목격자 — 어디서든 조사에 들어갈 수 있다.</small></div>
+    <div class="grid" id="eventList"></div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>進</b><h2>강호는 어떻게 움직이나</h2></div>
+    <div class="grid g3">
+      <div class="card"><h3>단계는 조건으로</h3><p>천라교의 지역 계획은 잠복 → 준비 → 실행 → 확보 → 반격·협상으로 나아간다. 보고가 도착하고, 군수품이 모이고, 병력이 움직였을 때만 한 단계가 오른다.</p></div>
+      <div class="card"><h3>막으면 늦춰진다</h3><p>대화마다 위협이 저절로 차오르지 않는다. 길목과 보급을 끊거나 지휘자를 설득하면 실제로 지연·후퇴·대안 실행이 일어나고, 실패한 계획을 억지로 되살리지 않는다.</p></div>
+      <div class="card"><h3>다른 삶을 골라도</h3><p>사건에 뛰어들지 않아도 소문과 물가, 통행과 피난, 의뢰로 변화가 도착한다. 개인적인 장면마다 습격이 끼어들지 않고, 전쟁 뒤에도 삶은 이어진다.</p></div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>參</b><h2>참여하는 방법</h2></div>
+    <div class="tblw"><table class="tbl"><thead><tr><th>신분</th><th>사건과 닿는 길</th></tr></thead><tbody>
+      <tr><td>정파 · 무림맹</td><td>조사와 대응</td></tr><tr><td>사파</td><td>거래와 생존</td></tr><tr><td>천라교</td><td>원정 명령과 내부의 선택</td></tr>
+      <tr><td>의원</td><td>환자의 증언과 약재</td></tr><tr><td>상인</td><td>계약과 수운</td></tr><tr><td>표사</td><td>호송로</td></tr><tr><td>장인</td><td>주문받은 군수품</td></tr>
+    </tbody></table></div>
+    <p class="note">무공이 없는 사람에게 고수와의 결투를 유일한 해결책으로 요구하지 않는다. 증거와 거래, 협력자가 길이 된다.</p>
+  </div>
+</div></section>
+
+<!-- ═════════ 情 설렘 ═════════ -->
+<section class="page" id="p-romance" data-page="romance"><div class="wrap">
+  <header class="phead"><div class="wm">情</div><div class="eyebrow">第五卷 · ROMANCE</div><h1 class="ptitle">누구를 만나도, 설렌다</h1>
+    <p class="plead">모든 고유 인물은 성인 플레이어와 성별에 관계없이 우정·사제·동료·연애·경쟁·적대·결별·화해로 관계가 달라질 수 있다. 다만, 저마다의 속도로.</p><div class="rule"><i>◆</i></div></header>
+  <div class="sec">
+    <div class="sh"><b>緣</b><h2>관계의 단계</h2><span>인연의 붉은 실</span></div>
+    <p class="lead2">관계는 실제로 함께 겪은 사건으로만 깊어진다. 호의 한 번, 선물 하나로 연인이 되지 않는다. 단계는 호칭과 거리, 함께 머무는 시간, 털어놓는 이야기로 드러난다.</p>
+    <div class="stages">
+      <div class="stage" style="--c:var(--hostile)"><b>적대</b><div class="thr"><i style="--p:6%"></i></div><p>적의, 혹은 경계. 그러나 적대 속의 끌림도 이야기다.</p></div>
+      <div class="stage" style="--c:#9a8f80"><b>초면</b><div class="thr"><i style="--p:12%"></i></div><p>첫 만남은 첫 만남이다. 관심에는 보이는 이유가 있다.</p></div>
+      <div class="stage" style="--c:#7c7262"><b>면식</b><div class="thr"><i style="--p:28%"></i></div><p>스치는 시선, 작은 배려.</p></div>
+      <div class="stage" style="--c:var(--teal)"><b>호의</b><div class="thr"><i style="--p:50%"></i></div><p>취향을 기억하고, 나만을 위한 배려를 건넨다.</p></div>
+      <div class="stage" style="--c:var(--indigo)"><b>신뢰</b><div class="thr"><i style="--p:72%"></i></div><p>약점과 비밀을 나누고, 거리가 좁아진다.</p></div>
+      <div class="stage" style="--c:var(--red)"><b>특별한 유대</b><div class="thr"><i style="--p:94%"></i></div><p>고백과 독점욕, 그 사람만의 장면. 우정으로 완결되는 유대도 똑같이 깊다.</p></div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>材</b><h2>설렘의 재료</h2></div>
+    <div class="grid g4">
+      <div class="card"><h3>한 뼘의 거리</h3><p>손등, 손목, 옷깃. 닿을 듯 닿지 않는 순간.</p></div>
+      <div class="card"><h3>기억해 둔 취향</h3><p>한 번 말한 차, 좋아한다던 간식.</p></div>
+      <div class="card"><h3>나에게만 깨지는 규칙</h3><p>원칙주의자가 처음 어기는 단 하나.</p></div>
+      <div class="card"><h3>무너지는 말투</h3><p>하오체가 반말로 새어 나오는 순간, 혹은 진심이라 다시 존대로 돌아오는 순간.</p></div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>言</b><h2>말투 체계</h2><span>말투가 바뀌는 순간이 곧 설렘의 신호</span></div>
+    <div class="tblw"><table class="tbl reg"><thead><tr><th>체계</th><th>어미 · 호칭</th><th>예시</th><th>주로 쓰는 사람</th></tr></thead><tbody>
+      <tr><td>하오체</td><td>~하오, ~소, ~구려 · 그대·당신</td><td>“그대가 고른 쪽이 내 체면이오.”</td><td>장문·가주·교주·고수·사파 수장</td></tr>
+      <tr><td>하게체</td><td>~하게, ~하네 · 자네</td><td>“자네, 오늘은 좀 쉬게.”</td><td>원로·스승·노의원</td></tr>
+      <tr><td>합쇼체</td><td>~습니다, ~습니까</td><td>“명령은 받지 않았습니다.”</td><td>격식 있는 후계자·관리·과묵한 무인</td></tr>
+      <tr><td>해요체</td><td>~해요, ~지요</td><td>“팔부터 보여주세요.”</td><td>실무자·상인·의원·생활 인물</td></tr>
+      <tr><td>반말</td><td>~해, ~야</td><td>“따라와, 맛집도 덤이야.”</td><td>장난꾸러기·연하·친해진 뒤의 누구든</td></tr>
+    </tbody></table></div>
+    <p class="note">출가자는 소승·빈도 같은 자기 호칭을 감정이 흔들릴 때도 쉽게 버리지 않는다.</p>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>則</b><h2>이 강호의 연애</h2></div>
+    <div class="grid g3">
+      <div class="card"><h3>위험한 매력은 분위기다</h3><p>교주와 살수, 흑도의 설렘은 긴장과 금기에서 온다. 상대를 강압하거나 해치는 방향으로 흐르지 않는다.</p></div>
+      <div class="card"><h3>거절은 진짜 거절이다</h3><p>그 장면의 거절은 실제 거절이다. 그러나 한 번의 거절이 영원한 공략 불가는 아니다.</p></div>
+      <div class="card"><h3>질투는 아는 만큼</h3><p>인물은 자기가 실제로 아는 사실에만 반응한다. 독점 약속과 다자 관계의 수용 여부는 사람마다 다르다.</p></div>
+      <div class="card"><h3>계율과 직책은 긴장이다</h3><p>출가자·관리·의원·적대 세력의 설렘은 그들의 원칙을 지키는 방식으로 나아간다. 계율의 재해석과 환속도 실제 선택이다.</p></div>
+      <div class="card"><h3>이야기와 함께 자란다</h3><p>함께 표물을 지키고, 검을 맞대고, 서로의 증언을 믿고, 위험한 명령을 두고 다투며 깊어진다.</p></div>
+      <div class="card"><h3>그리고 평온도</h3><p>관계가 생긴 뒤에는 소소한 평온과 즐거움도 충분히. 모든 인연이 상처를 치료해 주는 관계일 필요는 없다.</p></div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>容</b><h2>외형의 원칙</h2></div>
+    <div class="grid g2">
+      <div class="card"><h3>매력 포인트와 눈매</h3><p>모든 인물은 눈물점·흉터·귀걸이·머리 장식·보조개·송곳니처럼 기억되는 매력 포인트를 하나 이상 가진다. 처진 눈은 다정과 능글, 올라간 눈은 도도함, 삼백안은 야성, 반쯤 감긴 눈은 나른함을 말한다.</p></div>
+      <div class="card"><h3>고수의 동안(童顔)</h3><p>내공이 깊은 장년·노년 고수는 기혈이 맑아 실제보다 열 살 이상 젊어 보인다. 은발과 흰 관자놀이로 세월을 보여 주되 얼굴은 미중년으로. 초자연이 아니라 수련의 결과다.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ═════════ 錄 플레이 ═════════ -->
+<section class="page" id="p-system" data-page="system"><div class="wrap">
+  <header class="phead"><div class="wm">錄</div><div class="eyebrow">第六卷 · HOW TO PLAY</div><h1 class="ptitle">강호에 들어서는 법</h1>
+    <p class="plead">서술자 카드 한 장에 로어북과 상태창이 함께 들어 있다. 이 카드는 한 사람이 아니라 강호 전체와 144인을 운영하는 서술자다.</p><div class="rule"><i>◆</i></div></header>
+  <div class="sec">
+    <div class="sh"><b>始</b><h2>시작하기</h2><span>SillyTavern</span></div>
+    <ol class="steps">
+      <li><b>카드 가져오기</b> — 캐릭터 가져오기로 서술자 카드(PNG)를 불러온다.</li>
+      <li><b>정규식 · 로어북 허용</b> — 카드를 열면 “정규식을 허용할까요?”와 “내장 로어북을 가져올까요?”가 뜬다. 둘 다 예.</li>
+      <li><b>페르소나 적기</b> — 신분·출신·실력·외모를 적어 두면 시작이 매끄럽다. 비워 둔 부분은 서술자가 마음대로 정하지 않는다.</li>
+      <li><b>시작 고르기</b> — 첫 메시지에서 아래 시작 가운데 하나를 고르거나, 원하는 장소·신분·목표를 자유롭게 적는다.</li>
+    </ol>
+    <p class="note">컨텍스트는 넉넉할수록 좋다(32k 이상 권장). 막막할 땐 “지금 뭘 할 수 있을까?”라고 물으면 지금 할 수 있는 일을 세 갈래로 안내받는다.</p>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>路</b><h2>아홉 갈래의 시작</h2></div>
+    <div class="routes" id="routesSys"></div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>錄</b><h2>상태창 · 江湖錄</h2></div>
+    <div class="grid g2" style="align-items:start">
+      <div class="shot"><img src="img/site/gangho.png" alt="강호록 상태창 화면" loading="lazy"></div>
+      <div class="grid">
+        <div class="card"><h3>답변 끝마다 한 장</h3><p>일시와 장소, 이름과 신분, 경지 낙관, 명성과 별호, 지금의 상황, 기혈·내공 게이지, 무공 칩까지 한눈에.</p></div>
+        <div class="card"><h3>행낭과 수첩</h3><p>차림·소지품·소지금은 행낭에, 알아낸 단서와 진행 중인 약속·의뢰·빚은 수첩에. 눌러서 펼친다.</p></div>
+        <div class="card"><h3>동행과 인연의 실</h3><p>곁에 있는 사람은 최대 넷. 관계 단계와 호감이 붉은 실로, 감정은 낙관으로 찍힌다. 속마음은 눌러야 보인다.</p></div>
+        <div class="card"><h3>가볍게</h3><p>지난 상태창은 AI에게 보내는 기록에서 자동으로 빠지고, 가장 최근 것만 남는다.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sh"><b>圖</b><h2>NAI 태그</h2></div>
+    <div class="grid g2">
+      <div class="card"><h3>인물마다 기본복 · 대체복</h3><p>인물 명부에서 인물을 열고 <b>태그</b> 탭을 누르면 외형과 의복을 합친 태그를 복사할 수 있다. 퀄리티 태그는 넣지 않았다. 쓰는 그림체 프리셋에 맞춰 붙여 쓰면 된다.</p></div>
+      <div class="card"><h3>세력 정복 · 활동복</h3><p>세력 페이지의 복식 그림은 각 세력의 공통 디자인이다. 인물은 이 바탕 위에 신분과 개인의 습관을 더해 입는다.</p></div>
+    </div>
+  </div>
+  <footer class="site">로맨스의 대상이 되는 인물은 모두 성인입니다. 등장하는 왕조·연호·사건·인물은 모두 창작된 설정이며 실존 역사와 관계없습니다. 설정은 제작 과정에서 바뀔 수 있습니다.</footer>
+</div></section>
+
+</main>
+</div>
+
+<dialog class="cm" id="cm" aria-labelledby="cmName">
+  <div class="cmw">
+    <div class="cmv" id="cmv"><img id="cmImg" alt=""><div class="vt"><button type="button" data-v="full" aria-pressed="true">전신</button><button type="button" data-v="bust" aria-pressed="false">클로즈업</button></div></div>
+    <div class="cmc" id="cmc"><button type="button" class="cmx" id="cmx" aria-label="닫기">×</button><div id="cmBody"></div></div>
+  </div>
+</dialog>
+<div class="lightbox" id="lb"><img alt=""></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="data/world.js"></script>
+<script src="data/characters.js"></script>
+<script>
+'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const C=window.MUIN_CHARS,G=window.MUIN_GROUPS,BY={};C.forEach(c=>BY[c.id]=c);
+const GNAME={orthodox:'정파 9문파',clans:'오대세가',alliance:'무림맹',beggars:'개방',tianluo:'천라교',unorthodox:'사파',life:'생활·생업',free:'독립'};
+const img=id=>`img/char/${id.toLowerCase()}.jpg`, full=id=>`img/char/${id.toLowerCase()}_full.webp`;
+const rich=t=>esc(t).replace(/\[\[([A-Z]{2,3}\d{2})\|([^\]]+)\]\]/g,(m,id,n)=>`<a class="lnk" href="#c/${id}">${n}</a>`);
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800);}
+
+/* 테마 */
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function applyTheme(t){if(t)document.documentElement.dataset.theme=t;const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');$$('[data-theme-set]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeSet===cur)));}
+applyTheme(store.get('muin-theme'));
+$$('[data-theme-set]').forEach(b=>b.onclick=()=>{store.set('muin-theme',b.dataset.themeSet);applyTheme(b.dataset.themeSet);});
+
+/* 지역 · 경지 · 시작 */
+const REG=[
+ ['하남','낙양 · 숭산 · 청하진','무림맹 · 소림 · 개방','연합 회의, 상업, 표행 집결, 농촌','돌아온 표사와 서로 다른 전쟁 기록'],
+ ['관중','장안 · 화산 · 종남산 · 서하관','화산 · 종남 · 서행 표국','관문 통행, 말, 철, 서방 교역','호송로 장악과 무장 인력의 위장 이동'],
+ ['호북','무당산 · 양수진','무당 · 청하표국 지부','의약, 농업, 강과 육로의 환승','실종자 치료와 피난민의 유입'],
+ ['강남','금릉 · 청류항 · 회운장','남궁 · 모용 · 제갈, 상단 · 수적','수운, 곡물, 직물, 금융과 문서','마교의 군수 조달과 수운권 분쟁'],
+ ['하북','북정성 · 철마보','하북팽가 · 관군 · 북방 녹림','말, 군수, 철기, 국경 호송','병력 이동의 명분과 왕조의 개입'],
+ ['서남','성도 · 청성 · 아미 · 점창 · 당가','서남 문파 · 당가 · 백초곡','약재, 독과 해독, 산악 교역','약재 매점과 독살을 둘러싼 오해'],
+ ['서역','공동 · 곤륜 · 천산 · 흑사도','서역 문파 · 마교 · 서역 상단','가축, 교역, 광산, 한정된 농경지','마교의 집결, 교내 노선 갈등, 통행 봉쇄']];
+$('#regions').innerHTML=`<div class="card region hub"><span class="hubbadge">시작 거점</span><h3>청하진<small>淸河鎭 · 하남</small></h3><p>낙양에서 반나절 남쪽의 교통 마을. 서역으로 가는 표행, 강남행 상단, 소림과 무림맹을 찾는 사람들이 쉬어 간다. 강을 오가는 나룻배, 약재 장터, 표국 지부, 오래된 청류객잔과 관부 출장소가 주민의 생계다. 마을 전체가 비밀 조직은 아니다 — 사건을 모르고 와도 일과 숙소와 수련 상대를 찾을 수 있다.</p></div>`+
+ REG.map(r=>`<div class="card region"><h3>${r[0]}<small>${r[1]}</small></h3><dl><dt>세력</dt><dd>${r[2]}</dd><dt>생활</dt><dd>${r[3]}</dd><dt>긴장</dt><dd>${r[4]}</dd></dl></div>`).join('');
+const LAD=[['화경','化境','극소수의 최고수. 동작과 기의 흐름을 읽고 적은 움직임으로 제압','인간의 몸과 수명. 모두를 동시에 지킬 수는 없다',100,1],['초절정','超絶頂','초식과 내공의 높은 통합, 검기·장력의 정밀한 운용','거리·집중·소모의 한계. 포위와 보급을 무시하지 못한다',86],
+ ['절정','絶頂','자기 무공의 체계를 세우고 기의 운용이 정교하다','동급 상성·전장·소모, 준비된 다수의 적',72],['일류','一流','내공과 기술이 안정되어 여러 상황에 대응','숙련 분야 밖의 싸움, 부상과 소모',57],
+ ['이류','二流','익힌 초식을 실전에 연결, 점혈·경공의 기초','낯선 전술과 여러 적에 취약',42],['삼류','三流','기본 초식을 익히고 운기를 반복','호흡·자세의 빈틈, 장기전이 어렵다',28],['비무인·입문','入門','기본 체력, 무기 사용 입문, 운기 배우기','내공을 안정적으로 운용하지 못한다',14]];
+$('#ladder').innerHTML=LAD.map(l=>`<div class="rung${l[5]?' top':''}" style="--w:${l[4]}%"><b>${l[0]}<small>${l[1]}</small></b><span>${l[2]}</span><em>${l[3]}</em></div>`).join('')+'<p class="note">화경이 공개된 경지의 상한이다. 교주 연무진은 화경 초입이며, 정파에도 화경 고수가 있다. 교주 혼자서는 중원을 정복할 수 없기에 길목·정보·분열·보급을 먼저 노린다.</p>';
+const RT=[['문파 제자','사문의 심부름과 수련, 동문과의 관계','표사 호송·조사 협조 요청'],['세가 출신','가문 행사, 계승 문제, 바깥 여행','군수 거래와 후계자의 선택'],['표사','호송 준비와 고용 조건','실종 표행과 대체 호송'],
+ ['의원 · 약재상','진료, 채집, 약값','생존자, 독과 해독, 약재 수급'],['상인 · 장인','계약, 운송, 제작, 수금','위장 군수 주문과 수운권'],['사파 · 마교','소속 조직의 일과 개인의 선택','현장 명령과 노선 갈등'],
+ ['낭인 · 유랑객','숙소, 일거리, 수련 상대, 길 정보','목격 · 구출 · 증거 전달'],['은거 고수','정착, 제자, 찾아오는 옛 인연','도움 요청, 과거 전쟁의 증언'],['자유 시작','내가 정한 장소와 목표에서','생활과 관계에 맞춰 연결']];
+const rtHTML=RT.map((r,i)=>`<div class="card"><h3><b class="serif">${'壹貳參肆伍陸柒捌玖'[i]}</b>${r[0]}</h3><p>${r[1]}</p><p class="to">→ ${r[2]}</p></div>`).join('');
+$('#routesHome').innerHTML=rtHTML;$('#routesSys').innerHTML=rtHTML;
+
+/* 사건 */
+const EV=[['E01','돌아오지 않은 표행','청하표국 서행대가 실종됐다. 생존자, 누락된 장부, 다른 상단의 물건에서 단서가 나온다.','조사, 치료, 수색, 표물 거래 추적','생존자 구출 · 호송로 변경 · 범인 노출 또는 증인 실종'],
+ ['E02','같은 도장이 찍힌 계약','여러 지역의 창고·나루·역참 계약에 같은 중개인이 등장한다.','문서 비교, 상업 협상, 잠입, 계약 해제, 관부에 제보','군수망 약화 · 경제적 보복 · 위장 신분 노출'],
+ ['E03','서하관의 빈자리','관문 책임자가 바뀌고, 무언가가 준비되고 있다.','방어, 보급, 피난, 관군 협조, 이중 협상','점령 저지 · 부분 점령 · 휴전 협상 · 대규모 피해'],
+ ['E04','같은 맹약의 다른 사본','청하맹약의 기록과 증언이 서로 어긋난다. 양쪽 모두의 책임이 드러날지도 모른다.','증거 보호, 증언, 교섭, 은폐, 인물 구출','노선 변화 · 지도부 분열 · 공적 정당성 · 정적의 반격'],
+ ['E05','누구의 강호인가','확보한 거점과 동맹에 따라 결전, 혹은 협상의 국면이 온다.','전투, 거점 탈환, 정변 저지·지원, 통행 협정, 구호','전쟁 지속 · 휴전 · 교권 교체 · 세력 재편']];
+$('#eventList').innerHTML=EV.map(e=>`<div class="card" style="display:grid;grid-template-columns:84px minmax(0,1fr);gap:18px"><div><div class="hj" style="font-size:22px;margin:0">${e[0]}</div></div><div><h3>${e[1]}</h3><p>${e[2]}</p><dl class="kv" style="margin-top:12px;font-size:13.5px;grid-template-columns:72px 1fr"><dt>개입</dt><dd>${e[3]}</dd><dt>남는 것</dt><dd>${e[4]}</dd></dl></div></div>`).join('');
+
+/* 핵심 12인 */
+$('#coreGrid').innerHTML=C.filter(c=>c.core).map(c=>`<a class="mini" href="#c/${c.id}"><img src="${img(c.id)}" alt="${esc(c.name)}" loading="lazy"><span>${esc(c.name)}<small>${esc(c.attr[0])}</small></span></a>`).join('');
+
+/* 세력 */
+const memberChip=c=>`<a class="member" href="#c/${c.id}"><img src="${img(c.id)}" alt="" loading="lazy">${esc(c.name)} <small>${esc(c.role.split('·')[0])}</small></a>`;
+function uniFig(slug,label,sx){return `<figure><img src="img/uni/${slug}_${label}_${sx}.webp" alt="" loading="lazy" data-zoom><figcaption>${label==='formal'?'정복':'활동'} · ${sx==='m'?'남':'여'}</figcaption></figure>`;}
+$('#fjump').innerHTML=G.map(g=>`<a class="chip" href="#f/${g.key}">${g.name} <b style="color:var(--red)">${g.count}</b></a>`).join('');
+$('#factionList').innerHTML=G.map(g=>{
+  let body='';
+  if(g.tianluo){
+    const ms=C.filter(c=>c.faction==='천라교');const f=g.factions[0];
+    body=`<div class="tia"><div class="card"><h3>교리</h3><p>“자신이 맺은 인연의 값을 스스로 감당하라.” 혈통과 문파의 간판보다 맹세와 공적을 중시한다는 명분이 있다. 실상에는 교주에게 집중된 권한, 공적 경쟁, 가혹한 징계와, 약자를 보호하는 지역 공동체가 함께 있다.</p></div>
+      <div class="card"><h3>지금의 목표</h3><p>교주 연무진은 무림맹의 독점적인 발언권을 무너뜨리고 서역에서 강남까지 이어지는 군사·교역 거점을 확보하려 한다. 교도가 굶지 않을 권리와 옛 피해의 보상을 명분으로 내세우지만, 민간인 보호 명령을 내리면서도 군사 목적을 위해 봉쇄와 점령을 허용하는 모순이 있다.</p></div></div>
+     <div class="tblw" style="margin-bottom:14px"><table class="tbl"><thead><tr><th>조직</th><th>기능</th><th>생활 기반 · 제약</th></tr></thead><tbody>
+      <tr><td>총단</td><td>교주, 좌우 호법, 법규와 주요 결정</td><td>천산 거점. 현장 정보가 보고를 통해 도착</td></tr><tr><td>계승 후보진</td><td>혈연·실력·공적에 따른 경쟁</td><td>교주의 신임, 담당 거점과 추종 인력에 의존</td></tr>
+      <tr><td>원정 조직</td><td>선봉, 관문 장악, 호송과 거점 수비</td><td>식량·말·급료·의약이 필요. 무기한 전투 불가</td></tr><tr><td>잠행 조직</td><td>첩보·포섭·교섭·위장 거래</td><td>비밀 신분과 제한된 연락망. 들키면 거점 상실</td></tr>
+      <tr><td>의약 · 보급</td><td>치료, 약재·식량·군수 관리</td><td>교도와 병사의 실제 생활을 유지</td></tr><tr><td>반대 · 이탈</td><td>개인적 거부, 개혁, 탈출, 전향</td><td>서로 같은 편이 아니며 목적과 신뢰가 다름</td></tr></tbody></table></div>
+     <div class="lines"><div class="card"><h3>정복파</h3><p>무림맹을 굴복시키고 점령을 기정사실로 만들려 한다. 교주의 지금 계획과 가장 가깝다.</p></div><div class="card"><h3>복수파</h3><p>전쟁의 가해자를 처단해야 한다고 주장한다. 대상과 증거를 따지는 이와 무차별 보복을 원하는 이가 갈린다.</p></div><div class="card"><h3>정착파</h3><p>안전한 통행과 교도의 생업을 원한다. 협정을 바라지만 군사적 압박을 협상 수단으로 받아들이는 이도 있다.</p></div></div>
+     <p class="note">노선은 고정된 성격이 아니다. 교도의 충성도 모두 같지 않다 — 교리, 교주, 함께 자란 사람, 가족의 생계, 빚진 은혜가 저마다 다른 이유가 된다. 한 사람의 마음을 돌려도 조직 전체가 멈추지는 않는다.</p>
+     <div class="fac" style="margin-top:14px"><div><h3>천라교 사람들 <small>天羅敎 · 32</small></h3><div class="members">${ms.map(memberChip).join('')}</div></div>
+      <div class="unis">${f.unis.map((u,i)=>`<figure><img src="img/uni/${u}_formal_m.webp" alt="" loading="lazy" data-zoom><figcaption>${f.uniNames[i]}</figcaption></figure>`).join('')}</div></div>`;
+  } else {
+    body=g.factions.map(f=>{const ms=C.filter(c=>c.faction===f.key);
+      const unis=f.uni?[uniFig(f.uni,'formal','m'),uniFig(f.uni,'formal','f'),uniFig(f.uni,'active','m')].join('')+(f.uni2?`<figure><img src="img/uni/${f.uni2}_formal_m.webp" alt="" loading="lazy" data-zoom><figcaption>관문 수비군</figcaption></figure>`:''):'';
+      const dl=[['무공 · 운영',f.emph],['살림',f.base],['안고 있는 일',f.issue]].filter(x=>x[1]).map(x=>`<dt>${x[0]}</dt><dd>${esc(x[1])}</dd>`).join('');
+      return `<article class="fac" id="fac-${esc(f.key)}"><div><h3>${esc(f.key)} <small>${f.hanja}</small><em>${esc(f.home)}</em></h3><dl>${dl}</dl>${f.note?`<p class="fn">${esc(f.note)}</p>`:''}<div class="members">${ms.map(memberChip).join('')}</div></div>${unis?`<div class="unis">${unis}</div>`:''}</article>`;}).join('');
+  }
+  return `<section class="fgroup" id="g-${g.key}"><div class="fgh"><h2>${g.name}</h2><span class="hj">${g.hanja}</span><span class="cnt">${g.count}<small>인</small></span></div><p class="fglead">${esc(g.lead)}</p>${body}</section>`;}).join('');
+
+/* 인물 명부 */
+const gc=$('#gchips');let curG='';
+gc.innerHTML=`<button type="button" data-g="" aria-pressed="true">전체 144</button>`+Object.entries(GNAME).map(([k,v])=>`<button type="button" data-g="${k}" aria-pressed="false">${v} ${C.filter(c=>c.group===k).length}</button>`).join('');
+gc.onclick=e=>{const b=e.target.closest('button');if(!b)return;curG=b.dataset.g;$$('button',gc).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();};
+$('#cgrid').innerHTML=C.map(c=>`<a class="cc" href="#c/${c.id}" data-id="${c.id}" data-k="${esc([c.name,c.hanzi,c.faction,c.role,c.title,...c.attr,c.impression].join(' ').toLowerCase())}">
+ <div class="ph"><img src="${img(c.id)}" alt="${esc(c.name)}" loading="lazy" decoding="async">${c.core?'<span class="star">핵심</span>':''}<div class="hook">${esc(c.hook)}</div></div>
+ <div class="bd"><div class="af">${esc(c.faction)} · ${esc(c.role.split('·')[0])}</div><div class="nm">${esc(c.name)}<small>${esc(c.hanzi)}</small></div><div class="ti">${esc(c.title)}</div><div class="at">${c.attr.map(a=>`<span>${esc(a)}</span>`).join('')}</div></div></a>`).join('')+'<div class="empty" id="empty" hidden>조건에 맞는 인물이 없다.</div>';
+const cards=$$('.cc'),grid=$('#cgrid');
+function sortCards(m){const arr=[...cards];if(m==='core')arr.sort((a,b)=>(BY[b.dataset.id].core-BY[a.dataset.id].core)||(C.indexOf(BY[a.dataset.id])-C.indexOf(BY[b.dataset.id])));else if(m==='name')arr.sort((a,b)=>BY[a.dataset.id].name.localeCompare(BY[b.dataset.id].name,'ko'));else arr.sort((a,b)=>C.indexOf(BY[a.dataset.id])-C.indexOf(BY[b.dataset.id]));arr.forEach(el=>grid.insertBefore(el,$('#empty')));}
+$('#so').addEventListener('change',e=>sortCards(e.target.value));sortCards('core');
+function render(){const q=$('#q').value.trim().toLowerCase().split(/\s+/).filter(Boolean),sx=$('#sx').value,co=$('#coreOnly').checked;let n=0;
+  cards.forEach(el=>{const c=BY[el.dataset.id];const ok=(!curG||c.group===curG)&&(!sx||c.sex===sx)&&(!co||c.core)&&q.every(t=>el.dataset.k.includes(t));el.hidden=!ok;if(ok)n++;});
+  $('#cnt').textContent=n+'인';$('#empty').hidden=n>0;}
+['input','change'].forEach(ev=>{$('#q').addEventListener(ev,render);$('#sx').addEventListener(ev,render);$('#coreOnly').addEventListener(ev,render);});
+render();
+
+/* 인물 모달 */
+const dlg=$('#cm');let curId=null,view='full',lastPage='people';
+function kv(rows){return '<dl class="kv">'+rows.filter(r=>r[1]).map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')+'</dl>';}
+function outfit(t){if(!t)return '';const m=t.match(/^【(.+?)】\s*(.*)$/);return m?`<span class="olabel">${esc(m[1])}</span>${rich(m[2])}`:rich(t);}
+function setView(v){view=v;const c=BY[curId];const im=$('#cmImg');im.className=v==='bust'?'bust':'';im.src=v==='bust'?img(c.id):full(c.id);im.alt=c.name+(v==='bust'?' 클로즈업':' 전신');$$('.vt button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===v)));}
+$$('.vt button').forEach(b=>b.onclick=()=>setView(b.dataset.v));
+function openChar(id){const c=BY[id];if(!c)return;curId=id;
+  $('#cmv').dataset.hj=c.hanzi;setView('full');
+  const i=C.indexOf(c),prev=C[(i-1+C.length)%C.length],next=C[(i+1)%C.length];
+  const tags=c.tags.map((t,k)=>`<div class="tagbox"><header>${k?'대체복':'기본복'} · ${esc(t.ctx)}<button type="button" data-copy="${k}">복사</button></header><pre>${esc(t.tag)}</pre></div>`).join('');
+  $('#cmBody').innerHTML=`<div class="cmh"><div class="af">${esc(c.faction)} · ${esc(c.role)}</div><h2 id="cmName">${esc(c.name)}<small>${esc(c.hanzi)}</small></h2><div class="ti">${esc(c.title)}</div>
+   <div class="facts"><span>${c.sex==='남'?'남성':'여성'} · ${c.age}세</span><span>${c.height}cm</span><span>${esc(GNAME[c.group])}</span><span>거점 · ${esc(c.base)}</span></div>
+   <div class="attrs">${c.attr.map(a=>`<span>${esc(a)}</span>`).join('')}</div>
+   <p class="hookq">${esc(c.hook)}</p><p class="imp"><b>✦</b>${esc(c.impression)}${c.charm?` — <span style="color:var(--ink)">${esc(c.charm)}</span>`:''}</p></div>
+   <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="p">프로필</button><button role="tab" aria-selected="false" data-t="h">설렘</button><button role="tab" aria-selected="false" data-t="r">인연</button><button role="tab" aria-selected="false" data-t="n">태그</button></div>
+   <div class="tp on" data-tp="p">${kv([['기본',rich(c.basic)],['외형',rich(c.look)],['기본복',outfit(c.outfit)],['대체복',outfit(c.outfit2)],['무공',rich(c.martial)],['생활',rich(c.life)],['내면',rich(c.inner)],['모순',rich(c.conflict||c.conflict2)],['습관',rich(c.rule)],['과거 · 바람',rich(c.past)]])}</div>
+   <div class="tp" data-tp="h"><div class="say"><div><small>처음엔</small><p>“${esc(c.line1)}”</p></div><div class="l2"><small>가까워지면</small><p>“${esc(c.line2)}”</p></div></div>
+     ${kv([['말투',rich(c.speech)],['호감 표현',rich(c.affect)],['깊어질수록',rich(c.stages)],['질투 · 독점',rich(c.jealous)],['흔드는 것',rich(c.shake)]])}
+     <details class="spoil"><summary>시그니처 설렘 장면 · 깊은 유대 이후 (스포일러)</summary><p>${esc(c.signature)}</p></details>
+     <p class="note">대사는 말투와 온도를 보여 주는 예시다. 실제 대화에서는 장면에 맞게 새로 말한다.</p></div>
+   <div class="tp" data-tp="r">${kv([['기존 인연',rich(c.ties)||'아직 이어진 인연이 없다.'],['관계의 조건',rich(c.cond)],['같은 소속',C.filter(x=>x.faction===c.faction&&x.id!==c.id).map(x=>`<a class="lnk" href="#c/${x.id}">${esc(x.name)}</a>`).join(' · ')]])}</div>
+   <div class="tp" data-tp="n">${tags}<p class="note">외형과 의복을 합친 NAI 태그(공개용). 퀄리티 태그는 넣지 않았다.</p></div>
+   <div class="nav2"><a href="#c/${prev.id}">← <b>${esc(prev.name)}</b></a><a href="#c/${next.id}"><b>${esc(next.name)}</b> →</a></div>`;
+  $$('.tabs button',dlg).forEach(b=>b.onclick=()=>{$$('.tabs button',dlg).forEach(x=>x.setAttribute('aria-selected',String(x===b)));$$('.tp',dlg).forEach(p=>p.classList.toggle('on',p.dataset.tp===b.dataset.t));});
+  $$('[data-copy]',dlg).forEach(b=>b.onclick=async()=>{const t=c.tags[+b.dataset.copy].tag;try{await navigator.clipboard.writeText(t);toast('태그를 복사했다');}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('태그를 복사했다');}catch(_){toast('복사 실패 — 직접 선택해 주세요');}a.remove();}});
+  $('#cmc').scrollTop=0;if(!dlg.open)dlg.showModal();document.title=`${c.name} · 무림강호인연기담`;}
+function closeChar(){if(dlg.open)dlg.close();}
+$('#cmx').onclick=()=>{location.hash=lastPage;};
+dlg.addEventListener('click',e=>{if(e.target===dlg)location.hash=lastPage;});
+dlg.addEventListener('cancel',e=>{e.preventDefault();location.hash=lastPage;});
+
+/* 라이트박스 */
+document.addEventListener('click',e=>{const z=e.target.closest('[data-zoom]');if(!z)return;const lb=$('#lb');$('img',lb).src=z.src;lb.classList.add('on');});
+$('#lb').onclick=()=>$('#lb').classList.remove('on');
+
+/* 메뉴 */
+const side=$('#side'),scrim=$('#scrim');
+$('#menuBtn').onclick=()=>{side.classList.add('open');scrim.classList.add('on');};
+scrim.onclick=()=>{side.classList.remove('open');scrim.classList.remove('on');};
+
+/* 라우터 */
+const PAGES=['home','world','factions','people','events','romance','system'];
+function route(){let h=decodeURIComponent(location.hash.slice(1))||'home';
+  side.classList.remove('open');scrim.classList.remove('on');
+  if(h.startsWith('c/')){const id=h.slice(2);if(BY[id]){if(!$('.page.on'))show(lastPage);openChar(id);return;}h='people';}
+  const fromModal=dlg.open;closeChar();let anchor=null;
+  if(h.startsWith('f/')){anchor='g-'+h.slice(2);h='factions';}
+  if(!PAGES.includes(h))h='home';
+  if(fromModal&&h===lastPage&&$('.page.on')){document.title=document.title.replace(/^.*? · 무림강호인연기담$/,'무림강호인연기담 · 설정집');show(h);return;}
+  show(h);
+  if(anchor){const el=document.getElementById(anchor);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);}else window.scrollTo(0,0);}
+function show(p){lastPage=p;$$('.page').forEach(s=>s.classList.toggle('on',s.dataset.page===p));$$('#nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+p));if($('#nav a[aria-current]'))$('#nav a[aria-current]').setAttribute('aria-current','page');
+  document.title=({home:'',world:'세계 · ',factions:'세력 · ',people:'인물 · ',events:'사건 · ',romance:'설렘 · ',system:'플레이 · '}[p])+'무림강호인연기담 · 설정집';}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
