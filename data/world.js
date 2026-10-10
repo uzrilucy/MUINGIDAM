@@ -32,6 +32,8 @@ window.MUIN_GROUPS = [
     ] },
   { key: 'tianluo', name: '천라교', hanja: '天羅敎', count: 32, lead: '중원이 마교라 부르는 이들의 자칭. 천산 남쪽의 거점들과 서역 교역권을 기반으로 한다.', tianluo: true,
     factions: [ { key: '천라교', hanja: '天羅敎', home: '천산 남쪽 · 서역', unis: ['tianluo-leader', 'tianluo-guardian', 'tianluo-officer', 'tianluo-medic'], uniNames: ['교주', '호법', '일반 간부', '의약부'] } ] },
+  { key: 'bloodcult', name: '혈교', hanja: '血敎', count: 10, lead: '이백삼십 년 전에 끝났다고 알려진 이름. 지금은 옛이야기와 아이들 겁주는 말로만 남아 있다 — 강호가 아는 한은.',
+    factions: [ { key: '혈교', hanja: '血敎', home: '거점 미상', uni: 'bloodcult', emph: '혈공 — 남의 내공과 정혈을 빼앗아 제 것으로 삼는 사공. 사냥과 포섭, 연단', base: '구휼소 「양생원」의 간판과 암시장의 영약', issue: '천라교도 무림맹도 이들이 돌아왔다는 사실을 모른다', note: '혈교의 힘도 사람의 무공과 약과 조직에서 나온다. 혈교는 천라교가 아니며, 천라교의 일을 대신 짊어지지 않는다. 표식은 왼손목에 맨 붉은 실 매듭.' } ] },
   { key: 'life', name: '생활 · 생업', hanja: '生業', count: 24, lead: '모든 객잔 주인이 은거 고수는 아니고, 모든 상인이 첩자도 아니다. 강호는 이들의 생업 위에서 굴러간다.',
     factions: [
       { key: '청하표국', hanja: '淸河鏢局', home: '청하진', uni: 'escort', emph: '호송과 표행', base: '호송 보수와 계약', issue: '서쪽으로 떠난 표행이 돌아오지 않았다' },
@@ -41,11 +43,11 @@ window.MUIN_GROUPS = [
       { key: '청류객잔·주민', hanja: '淸流客棧', home: '청하진', emph: '객잔, 나루, 장터', base: '숙박과 생업', issue: '오래 머문 손님들의 방값과 마을의 생계' },
       { key: '관부', hanja: '官府', home: '청하진 · 서하관', unis: ['magistrate', 'constable', 'passguard'], uniNames: ['문관', '무관 · 포두·포쾌', '관문 수비군'], emph: '세금, 치안, 관문 수비', base: '왕조의 관직', issue: '실종 사건 수사와 맹의 조사 사이' }
     ] },
-  { key: 'free', name: '독립', hanja: '獨立', count: 8, lead: '등 뒤에 조직이 없는 사람들. 대신 저마다 놓지 못한 실 한 가닥을 쥐고 있다.',
+  { key: 'free', name: '독립', hanja: '獨立', count: 9, lead: '등 뒤에 조직이 없는 사람들. 대신 저마다 놓지 못한 실 한 가닥을 쥐고 있다.',
     factions: [
       { key: '낭인', hanja: '浪人', home: '강호 각지', emph: '호위와 중재, 생계형 비무', base: '의뢰', issue: '' },
       { key: '산인', hanja: '山人', home: '산과 폐사', emph: '기록과 지리, 떠도는 검', base: '', issue: '' },
-      { key: '은거자', hanja: '隱居者', home: '산촌', emph: '전쟁 이후 물러난 사람들', base: '', issue: '' },
+      { key: '은거자', hanja: '隱居者', home: '산촌 · 나루', emph: '전쟁 이후 물러난 사람들, 그리고 세월 밖으로 물러난 한 사람', base: '', issue: '' },
       { key: '탈문자', hanja: '脫門者', home: '떠돌이', emph: '사문의 추적을 받는 무인', base: '', issue: '' }
     ] }
 ];
