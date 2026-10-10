@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>무림강호인연기담 · 설정집</title>
-<meta name="description" content="여성향 무협 오픈월드 다인 시뮬레이션 《무림강호인연기담》의 세계와 고유 인물 144인의 설정집.">
+<meta name="description" content="여성향 무협 오픈월드 다인 시뮬레이션 《무림강호인연기담》의 세계와 고유 인물 155인의 설정집.">
 <meta property="og:title" content="무림강호인연기담 · 설정집">
-<meta property="og:description" content="나루에 등불이 켜지면, 강호의 인연이 시작된다. 고유 인물 144인의 여성향 무협 오픈월드.">
+<meta property="og:description" content="나루에 등불이 켜지면, 강호의 인연이 시작된다. 고유 인물 155인의 여성향 무협 오픈월드.">
 <meta property="og:image" content="img/promo/hero.jpg">
 <meta name="theme-color" content="#16252a">
 <link rel="icon" href="img/site/favicon.png">
@@ -89,6 +89,23 @@ button{font:inherit;color:inherit}
 .topbar .bgm-mini.on{border-color:var(--gold);color:var(--gold)}
 .topbar .bgm-mini.on:after{content:'';position:absolute;right:4px;top:4px;width:5px;height:5px;border-radius:50%;background:var(--red)}
 @media (prefers-reduced-motion:reduce){.bgm.on .bgm-eq i{animation:none;height:9px}}
+/* ── 숨은 세력 장막 */
+.spoilable{display:none!important}
+.spoil-ok .spoilable{display:revert!important}
+.spoil-ok .cc.spoilable{display:flex!important}
+.spoil-ok .veil{display:none!important}
+.veil{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:3px;padding:30px 26px;text-align:center;
+  background:repeating-linear-gradient(135deg,transparent 0 9px,var(--line2) 9px 10px),linear-gradient(var(--card),var(--card2));margin-bottom:12px}
+.veil:before{content:'血';position:absolute;right:-6px;bottom:-34px;font-family:var(--serif);font-weight:900;font-size:150px;line-height:1;color:var(--red);opacity:.09;pointer-events:none}
+.veil h3{margin:0;font-family:var(--serif);font-size:20px;letter-spacing:.04em}
+.veil p{margin:8px auto 16px;max-width:520px;color:var(--sub);font-size:14px}
+.veil button{border:1px solid var(--red);background:var(--red);color:#fbefe0;border-radius:2px;padding:8px 18px;font-size:13.5px;font-weight:700;cursor:pointer;letter-spacing:.04em}
+.veil button:hover{filter:brightness(1.08)}
+.cc.veilcard{grid-column:span 2;display:flex;align-items:center;justify-content:center;min-height:200px}
+.cmveil{display:none}
+dialog.cm.veiled .cmveil{display:flex;position:absolute;inset:0;z-index:4;align-items:center;justify-content:center;padding:24px;background:var(--paper)}
+dialog.cm.veiled .cmveil .veil{max-width:460px}
+@media (max-width:560px){.cc.veilcard{grid-column:1/-1}}
 .topbar{display:none}
 main{min-width:0}
 .page{display:none;animation:fade .45s ease}
@@ -344,12 +361,13 @@ dialog.cm::backdrop{background:rgba(10,16,18,.72);backdrop-filter:blur(3px)}
 .cmv{position:relative;background:var(--cmvbg);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
 .cmv:before{content:attr(data-hj);position:absolute;top:18px;left:16px;writing-mode:vertical-rl;font-family:var(--serif);font-weight:900;font-size:64px;letter-spacing:.06em;color:var(--ink);opacity:.07}
 .cmv img{position:absolute;left:50%;bottom:3%;height:88%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 18px 18px rgba(40,25,10,.22))}
+.cmv.noimg .vt{display:none}
 .cmv img.bust{left:0;bottom:0;transform:none;width:100%;height:100%;object-fit:cover;filter:none}
 .vt{position:absolute;left:12px;bottom:12px;display:flex;gap:4px;z-index:2}
 .vt button{border:1px solid rgba(31,27,22,.25);background:rgba(250,246,236,.86);border-radius:2px;padding:3px 9px;font-size:12px;cursor:pointer;color:#3c342a}
 .vt button[aria-pressed="true"]{background:#16252a;color:#efe3c5;border-color:#16252a}
 .cmc{overflow:auto;padding:30px 34px 34px;position:relative}
-.cmx{position:absolute;right:14px;top:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:18px;line-height:1;z-index:3}
+.cmx{position:absolute;right:14px;top:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:18px;line-height:1;z-index:5}
 .cmh .af{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--red)}
 .cmh h2{margin:4px 0 0;font-family:var(--serif);font-size:34px;font-weight:900;line-height:1.2}
 .cmh h2 small{font-size:17px;color:var(--mute);font-weight:400;margin-left:10px}
@@ -487,7 +505,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
     <li><a href="#home"><b>首</b>처음<small>HOME</small></a></li>
     <li><a href="#world"><b>世</b>세계<small>WORLD</small></a></li>
     <li><a href="#factions"><b>勢</b>세력<small>FACTIONS</small></a></li>
-    <li><a href="#people"><b>人</b>인물<small>144</small></a></li>
+    <li><a href="#people"><b>人</b>인물<small>155</small></a></li>
     <li><a href="#events"><b>事</b>사건<small>EVENTS</small></a></li>
     <li><a href="#romance"><b>情</b>설렘<small>ROMANCE</small></a></li>
     <li><a href="#system"><b>錄</b>플레이<small>PLAY</small></a></li>
@@ -515,7 +533,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
       <h1><small>무림강호</small>인연기담</h1>
       <p class="tag">나루에 등불이 켜지면,<br>강호의 인연이 시작된다.</p>
       <p class="sub">검과 의리, 생업과 인연으로 저마다의 삶을 지키는 사람들. 당신도 그중 한 사람으로 강호에 들어섭니다.</p>
-      <div class="stats"><div><b>144</b><span>고유 인물 · 남 108 여 36</span></div><div><b>7</b><span>경지 · 비무인에서 화경까지</span></div><div><b>5</b><span>갈래 사건 · 가변 결말</span></div></div>
+      <div class="stats"><div><b>155</b><span>고유 인물 · 남 116 여 39</span></div><div><b>7</b><span>경지 · 비무인에서 화경까지</span></div><div><b>5</b><span>갈래 사건 · 가변 결말</span></div></div>
       <div class="acts"><a class="btn" href="#people">인물 명부 보기</a><a class="btn ghost" href="#world">세계 둘러보기</a></div>
     </div>
     <div class="cover"><img src="img/promo/hero.jpg" alt="해 질 녘 나루에서 등을 보인 검객"><span class="soon">COMING SOON</span></div>
@@ -524,7 +542,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
     <div class="sec">
       <div class="sh"><b>特</b><h2>이 강호에서는</h2></div>
       <div class="feat">
-        <div class="card"><div class="num">壹</div><h3>누구를 만나도, 설렌다</h3><p>144명 전원에게 저마다의 설렘 문법이 있습니다. 매력의 결도, 다가오는 방식도, 무너지는 순간도 모두 다릅니다.</p></div>
+        <div class="card"><div class="num">壹</div><h3>누구를 만나도, 설렌다</h3><p>155명 전원에게 저마다의 설렘 문법이 있습니다. 매력의 결도, 다가오는 방식도, 무너지는 순간도 모두 다릅니다.</p></div>
         <div class="card"><div class="num">貳</div><h3>무엇으로 살아도, 강호다</h3><p>문파 제자, 세가 자제, 표사, 의원, 상인, 사파와 마교, 낭인, 은거 고수. 무공을 모르는 약재상도 어엿한 주인공입니다.</p></div>
         <div class="card"><div class="num">參</div><h3>강호는 기다려 주지 않는다</h3><p>천라교의 계획은 실제 조건이 갖춰질 때만 한 걸음씩 나아갑니다. 길목을 끊으면, 정말로 늦춰집니다.</p></div>
         <div class="card"><div class="num">肆</div><h3>정해지지 않은 결말</h3><p>다섯 갈래의 사건은 순서대로 깨는 장(章)이 아닙니다. 어디서 실마리를 잡든, 결말은 당신과 강호가 함께 정합니다.</p></div>
@@ -668,8 +686,8 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 
 <!-- ═════════ 人 인물 ═════════ -->
 <section class="page" id="p-people" data-page="people"><div class="wrap">
-  <header class="phead"><div class="wm">人</div><div class="eyebrow">第三卷 · 144 PEOPLE</div><h1 class="ptitle">강호 명부</h1>
-    <p class="plead">고유 인물 144인. 모두 성인이며, 모두에게 저마다의 설렘이 있다. 카드를 누르면 상세 설정이 열린다.</p></header>
+  <header class="phead"><div class="wm">人</div><div class="eyebrow">第三卷 · 155 PEOPLE</div><h1 class="ptitle">강호 명부</h1>
+    <p class="plead">고유 인물 155인. 모두 성인이며, 모두에게 저마다의 설렘이 있다. 카드를 누르면 상세 설정이 열린다.</p></header>
   <div class="tools">
     <input id="q" type="search" placeholder="이름 · 한자 · 소속 · 매력 속성 검색" aria-label="검색">
     <select id="sx" aria-label="성별"><option value="">남녀 모두</option><option value="남">남성</option><option value="여">여성</option></select>
@@ -765,7 +783,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 <!-- ═════════ 錄 플레이 ═════════ -->
 <section class="page" id="p-system" data-page="system"><div class="wrap">
   <header class="phead"><div class="wm">錄</div><div class="eyebrow">第六卷 · HOW TO PLAY</div><h1 class="ptitle">강호에 들어서는 법</h1>
-    <p class="plead">서술자 카드 한 장에 월드인포와 상태창이 함께 들어 있다. 이 카드는 한 사람이 아니라 강호 전체와 144인을 운영하는 서술자다.</p><div class="rule"><i>◆</i></div></header>
+    <p class="plead">서술자 카드 한 장에 월드인포와 상태창이 함께 들어 있다. 이 카드는 한 사람이 아니라 강호 전체와 155인을 운영하는 서술자다.</p><div class="rule"><i>◆</i></div></header>
   <div class="sec">
     <div class="sh"><b>始</b><h2>시작하기</h2><span>SillyTavern</span></div>
     <ol class="steps">
@@ -805,7 +823,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 </main>
 </div>
 
-<dialog class="cm" id="cm" aria-labelledby="cmName">
+<dialog class="cm" id="cm" aria-labelledby="cmName"><div class="cmveil"><div class="veil"><h3>숨은 세력의 인물</h3><p>이 사람은 강호가 아직 모르는 세력에 속해 있다. 펼치면 숨은 사건의 핵심 설정이 드러난다.</p><button type="button" data-reveal>펼쳐 보기</button></div></div>
   <div class="cmw">
     <div class="cmv" id="cmv"><img id="cmImg" alt=""><div class="vt"><button type="button" data-v="full" aria-pressed="true">전신</button><button type="button" data-v="bust" aria-pressed="false">클로즈업</button></div></div>
     <div class="cmc" id="cmc"><button type="button" class="cmx" id="cmx" aria-label="닫기">×</button><div id="cmBody"></div></div>
@@ -822,13 +840,17 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const C=window.MUIN_CHARS,G=window.MUIN_GROUPS,BY={};C.forEach(c=>BY[c.id]=c);
-const GNAME={orthodox:'정파 9문파',clans:'오대세가',alliance:'무림맹',beggars:'개방',tianluo:'천라교',unorthodox:'사파',life:'생활·생업',free:'독립'};
+const GNAME={orthodox:'정파 9문파',clans:'오대세가',alliance:'무림맹',beggars:'개방',tianluo:'천라교',bloodcult:'혈교',unorthodox:'사파',life:'생활·생업',free:'독립'};
 const img=id=>`img/char/${id.toLowerCase()}.jpg`, full=id=>`img/char/${id.toLowerCase()}_full.webp`;
 const rich=t=>esc(t).replace(/\[\[([A-Z]{2,3}\d{2})\|([^\]]+)\]\]/g,(m,id,n)=>`<a class="lnk" href="#c/${id}">${n}</a>`);
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800);}
 
 /* 테마 */
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const spoilOK=()=>document.documentElement.classList.contains('spoil-ok');
+if(store.get('muin-spoil')==='1')document.documentElement.classList.add('spoil-ok');
+document.addEventListener('click',e=>{if(!e.target.closest('[data-reveal]'))return;document.documentElement.classList.add('spoil-ok');store.set('muin-spoil','1');
+  const d=document.getElementById('cm');if(d)d.classList.remove('veiled');if(typeof render==='function')try{render();}catch(_){}});
 function applyTheme(t){if(t)document.documentElement.dataset.theme=t;const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');$$('[data-theme-set]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeSet===cur)));window.__bgmSync&&window.__bgmSync();}
 applyTheme(store.get('muin-theme'));
 $$('[data-theme-set]').forEach(b=>b.onclick=()=>{store.set('muin-theme',b.dataset.themeSet);applyTheme(b.dataset.themeSet);});
@@ -907,7 +929,8 @@ const EV=[['E01','돌아오지 않은 표행','청하표국 서행대가 실종�
  ['E02','같은 도장이 찍힌 계약','여러 지역의 창고·나루·역참 계약에 같은 중개인이 등장한다.','문서 비교, 상업 협상, 잠입, 계약 해제, 관부에 제보','군수망 약화 · 경제적 보복 · 위장 신분 노출'],
  ['E03','서하관의 빈자리','관문 책임자가 바뀌고, 무언가가 준비되고 있다.','방어, 보급, 피난, 관군 협조, 이중 협상','점령 저지 · 부분 점령 · 휴전 협상 · 대규모 피해'],
  ['E04','같은 맹약의 다른 사본','청하맹약의 기록과 증언이 서로 어긋난다. 양쪽 모두의 책임이 드러날지도 모른다.','증거 보호, 증언, 교섭, 은폐, 인물 구출','노선 변화 · 지도부 분열 · 공적 정당성 · 정적의 반격'],
- ['E05','누구의 강호인가','확보한 거점과 동맹에 따라 결전, 혹은 협상의 국면이 온다.','전투, 거점 탈환, 정변 저지·지원, 통행 협정, 구호','전쟁 지속 · 휴전 · 교권 교체 · 세력 재편']];
+ ['E05','누구의 강호인가','확보한 거점과 동맹에 따라 결전, 혹은 협상의 국면이 온다.','전투, 거점 탈환, 정변 저지·지원, 통행 협정, 구호','전쟁 지속 · 휴전 · 교권 교체 · 세력 재편'],
+ ['E06','양생원의 빈 침상','피난길에서 연고 없는 사람이 하나둘 사라지고, 구휼소로 간 아이들의 편지가 끊긴다. 아직 아무도 이것을 하나의 사건으로 묶지 않았다.','조사, 치료, 구출, 장부 대조, 추적','숨은 것이 드러남 · 혹은 계속 사라짐']];
 $('#eventList').innerHTML=EV.map(e=>`<div class="card" style="display:grid;grid-template-columns:84px minmax(0,1fr);gap:18px"><div><div class="hj" style="font-size:22px;margin:0">${e[0]}</div></div><div><h3>${e[1]}</h3><p>${e[2]}</p><dl class="kv" style="margin-top:12px;font-size:13.5px;grid-template-columns:72px 1fr"><dt>개입</dt><dd>${e[3]}</dd><dt>남는 것</dt><dd>${e[4]}</dd></dl></div></div>`).join('');
 
 /* 여정 셈 */
@@ -1055,6 +1078,7 @@ $('#factionList').innerHTML=G.map(g=>{
       const dl=[['무공 · 운영',f.emph],['살림',f.base],['안고 있는 일',f.issue]].filter(x=>x[1]).map(x=>`<dt>${x[0]}</dt><dd>${esc(x[1])}</dd>`).join('');
       return `<article class="fac" id="fac-${esc(f.key)}"><div><h3>${esc(f.key)} <small>${f.hanja}</small><em>${esc(f.home)}</em></h3><dl>${dl}</dl>${f.note?`<p class="fn">${esc(f.note)}</p>`:''}<div class="members">${ms.map(memberChip).join('')}</div></div>${unis}</article>`;}).join('');
   }
+  if(g.key==='bloodcult')body=`<div class="veil"><h3>펼치기 전에</h3><p>강호는 이 이름이 이백삼십 년 전에 끝났다고 믿는다. 아래에는 숨은 사건의 핵심 설정이 들어 있다.</p><button type="button" data-reveal>숨은 세력 펼쳐 보기</button></div><div class="spoilable">${body}</div>`;
   return `<section class="fgroup" id="g-${g.key}"><div class="fgh"><h2>${g.name}</h2><span class="hj">${g.hanja}</span><span class="cnt">${g.count}<small>인</small></span></div><p class="fglead">${esc(g.lead)}</p>${body}</section>`;}).join('');
 
 async function copyText(t,msg){try{await navigator.clipboard.writeText(t);toast(msg);}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast(msg);}catch(_){toast('복사 실패 — 직접 선택해 주세요');}a.remove();}}
@@ -1065,17 +1089,19 @@ $('#factionList').addEventListener('click',e=>{const b=e.target.closest('[data-u
 
 /* 인물 명부 */
 const gc=$('#gchips');let curG='';
-gc.innerHTML=`<button type="button" data-g="" aria-pressed="true">전체 144</button>`+Object.entries(GNAME).map(([k,v])=>`<button type="button" data-g="${k}" aria-pressed="false">${v} ${C.filter(c=>c.group===k).length}</button>`).join('');
+gc.innerHTML=`<button type="button" data-g="" aria-pressed="true">전체 155</button>`+Object.entries(GNAME).map(([k,v])=>`<button type="button" data-g="${k}" aria-pressed="false">${v} ${C.filter(c=>c.group===k).length}</button>`).join('');
 gc.onclick=e=>{const b=e.target.closest('button');if(!b)return;curG=b.dataset.g;$$('button',gc).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();};
-$('#cgrid').innerHTML=C.map(c=>`<a class="cc" href="#c/${c.id}" data-id="${c.id}" data-k="${esc([c.name,c.hanzi,c.faction,c.role,c.title,...c.attr,c.impression].join(' ').toLowerCase())}">
+$('#cgrid').innerHTML=`<div class="cc veil veilcard" id="veilPeople"><div><h3>숨은 세력 · 10인</h3><p>이 명부에는 아직 강호가 모르는 사람들이 섞여 있다. 숨은 사건의 핵심 설정이 드러난다.</p><button type="button" data-reveal>펼쳐 보기</button></div></div>`+C.map(c=>`<a class="cc${c.group==='bloodcult'?' spoilable':''}" href="#c/${c.id}" data-id="${c.id}" data-k="${esc([c.name,c.hanzi,c.faction,c.role,c.title,...c.attr,c.impression].join(' ').toLowerCase())}">
  <div class="ph"><img src="${img(c.id)}" alt="${esc(c.name)}" loading="lazy" decoding="async">${c.core?'<span class="star">핵심</span>':''}<div class="hook">${esc(c.hook)}</div></div>
  <div class="bd"><div class="af">${esc(c.faction)} · ${esc(c.role.split('·')[0])}</div><div class="nm">${esc(c.name)}<small>${esc(c.hanzi)}</small></div><div class="ti">${esc(c.title)}</div><div class="at">${c.attr.map(a=>`<span>${esc(a)}</span>`).join('')}</div></div></a>`).join('')+'<div class="empty" id="empty" hidden>조건에 맞는 인물이 없다.</div>';
-const cards=$$('.cc'),grid=$('#cgrid');
+const cards=$$('.cc:not(.veilcard)'),grid=$('#cgrid');
 function sortCards(m){const arr=[...cards];if(m==='core')arr.sort((a,b)=>(BY[b.dataset.id].core-BY[a.dataset.id].core)||(C.indexOf(BY[a.dataset.id])-C.indexOf(BY[b.dataset.id])));else if(m==='name')arr.sort((a,b)=>BY[a.dataset.id].name.localeCompare(BY[b.dataset.id].name,'ko'));else arr.sort((a,b)=>C.indexOf(BY[a.dataset.id])-C.indexOf(BY[b.dataset.id]));arr.forEach(el=>grid.insertBefore(el,$('#empty')));}
 $('#so').addEventListener('change',e=>sortCards(e.target.value));sortCards('core');
 function render(){const q=$('#q').value.trim().toLowerCase().split(/\s+/).filter(Boolean),sx=$('#sx').value,co=$('#coreOnly').checked;let n=0;
-  cards.forEach(el=>{const c=BY[el.dataset.id];const ok=(!curG||c.group===curG)&&(!sx||c.sex===sx)&&(!co||c.core)&&q.every(t=>el.dataset.k.includes(t));el.hidden=!ok;if(ok)n++;});
-  $('#cnt').textContent=n+'인';$('#empty').hidden=n>0;}
+  const so=spoilOK();cards.forEach(el=>{const c=BY[el.dataset.id];const ok=(!curG||c.group===curG)&&(!sx||c.sex===sx)&&(!co||c.core)&&q.every(t=>el.dataset.k.includes(t));el.hidden=!ok;if(ok&&(so||c.group!=='bloodcult'))n++;});
+  const vp=$('#veilPeople');vp.hidden=!((!curG||curG==='bloodcult')&&!co&&!q.length&&(!sx||sx==='남'||sx==='여'));
+  const hidN=so?0:cards.filter(el=>!el.hidden&&BY[el.dataset.id].group==='bloodcult').length;
+  $('#cnt').textContent=(n||!hidN?n+'인':'')+(hidN?(n?' · ':'')+'숨은 '+hidN+'인':'');$('#empty').hidden=n>0||(!vp.hidden&&!so);}
 ['input','change'].forEach(ev=>{$('#q').addEventListener(ev,render);$('#sx').addEventListener(ev,render);$('#coreOnly').addEventListener(ev,render);});
 render();
 
@@ -1085,12 +1111,12 @@ function kv(rows){return '<dl class="kv">'+rows.filter(r=>r[1]).map(r=>`<dt>${r[
 function outfit(t){if(!t)return '';const m=t.match(/^【(.+?)】\s*(.*)$/);return m?`<span class="olabel">${esc(m[1])}</span>${rich(m[2])}`:rich(t);}
 function setView(v){view=v;const c=BY[curId];const im=$('#cmImg');im.className=v==='bust'?'bust':'';im.src=v==='bust'?img(c.id):full(c.id);im.alt=c.name+(v==='bust'?' 클로즈업':' 전신');$$('.vt button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===v)));}
 $$('.vt button').forEach(b=>b.onclick=()=>setView(b.dataset.v));
-function openChar(id){const c=BY[id];if(!c)return;curId=id;
-  $('#cmv').dataset.hj=c.hanzi;setView('full');
+function openChar(id){const c=BY[id];if(!c)return;curId=id;dlg.classList.toggle('veiled',c.group==='bloodcult'&&!spoilOK());
+  $('#cmv').dataset.hj=c.hanzi;$('#cmv').classList.toggle('noimg',!!c.noimg);setView(c.noimg?'bust':'full');
   const i=C.indexOf(c),prev=C[(i-1+C.length)%C.length],next=C[(i+1)%C.length];
   const tags=c.tags.map((t,k)=>`<div class="tagbox"><header>${k?'대체복':'기본복'} · ${esc(t.ctx)}<button type="button" data-copy="${k}">복사</button></header><pre>${esc(t.tag)}</pre></div>`).join('');
   $('#cmBody').innerHTML=`<div class="cmh"><div class="af">${esc(c.faction)} · ${esc(c.role)}</div><h2 id="cmName">${esc(c.name)}<small>${esc(c.hanzi)}</small></h2><div class="ti">${esc(c.title)}</div>
-   <div class="facts"><span>${c.sex==='남'?'남성':'여성'} · ${c.age}세</span><span>${c.height}cm</span><span>${esc(GNAME[c.group])}</span><span>거점 · ${esc(c.base)}</span></div>
+   <div class="facts"><span>${c.sex==='남'?'남성':'여성'} · ${c.age}세${c.apparent?` (외견 ${c.apparent}세)`:''}</span><span>${c.height}cm</span><span>${esc(GNAME[c.group])}</span><span>거점 · ${esc(c.base)}</span></div>
    <div class="attrs">${c.attr.map(a=>`<span>${esc(a)}</span>`).join('')}</div>
    <p class="hookq">${esc(c.hook)}</p><p class="imp"><b>✦</b>${esc(c.impression)}${c.charm?` — <span style="color:var(--ink)">${esc(c.charm)}</span>`:''}</p></div>
    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="p">프로필</button><button role="tab" aria-selected="false" data-t="h">설렘</button><button role="tab" aria-selected="false" data-t="r">인연</button><button role="tab" aria-selected="false" data-t="n">태그</button></div>
