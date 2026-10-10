@@ -91,8 +91,8 @@ button{font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){.bgm.on .bgm-eq i{animation:none;height:9px}}
 /* ── 숨은 세력 장막 */
 .spoilable{display:none!important}
-.spoil-ok .spoilable{display:revert!important}
-.spoil-ok .cc.spoilable{display:flex!important}
+.spoil-ok .spoilable:not([hidden]){display:revert!important}
+.spoil-ok .cc.spoilable:not([hidden]){display:flex!important}
 .spoil-ok .veil{display:none!important}
 .veil{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:3px;padding:30px 26px;text-align:center;
   background:repeating-linear-gradient(135deg,transparent 0 9px,var(--line2) 9px 10px),linear-gradient(var(--card),var(--card2));margin-bottom:12px}
