@@ -426,6 +426,8 @@ details.spoil p{margin:0;padding:0 16px 14px;font-family:var(--serif);font-size:
 .routes .card h3{font-size:16px}
 .routes .card h3 b{color:var(--red);font-size:12px;margin-right:6px}
 .routes .card p.to{color:var(--red);font-size:13px;margin-top:4px}
+.routes .card.rt-hid{grid-column:1/-1;background:#2e2a28;border-color:#2e2a28;border-top:3px solid var(--red);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
+.routes .card.rt-hid h3{color:#f1e8d2}.routes .card.rt-hid p{color:#b9ad97}.routes .card.rt-hid p.to{color:#e07a6f}.routes .card.rt-hid h3 b{color:var(--gold)}
 .steps{counter-reset:s;display:grid;gap:10px;margin:0;padding:0;list-style:none}
 .steps li{counter-increment:s;position:relative;padding:14px 16px 14px 56px;background:var(--card);border:1px solid var(--line);border-radius:3px;font-size:14.5px;color:var(--sub)}
 .steps li:before{content:counter(s);position:absolute;left:16px;top:13px;width:26px;height:26px;border-radius:50%;background:var(--night);color:var(--cream);font-family:var(--serif);font-weight:700;display:grid;place-items:center;font-size:13px}
@@ -947,7 +949,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
     <p class="note">컨텍스트는 넉넉할수록 좋다(32k 이상 권장). 막막할 땐 “지금 뭘 할 수 있을까?”라고 물으면 지금 할 수 있는 일을 세 갈래로 안내받는다.</p>
   </div>
   <div class="sec">
-    <div class="sh"><b>路</b><h2>아홉 갈래의 시작</h2></div>
+    <div class="sh"><b>路</b><h2>열 갈래의 시작</h2></div>
     <div class="routes" id="routesSys"></div>
   </div>
   <div class="sec">
@@ -1074,8 +1076,8 @@ const LAD=[['화경','化境','극소수의 최고수. 동작과 기의 흐름�
 $('#ladder').innerHTML=LAD.map(l=>`<div class="rung${l[5]?' top':''}" style="--w:${l[4]}%"><b>${l[0]}<small>${l[1]}</small></b><span>${l[2]}</span><em>${l[3]}</em></div>`).join('')+'<p class="note">화경이 공개된 경지의 상한이다. 교주 연무진은 화경 초입이며, 정파에도 화경 고수가 있다. 교주 혼자서는 중원을 정복할 수 없기에 길목·정보·분열·보급을 먼저 노린다.</p>';
 const RT=[['문파 제자','사문의 심부름과 수련, 동문과의 관계','표사 호송·조사 협조 요청'],['세가 출신','가문 행사, 계승 문제, 바깥 여행','군수 거래와 후계자의 선택'],['표사','호송 준비와 고용 조건','실종 표행과 대체 호송'],
  ['의원 · 약재상','진료, 채집, 약값','생존자, 독과 해독, 약재 수급'],['상인 · 장인','계약, 운송, 제작, 수금','위장 군수 주문과 수운권'],['사파 · 마교','소속 조직의 일과 개인의 선택','현장 명령과 노선 갈등'],
- ['낭인 · 유랑객','숙소, 일거리, 수련 상대, 길 정보','목격 · 구출 · 증거 전달'],['은거 고수','정착, 제자, 찾아오는 옛 인연','도움 요청, 과거 전쟁의 증언'],['자유 시작','내가 정한 장소와 목표에서','생활과 관계에 맞춰 연결']];
-const rtHTML=RT.map((r,i)=>`<div class="card"><h3><b class="serif">${'壹貳參肆伍陸柒捌玖'[i]}</b>${r[0]}</h3><p>${r[1]}</p><p class="to">→ ${r[2]}</p></div>`).join('');
+ ['낭인 · 유랑객','숙소, 일거리, 수련 상대, 길 정보','목격 · 구출 · 증거 전달'],['은거 고수','정착, 제자, 찾아오는 옛 인연','도움 요청, 과거 전쟁의 증언'],['자유 시작','내가 정한 장소와 목표에서','생활과 관계에 맞춰 연결'],['끊긴 편지','구휼소로 보낸 아이들의 편지가 같은 달에 끊겼다. 청하진 구휼소 뒤뜰, 신시','사라지는 사람들 · 숨은 사건의 입구']];
+const rtHTML=RT.map((r,i)=>`<div class="card${i===9?' rt-hid':''}"><h3><b class="serif">${'壹貳參肆伍陸柒捌玖拾'[i]}</b>${r[0]}</h3><p>${r[1]}</p><p class="to">→ ${r[2]}</p></div>`).join('');
 $('#routesHome').innerHTML=rtHTML;$('#routesSys').innerHTML=rtHTML;
 
 /* 사건 */
