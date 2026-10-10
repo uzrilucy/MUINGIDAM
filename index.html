@@ -93,6 +93,7 @@ button{font:inherit;color:inherit}
 .spoilable{display:none!important}
 .spoil-ok .spoilable:not([hidden]){display:revert!important}
 .spoil-ok .cc.spoilable:not([hidden]){display:flex!important}
+.spoil-ok .pl.spoilable:not([hidden]){display:flex!important}
 .spoil-ok .veil{display:none!important}
 .veil{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:3px;padding:30px 26px;text-align:center;
   background:repeating-linear-gradient(135deg,transparent 0 9px,var(--line2) 9px 10px),linear-gradient(var(--card),var(--card2));margin-bottom:12px}
@@ -435,6 +436,131 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 .lightbox img{max-height:90vh;max-width:90vw;background:radial-gradient(ellipse at 50% 90%,rgba(255,255,255,.12),transparent 60%)}
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--night);color:var(--cream);padding:9px 16px;border-radius:20px;font-size:13px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none}
 .toast.on{opacity:1}
+/* ── 지명록 */
+.gzhead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 20px;margin:0 0 12px}
+.gzhead p{margin:0;max-width:620px;color:var(--sub);font-size:14.5px}
+.gzcount{font-family:var(--serif);font-size:13.5px;color:var(--mute);letter-spacing:.06em;white-space:nowrap}
+.gzcount b{color:var(--red);font-size:20px;font-weight:900;margin-right:2px}
+.gzmapw{position:relative;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:
+  radial-gradient(90% 70% at 30% 40%,rgba(168,130,63,.10),transparent 70%),linear-gradient(180deg,var(--card),var(--card2));box-shadow:var(--shadow)}
+.gzmapw:before{content:'';position:absolute;inset:7px;border:1px solid var(--line2);pointer-events:none;border-radius:2px}
+.gzmapw .gzsw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.gzmapw .gzcap{position:absolute;left:18px;top:14px;font-family:var(--serif);font-size:12px;font-weight:700;letter-spacing:.4em;color:var(--mute);pointer-events:none}
+.gzmapw .gzcap b{display:block;font-size:22px;letter-spacing:.2em;color:var(--ink);opacity:.8}
+#gzSvg{display:block;width:100%;height:auto}
+#gzSvg .rg{font-family:var(--serif);font-weight:900;font-size:86px;fill:var(--ink);opacity:.05;letter-spacing:.08em;pointer-events:none}
+#gzSvg .rgk{font-family:var(--sans);font-size:15px;font-weight:700;fill:var(--mute);letter-spacing:.3em;opacity:.75;pointer-events:none}
+#gzSvg .e{fill:none;stroke:var(--sub);stroke-width:1.3;opacity:.3;stroke-linecap:round}
+#gzSvg .e.river{stroke:var(--teal);stroke-width:2.6;opacity:.42}
+#gzSvg .e.mount{stroke-dasharray:1 5;stroke-width:1.7;opacity:.5}
+#gzSvg .e.pass,#gzSvg .e.desert{stroke:var(--gold);stroke-dasharray:6 5;opacity:.6}
+#gzSvg .pn{cursor:pointer;outline:none;transition:opacity .3s}
+#gzSvg .pn .mk{fill:var(--card);stroke:var(--ink);stroke-width:1.7;transition:fill .2s,stroke .2s}
+#gzSvg .pn.minor .mk{stroke-dasharray:2.5 2;stroke:var(--sub)}
+#gzSvg .pn .hit{fill:transparent}
+#gzSvg .pn text{font-family:var(--serif);font-size:14.5px;font-weight:700;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:4.5px;stroke-linejoin:round;pointer-events:none;transition:fill .2s}
+#gzSvg .pn.minor text{font-size:13px;fill:var(--sub)}
+#gzSvg .pn:hover .mk,#gzSvg .pn:focus-visible .mk{fill:var(--red);stroke:var(--red)}
+#gzSvg .pn:hover text,#gzSvg .pn:focus-visible text{fill:var(--red)}
+#gzSvg .pn.hub .mk{fill:var(--red);stroke:var(--red)}
+#gzSvg .pn.hub .ring{fill:none;stroke:var(--red);stroke-width:1.2;opacity:.45}
+#gzSvg .pn.hid .mk{fill:var(--red-soft);stroke:var(--red);stroke-dasharray:3 2}
+#gzSvg .pn.hid text{fill:var(--red)}
+#gzSvg .pn.dim{opacity:.16}
+.gzlegend{display:flex;flex-wrap:wrap;gap:6px 16px;padding:9px 18px 11px;border-top:1px solid var(--line2);font-size:12px;color:var(--mute);position:relative}
+.gzlegend span{display:inline-flex;align-items:center;gap:6px}
+.gzlegend svg{width:14px;height:14px;overflow:visible}
+.gzlegend svg *{fill:var(--card);stroke:var(--ink);stroke-width:1.4}
+.gzlegend .mi *{stroke-dasharray:2 1.6;stroke:var(--sub)}
+.gzlegend em{margin-left:auto;font-style:normal}
+.gzbar{position:sticky;top:0;z-index:6;background:var(--paper);padding:12px 0 10px;margin:22px 0 0;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.gzbar button{display:inline-flex;align-items:baseline;gap:5px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:3px 12px 4px;font-size:13px;color:var(--sub);cursor:pointer;transition:all .2s}
+.gzbar button b{font-family:var(--serif);font-size:13px;color:var(--red);font-weight:700}
+.gzbar button small{font-size:11px;color:var(--mute)}
+.gzbar button:hover{border-color:var(--gold);color:var(--ink)}
+.gzbar button[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.gzbar button[aria-current="true"] b{color:var(--gold)}.gzbar button[aria-current="true"] small{color:var(--cream2)}
+.gzchips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.gzbar input{margin-left:auto;flex:1 1 140px;max-width:230px;min-width:0;font:inherit;font-size:13.5px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:3px;padding:6px 12px}
+.gzr{padding:46px 0 6px;scroll-margin-top:64px}
+.gzrh{display:grid;grid-template-columns:auto minmax(0,1fr) 220px;gap:22px;align-items:start;padding:0 0 24px;margin:0 0 22px;border-bottom:1px solid var(--line);position:relative}
+.gzrh:after{content:'';position:absolute;left:0;bottom:-1px;width:80px;height:2px;background:var(--red)}
+.gzseal{display:flex;flex-direction:column;align-items:center;gap:6px;width:52px;font-family:var(--serif);font-weight:900;font-size:28px;line-height:1;color:#fbefe0;background:var(--red);padding:14px 0 13px;border-radius:2px;box-shadow:inset 0 0 0 3px var(--red),inset 0 0 0 4px rgba(251,239,224,.55),0 8px 16px -10px rgba(120,20,20,.6)}
+.gzrh h2{margin:0;font-family:var(--serif);font-size:30px;font-weight:900;line-height:1.2;letter-spacing:-.01em}
+.gzrh h2 small{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--mute);margin-left:10px;letter-spacing:.06em}
+.gzrh .ld{margin:8px 0 12px;color:var(--sub);font-size:14.5px;max-width:540px}
+.gzrh dl{margin:0;display:grid;grid-template-columns:38px 1fr;gap:3px 10px;font-size:13px}
+.gzrh dt{color:var(--mute);font-weight:700;font-size:11.5px;letter-spacing:.1em;padding-top:1px}
+.gzrh dd{margin:0;color:var(--sub)}
+.gzloc{display:block;width:100%;height:auto;border:1px solid var(--line2);background:var(--card2);border-radius:2px}
+.gzloc .d{fill:var(--line)}
+.gzloc .d.on{fill:var(--red)}
+.gzloc .d.on.mi{fill:none;stroke:var(--red);stroke-width:5}
+.gzloc .w{font-family:var(--serif);font-weight:900;font-size:120px;fill:var(--red);opacity:.09}
+.plg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
+.pl{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px 22px 0;scroll-margin-top:76px;transition:box-shadow .3s,border-color .3s}
+.pl:before{content:'';position:absolute;left:-1px;top:-1px;width:54px;height:3px;background:var(--ink)}
+.pl:hover{box-shadow:var(--shadow)}
+.pl.hub{grid-column:1/-1;border-color:var(--red);background:linear-gradient(180deg,var(--card),var(--card2))}
+.pl.hub:before{background:var(--red);width:90px}
+.pl.hidp{border-color:var(--red);border-style:dashed;background:linear-gradient(180deg,var(--card),var(--red-soft))}
+.pl.hidp:before{background:var(--red)}
+.pl .pbody{flex:1}
+.plh{display:flex;gap:14px;align-items:center}
+.seal{flex:0 0 44px;height:44px;display:grid;place-items:center;font-family:var(--serif);font-weight:900;font-size:22px;color:var(--red);background:var(--card);border:1.5px solid var(--red);border-radius:3px;box-shadow:inset 0 0 0 2px var(--card),inset 0 0 0 3px var(--red);transform:rotate(-4deg)}
+.pl.hub .seal{background:var(--red);color:#fbefe0;box-shadow:inset 0 0 0 2px var(--red),inset 0 0 0 3px rgba(251,239,224,.6)}
+.plh h3{margin:0;font-family:var(--serif);font-size:23px;font-weight:900;line-height:1.25}
+.plh h3 small{font-size:13px;font-weight:600;color:var(--mute);margin-left:8px;letter-spacing:.12em}
+.pty{margin-top:2px;font-size:11.5px;color:var(--mute);letter-spacing:.08em;font-weight:600}
+.pty b{color:var(--red);border:1px solid var(--red);border-radius:2px;padding:0 6px;margin-left:6px;font-size:10.5px;letter-spacing:.1em}
+.pep{margin:14px 0 0;font-family:var(--serif);font-size:16.5px;font-weight:700;line-height:1.5;color:var(--ink);display:flex;gap:10px;align-items:center}
+.pep:before{content:'';flex:0 0 18px;height:1px;background:var(--gold)}
+.pds{margin:10px 0 0;font-size:14.5px;color:var(--sub);line-height:1.88}
+.psec{margin:18px 0 0}
+.psec h4{margin:0 0 9px;font-size:11px;letter-spacing:.26em;color:var(--red);font-weight:700;display:flex;align-items:center;gap:8px}
+.psec h4:after{content:'';flex:1;height:1px;background:var(--line2)}
+.spots{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.pl.hub .spots{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 26px}
+.spots li{position:relative;padding-left:16px;font-size:13.5px;color:var(--sub);line-height:1.72}
+.spots li:before{content:'';position:absolute;left:1px;top:8px;width:6px;height:6px;background:var(--gold);transform:rotate(45deg)}
+.spots b{display:block;font-family:var(--serif);color:var(--ink);font-size:14.5px;line-height:1.5}
+.pduo{display:grid;gap:0 26px}
+.pl.hub .pduo{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.plf{margin:0;font-size:13.5px;color:var(--sub);line-height:1.8}
+.rumor{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.rumor li{font-family:var(--serif);font-size:13.5px;line-height:1.65;color:var(--ink);background:var(--card2);border-left:2px solid var(--gold);padding:6px 12px}
+.pl.hub .rumor li{background:var(--card)}
+.rumor li:before{content:'「';color:var(--mute);margin-right:1px}.rumor li:after{content:'」';color:var(--mute);margin-left:1px}
+.hidrec{margin:18px 0 0;padding:12px 14px 13px 16px;border:1px dashed var(--red);background:var(--red-soft);border-radius:2px}
+.hidrec h4{margin:0 0 6px;display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.26em;color:var(--red);font-weight:700}
+.hidrec h4 i{position:relative;width:14px;height:14px;border:1.5px solid var(--red);border-radius:50%}
+.hidrec h4 i:before,.hidrec h4 i:after{content:'';position:absolute;top:5px;width:9px;height:1.5px;background:var(--red)}
+.hidrec h4 i:before{left:-8px;transform:rotate(18deg)}.hidrec h4 i:after{right:-8px;transform:rotate(-18deg)}
+.hidrec p{margin:0;font-size:13.5px;color:var(--ink);line-height:1.78}
+.pft{margin:20px -22px 0;padding:12px 22px 14px;border-top:1px solid var(--line2);background:var(--card2);display:grid;gap:9px;border-radius:0 0 3px 3px}
+.pl.hub .pft{background:var(--paper2)}
+.prow{display:grid;grid-template-columns:74px minmax(0,1fr);gap:10px;align-items:center;font-size:12.5px}
+.prow>em{white-space:nowrap;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--mute)}
+.pchips{display:flex;flex-wrap:wrap;gap:4px}
+.pchips span{font-size:11.5px;line-height:1.6;padding:0 7px;border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--sub)}
+.faces{display:flex;flex-wrap:wrap;gap:5px}
+.faces a{display:block;width:32px;height:32px;border-radius:50%;overflow:hidden;background:#d6d2ca;box-shadow:0 0 0 1.5px var(--card),0 0 0 2.5px var(--line);transition:transform .2s,box-shadow .2s}
+.faces a img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.faces a:hover,.faces a:focus-visible{transform:translateY(-2px) scale(1.1);box-shadow:0 0 0 1.5px var(--card),0 0 0 3px var(--red);outline:none}
+.proad{color:var(--sub);line-height:1.75}
+.proad a{color:var(--ink);text-decoration:none;font-weight:600;border-bottom:1px dotted var(--mute)}
+.proad a:hover{color:var(--red);border-color:var(--red)}
+.proad i{font-style:normal;color:var(--mute);font-size:11px;margin-left:2px}
+.proad .sep{color:var(--line)}
+.pl.flash{animation:plflash 2s ease}
+@keyframes plflash{0%,35%{box-shadow:0 0 0 3px var(--gold),var(--shadow);border-color:var(--gold)}100%{box-shadow:none}}
+.gzveil{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px}
+.gzempty{padding:50px 0;text-align:center;color:var(--mute);font-family:var(--serif)}
+.gzgo{margin:18px 0 0;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.gzgo span{font-size:13px;color:var(--mute)}
+.facts a.plk{font-size:12.5px;padding:2px 9px;background:var(--card);border:1px solid var(--gold);border-radius:2px;color:var(--ink);text-decoration:none;transition:all .2s}
+.facts a.plk:after{content:' 地';font-family:var(--serif);font-weight:700;color:var(--red);font-size:11px}
+.facts a.plk:hover{background:var(--gold-soft)}
 /* ── 반응형 */
 @media (max-width:1100px){
   .feat{grid-template-columns:repeat(2,minmax(0,1fr))}.core{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -463,6 +589,8 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   .tia{grid-template-columns:1fr}
   .fac{grid-template-columns:1fr}
   .trip{grid-template-columns:1fr}.tside{position:static}
+  .gzrh{grid-template-columns:auto minmax(0,1fr)}.gzloc{grid-column:2;max-width:260px}
+  .gzbar{top:56px}.gzr{scroll-margin-top:118px}.pl{scroll-margin-top:130px}
   .uw{width:auto;max-width:100%}
   .unis{overflow-x:auto}
   .routes{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -487,6 +615,15 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   .kv{grid-template-columns:1fr;gap:2px 0}.kv dd{margin-bottom:10px}
   .cmh h2{font-size:28px}
   .fac{padding:18px 16px}
+  .plg{grid-template-columns:1fr}
+  .pl{padding:18px 16px 0}.pft{margin:18px -16px 0;padding:12px 16px 14px}
+  .pl.hub .spots,.pl.hub .pduo{grid-template-columns:1fr}
+  .gzrh{gap:14px}.gzseal{font-size:23px;width:44px;padding:11px 0 10px}.gzrh h2{font-size:25px}
+  .gzloc{grid-column:1/-1;max-width:230px}
+  #gzSvg{width:720px;max-width:none}
+  .gzbar input{flex:1 1 100%;max-width:none;margin-left:0}
+  .prow{grid-template-columns:70px minmax(0,1fr)}
+  .gzchips{flex-wrap:nowrap;overflow-x:auto;margin:0 -18px;padding:0 18px 2px;scrollbar-width:none}.gzchips::-webkit-scrollbar{display:none}.gzchips button{flex:0 0 auto}
   #tSvg{width:720px;max-width:none}.tswh{display:block}.tbar{padding:10px}
   .fac dl{grid-template-columns:1fr;gap:0}.fac dd{margin-bottom:6px}
   .quote{padding:20px 18px 18px 22px}.quote p{font-size:17px}
@@ -504,6 +641,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
   <ul class="nav" id="nav">
     <li><a href="#home"><b>首</b>처음<small>HOME</small></a></li>
     <li><a href="#world"><b>世</b>세계<small>WORLD</small></a></li>
+    <li><a href="#places"><b>地</b>지역<small>PLACES</small></a></li>
     <li><a href="#factions"><b>勢</b>세력<small>FACTIONS</small></a></li>
     <li><a href="#people"><b>人</b>인물<small>155</small></a></li>
     <li><a href="#events"><b>事</b>사건<small>EVENTS</small></a></li>
@@ -602,6 +740,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
     <div class="sh"><b>地</b><h2>지리와 이동</h2><span>일곱 권역</span></div>
     <p class="lead2">도시와 길목, 산채와 나루가 생활과 사건의 실제 무대다. 지도는 실제 거리의 재현이 아니라 이 작품의 기준이다.</p>
     <div class="grid g2" id="regions"></div>
+    <div class="gzgo"><a class="btn" href="#places">地 · 강호 지명록 펼치기</a><span>도시와 산문, 나루와 관문 하나하나의 기록</span></div>
     <div class="sec" style="padding-top:26px">
       <div class="tblw"><table class="tbl"><thead><tr><th>구간</th><th>평시 보통 여행</th><th>특징</th></tr></thead><tbody>
         <tr><td>하남 ↔ 관중</td><td>5~7일</td><td>서하관 방향의 중계역을 경유</td></tr>
@@ -673,6 +812,19 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
       </div>
     </div>
   </div>
+</div></section>
+
+<!-- ═════════ 地 지역 ═════════ -->
+<section class="page" id="p-places" data-page="places"><div class="wrap">
+  <header class="phead"><div class="wm">地</div><div class="eyebrow">第一卷 附錄 · GAZETTEER</div><h1 class="ptitle">강호 지명록</h1>
+    <p class="plead">권역보다 한 걸음 가까이. 도시와 산문, 나루와 관문, 산채와 사막길까지, 이야기가 실제로 벌어지는 자리들의 기록이다.</p><div class="rule"><i>◆</i></div></header>
+  <div class="gzhead"><p>지도의 지명을 누르면 그곳의 기록으로 간다. 기록마다 둘러볼 곳과 살림, 요즘 도는 말, 그곳에 머무는 사람과 이어진 길이 적혀 있다.</p><div class="gzcount" id="gzCount"></div></div>
+  <div class="gzmapw"><div class="gzcap"><b>大延 江湖圖</b>全圖</div><div class="gzsw"><svg id="gzSvg" viewBox="26 62 970 572" role="img" aria-label="강호 지명 전도"></svg></div>
+    <div class="gzlegend"><span><svg viewBox="-8 -8 16 16"><rect x="-6" y="-6" width="12" height="12"/></svg>성시</span><span><svg viewBox="-8 -8 16 16"><path d="M0 -7L7 6H-7Z"/></svg>산문</span><span><svg viewBox="-8 -8 16 16"><path d="M0 -7L7 0L0 7L-7 0Z"/></svg>관문</span><span><svg viewBox="-8 -8 16 16"><circle r="6"/></svg>마을 · 장원 · 포구</span><span class="mi"><svg viewBox="-8 -8 16 16"><circle r="6"/></svg>길목 · 숨은 거처</span><em>선은 여정 셈의 길과 같다</em></div></div>
+  <nav class="gzbar" id="gzBar" aria-label="권역으로 이동"></nav>
+  <div id="gzList"></div>
+  <p class="gzempty" id="gzEmpty" hidden>찾는 지명이 없다.</p>
+  <p class="note" style="margin:30px 0 60px">지명의 위치와 거리는 이 작품의 기준이며 실제 지리와 다르다. 소문은 소문일 뿐, 사실 여부는 이야기 속에서 가려진다.</p>
 </div></section>
 
 <!-- ═════════ 勢 세력 ═════════ -->
@@ -835,6 +987,7 @@ footer.site{margin-top:60px;padding:30px 0 40px;border-top:1px solid var(--line)
 <script src="data/world.js"></script>
 <script src="data/characters.js"></script>
 <script src="data/uniforms.js"></script>
+<script src="data/places.js"></script>
 <script>
 'use strict';
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
@@ -957,6 +1110,7 @@ const E=[
  ['cd','ys',7.5,11,'river','장강 상류의 협곡 물길','ys'],
  ['sh','kt',3,5,'pass','관문 검문. 통행증이 필요하다'],['kt','hsd',4,7,'desert','역참 간격이 길어 보급이 관건'],['hsd','ts',4,7,'desert','천산 남쪽 거점권으로 들어간다'],['hsd','kl',5,8,'mount',''],
  ['qc','kl',17,24,'mount','계절에 따라 막히는 산악로. 안내자가 필요하다']];
+window.MUIN_TRIP={N:N.map(n=>n.slice()),E:E.map(e=>e.slice())};
 const MODES=[['walk','步','도보'],['cara','鏢','표행 · 상단'],['horse','馬','단독 기마'],['boat','舟','수운'],['qing','輕','경공']];
 const MUL={walk:{road:1,mount:1.05,river:1.2,pass:1,desert:1.1},cara:{road:1,mount:1,river:1,pass:1,desert:1},
   horse:{road:.6,mount:.85,river:.8,pass:.65,desert:.7}};
@@ -1116,7 +1270,7 @@ function openChar(id){const c=BY[id];if(!c)return;curId=id;dlg.classList.toggle(
   const i=C.indexOf(c),prev=C[(i-1+C.length)%C.length],next=C[(i+1)%C.length];
   const tags=c.tags.map((t,k)=>`<div class="tagbox"><header>${k?'대체복':'기본복'} · ${esc(t.ctx)}<button type="button" data-copy="${k}">복사</button></header><pre>${esc(t.tag)}</pre></div>`).join('');
   $('#cmBody').innerHTML=`<div class="cmh"><div class="af">${esc(c.faction)} · ${esc(c.role)}</div><h2 id="cmName">${esc(c.name)}<small>${esc(c.hanzi)}</small></h2><div class="ti">${esc(c.title)}</div>
-   <div class="facts"><span>${c.sex==='남'?'남성':'여성'} · ${c.age}세${c.apparent?` (외견 ${c.apparent}세)`:''}</span><span>${c.height}cm</span><span>${esc(GNAME[c.group])}</span><span>거점 · ${esc(c.base)}</span></div>
+   <div class="facts"><span>${c.sex==='남'?'남성':'여성'} · ${c.age}세${c.apparent?` (외견 ${c.apparent}세)`:''}</span><span>${c.height}cm</span><span>${esc(GNAME[c.group])}</span>${window.MUIN_PHOME&&MUIN_PHOME[c.id]?`<a class="plk" href="#p/${MUIN_PHOME[c.id]}" title="지명록에서 보기">거점 · ${esc(c.base)}</a>`:`<span>거점 · ${esc(c.base)}</span>`}</div>
    <div class="attrs">${c.attr.map(a=>`<span>${esc(a)}</span>`).join('')}</div>
    <p class="hookq">${esc(c.hook)}</p><p class="imp"><b>✦</b>${esc(c.impression)}${c.charm?` — <span style="color:var(--ink)">${esc(c.charm)}</span>`:''}</p></div>
    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="p">프로필</button><button role="tab" aria-selected="false" data-t="h">설렘</button><button role="tab" aria-selected="false" data-t="r">인연</button><button role="tab" aria-selected="false" data-t="n">태그</button></div>
@@ -1140,6 +1294,82 @@ dlg.addEventListener('cancel',e=>{e.preventDefault();location.hash=lastPage;});
 document.addEventListener('click',e=>{const z=e.target.closest('[data-zoom]');if(!z)return;const lb=$('#lb');$('img',lb).src=z.src;lb.classList.add('on');});
 $('#lb').onclick=()=>$('#lb').classList.remove('on');
 
+/* 지명록 */
+(function(){
+const R=window.MUIN_REGIONS,PL=window.MUIN_PLACES,TY=window.MUIN_PTYPES||{},T=window.MUIN_TRIP;const svg=$('#gzSvg');if(!R||!PL||!svg)return;
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a,p)=>{const x=document.createElementNS(NS,t);for(const k in a)x.setAttribute(k,a[k]);if(p)p.appendChild(x);return x;};
+const TN={};if(T)T.N.forEach(n=>TN[n[0]]={x:n[3],y:n[4],lp:n[5],name:n[1]});
+PL.forEach(p=>{p.minor=!TN[p.id];if(!p.xy&&TN[p.id])p.xy=[TN[p.id].x,TN[p.id].y];if(!p.lp)p.lp=TN[p.id]?TN[p.id].lp:'b';});
+const PBY={};PL.forEach(p=>PBY[p.id]=p);
+const PHOME={};PL.forEach(p=>p.who.forEach(w=>{if(!PHOME[w])PHOME[w]=p.id;}));window.MUIN_PHOME=PHOME;
+const TYN={road:'관도',mount:'산길',river:'수로',pass:'관문길',desert:'사막길'};
+const dd=x=>x<1?'반나절':x+'일';
+function roads(p){
+  if(!T||!TN[p.id])return esc(p.rd||'');
+  return T.E.filter(e=>e[0]===p.id||e[1]===p.id).map(e=>{const o=e[0]===p.id?e[1]:e[0],q=PBY[o];
+    return `<a href="#p/${o}">${esc(q?q.nm:TN[o].name)}</a> ${e[2]===e[3]?dd(e[2]):e[2]+'~'+e[3]+'일'}<i>${TYN[e[4]]}</i>`;}).join('<span class="sep"> · </span>');}
+const face=id=>{const c=BY[id];if(!c)return '';return `<a href="#c/${id}"${c.group==='bloodcult'?' class="spoilable"':''} title="${esc(c.name)} · ${esc(c.role)}"><img src="${img(id)}" alt="${esc(c.name)}" loading="lazy" decoding="async"></a>`;};
+function card(p){
+  const k=[p.nm,p.hj,p.rg,p.tl,p.ep,p.ds,p.lf,...p.sp.flat(),...p.pw,...p.hk].join(' ').toLowerCase();
+  const cls='pl'+(p.hub?' hub':'')+(p.spoil?' hidp spoilable':'');
+  return `<article class="${cls}" id="pl-${p.id}" data-id="${p.id}" data-k="${esc(k)}"><div class="pbody">
+   <header class="plh"><span class="seal" aria-hidden="true">${p.ty}</span><div><h3>${esc(p.nm)}<small>${esc(p.hj)}</small></h3><div class="pty">${esc(p.tl)} · ${esc(p.rg)}${p.hub?'<b>시작 거점</b>':''}${p.spoil?'<b>숨은 지명</b>':''}</div></div></header>
+   <p class="pep">${esc(p.ep)}</p><p class="pds">${esc(p.ds)}</p>
+   <div class="psec"><h4>둘러볼 곳</h4><ul class="spots">${p.sp.map(s=>`<li><b>${esc(s[0])}</b>${esc(s[1])}</li>`).join('')}</ul></div>
+   <div class="pduo"><div class="psec"><h4>살림</h4><p class="plf">${esc(p.lf)}</p></div>
+    ${p.hk.length?`<div class="psec"><h4>요즘 도는 말</h4><ul class="rumor">${p.hk.map(h=>`<li>${esc(h)}</li>`).join('')}</ul></div>`:''}</div>
+   ${p.hid?`<div class="hidrec spoilable"><h4><i></i>숨은 기록</h4><p>${esc(p.hid)}</p></div>`:''}
+  </div><footer class="pft">
+   <div class="prow"><em>세력</em><div class="pchips">${p.pw.map(w=>`<span>${esc(w)}</span>`).join('')}</div></div>
+   ${p.who.length?`<div class="prow"><em>머무는 사람</em><div class="faces">${p.who.map(face).join('')}</div></div>`:''}
+   <div class="prow"><em>이어진 길</em><div class="proad">${roads(p)}</div></div>
+  </footer></article>`;}
+function loc(r){const g=PL.filter(p=>p.xy&&!p.spoil);
+  return `<svg class="gzloc" viewBox="26 62 970 572" aria-hidden="true"><text class="w" x="511" y="400" text-anchor="middle">${r.hj}</text>${g.map(p=>`<circle class="d${p.rg===r.k?' on':''}${p.minor?' mi':''}" cx="${p.xy[0]}" cy="${p.xy[1]}" r="${p.rg===r.k?15:9}"/>`).join('')}</svg>`;}
+const pub=PL.filter(p=>!p.spoil).length,hidN=PL.length-pub;
+$('#gzList').innerHTML=R.map(r=>{const ps=PL.filter(p=>p.rg===r.k),np=ps.filter(p=>!p.spoil).length,nh=ps.length-np;
+  return `<section class="gzr" id="gz-${r.k}" data-rg="${r.k}"><div class="gzrh"><div class="gzseal">${[...r.hj].map(ch=>`<i style="font-style:normal">${ch}</i>`).join('')}</div><div><h2>${r.k}<small>${np}곳${nh?` · 숨은 ${nh}곳`:''}</small></h2><p class="ld">${esc(r.ld)}</p>
+    <dl><dt>세력</dt><dd>${esc(r.pw)}</dd><dt>생활</dt><dd>${esc(r.lf)}</dd><dt>긴장</dt><dd>${esc(r.tn)}</dd></dl></div>${loc(r)}</div>
+    <div class="plg">${ps.map(p=>p.spoil?`<div class="gzveil veil"><h3>지도에 없는 자리</h3><p>${esc(r.k)} 어딘가, 아무도 지명으로 부르지 않는 곳이 있다. 숨은 사건의 핵심 설정이 드러난다.</p><button type="button" data-reveal>펼쳐 보기</button></div>`+card(p):card(p)).join('')}</div></section>`;}).join('');
+$('#gzBar').innerHTML='<div class="gzchips">'+R.map(r=>`<button type="button" data-go="${r.k}"><b>${r.hj}</b>${r.k}<small>${PL.filter(p=>p.rg===r.k&&!p.spoil).length}</small></button>`).join('')+`</div><input type="search" id="gzQ" placeholder="지명 · 한자 · 명소 검색" aria-label="지명 검색">`;
+// 전도
+const RG=[['西域','서역',150,300],['關中','관중',390,226],['河南','하남',640,252],['河北','하북',800,215],['湖北','호북',520,500],['江南','강남',880,560],['西南','서남',230,520]];
+const gR=el('g',{},svg);RG.forEach(r=>{el('text',{class:'rg',x:r[2],y:r[3],'text-anchor':'middle'},gR).textContent=r[0];el('text',{class:'rgk',x:r[2],y:r[3]+28,'text-anchor':'middle'},gR).textContent=r[1];});
+const gE=el('g',{},svg),gN=el('g',{},svg);
+if(T)T.E.forEach(e=>{const A=TN[e[0]],B=TN[e[1]];if(!A||!B)return;const mx=(A.x+B.x)/2,my=(A.y+B.y)/2,dx=B.x-A.x,dy=B.y-A.y,L=Math.hypot(dx,dy)||1;
+  const k=e[4]==='river'?.12:e[4]==='mount'?.07:e[4]==='desert'?-.05:0;const cx=mx-dy/L*L*k,cy=my+dx/L*L*k;
+  el('path',{class:'e '+e[4],d:`M${A.x} ${A.y}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${B.x} ${B.y}`},gE);});
+const NODE={};
+PL.forEach(p=>{if(!p.xy)return;const [x,y]=p.xy;
+  const g=el('g',{class:'pn'+(p.hub?' hub':'')+(p.minor?' minor':'')+(p.spoil?' hid spoilable':''),tabindex:0,role:'link','aria-label':`${p.nm} · ${p.rg}`,'data-id':p.id},gN);NODE[p.id]=g;
+  el('circle',{class:'hit',cx:x,cy:y,r:20},g);
+  if(p.hub)el('circle',{class:'ring',cx:x,cy:y,r:16},g);
+  if(p.ty==='山')el('path',{class:'mk',d:`M${x} ${y-8.5}L${x+8} ${y+6}H${x-8}Z`},g);
+  else if(p.ty==='城')el('rect',{class:'mk',x:x-6,y:y-6,width:12,height:12},g);
+  else if(p.ty==='關')el('path',{class:'mk',d:`M${x} ${y-8}L${x+8} ${y}L${x} ${y+8}L${x-8} ${y}Z`},g);
+  else el('circle',{class:'mk',cx:x,cy:y,r:p.hub?9:6.5},g);
+  const o={r:[14,6,'start'],l:[-14,6,'end'],t:[0,-14,'middle'],b:[0,26,'middle']}[p.lp]||[0,26,'middle'];
+  el('text',{x:x+o[0],y:y+o[1],'text-anchor':o[2]},g).textContent=p.nm;
+  el('title',{},g).textContent=`${p.nm} — ${p.ep}`;
+  const go=()=>{location.hash='p/'+p.id;};g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+// 세기
+function count(){const so=spoilOK(),qa=!!$('#gzQ').value.trim(),n=$$('#gzList .pl').filter(a=>!a.hidden&&(so||!a.classList.contains('spoilable'))).length,h=so||qa?0:hidN;
+  $('#gzCount').innerHTML=`<b>${n}</b>곳${h?` · 숨은 ${h}곳`:''}`;}
+// 검색
+$('#gzQ').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase().split(/\s+/).filter(Boolean);let any=0;
+  $$('#gzList .pl').forEach(a=>{const ok=q.every(t=>a.dataset.k.includes(t));a.hidden=!ok;if(NODE[a.dataset.id])NODE[a.dataset.id].classList.toggle('dim',!ok&&q.length>0);if(ok&&(!a.classList.contains('spoilable')||spoilOK()))any++;});
+  $$('#gzList .gzveil').forEach(v=>v.hidden=q.length>0);
+  $$('#gzList .gzr').forEach(s=>s.hidden=!$$('.pl',s).some(a=>!a.hidden&&(!a.classList.contains('spoilable')||spoilOK())));
+  $('#gzEmpty').hidden=any>0;count();});
+document.addEventListener('click',e=>{if(e.target.closest('[data-reveal]'))setTimeout(count,0);});
+// 권역 이동
+$('#gzBar').addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(!b)return;const s=document.getElementById('gz-'+b.dataset.go);if(s&&!s.hidden)s.scrollIntoView({behavior:'smooth',block:'start'});});
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting)$$('#gzBar [data-go]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.go===en.target.dataset.rg)));});},{rootMargin:'-35% 0px -60% 0px'});
+  $$('#gzList .gzr').forEach(s=>io.observe(s));}
+count();
+})();
+
 /* 메뉴 */
 const side=$('#side'),scrim=$('#scrim');
 function menu(open){side.classList.toggle('open',open);scrim.classList.toggle('on',open);$('#menuBtn').setAttribute('aria-expanded',String(open));document.documentElement.style.overflow=open?'hidden':'';}
@@ -1149,18 +1379,19 @@ side.addEventListener('click',e=>{if(e.target.closest('.nav a,.brand'))menu(fals
 addEventListener('keydown',e=>{if(e.key==='Escape'&&side.classList.contains('open'))menu(false);});
 
 /* 라우터 */
-const PAGES=['home','world','factions','people','events','romance','system'];
+const PAGES=['home','world','places','factions','people','events','romance','system'];
 function route(){let h=decodeURIComponent(location.hash.slice(1))||'home';
   menu(false);
   if(h.startsWith('c/')){const id=h.slice(2);if(BY[id]){if(!$('.page.on'))show(lastPage);openChar(id);return;}h='people';}
   const fromModal=dlg.open;closeChar();let anchor=null;
   if(h.startsWith('f/')){anchor='g-'+h.slice(2);h='factions';}
+  if(h.startsWith('p/')){anchor='pl-'+h.slice(2);h='places';}
   if(!PAGES.includes(h))h='home';
-  if(fromModal&&h===lastPage&&$('.page.on')){document.title=document.title.replace(/^.*? · 무림강호인연기담$/,'무림강호인연기담 · 설정집');show(h);return;}
+  if(fromModal&&!anchor&&h===lastPage&&$('.page.on')){document.title=document.title.replace(/^.*? · 무림강호인연기담$/,'무림강호인연기담 · 설정집');show(h);return;}
   show(h);
-  if(anchor){const el=document.getElementById(anchor);if(el)setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60);}else window.scrollTo(0,0);}
+  if(anchor){const el=document.getElementById(anchor);if(el)setTimeout(()=>{el.scrollIntoView({behavior:'smooth',block:'start'});if(el.classList.contains('pl')){el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}},60);}else window.scrollTo(0,0);}
 function show(p){lastPage=p;$$('.page').forEach(s=>s.classList.toggle('on',s.dataset.page===p));$$('#nav a').forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+p));if($('#nav a[aria-current]'))$('#nav a[aria-current]').setAttribute('aria-current','page');
-  document.title=({home:'',world:'세계 · ',factions:'세력 · ',people:'인물 · ',events:'사건 · ',romance:'설렘 · ',system:'플레이 · '}[p])+'무림강호인연기담 · 설정집';}
+  document.title=({home:'',world:'세계 · ',places:'지역 · ',factions:'세력 · ',people:'인물 · ',events:'사건 · ',romance:'설렘 · ',system:'플레이 · '}[p])+'무림강호인연기담 · 설정집';}
 addEventListener('hashchange',route);route();
 </script>
 </body>
