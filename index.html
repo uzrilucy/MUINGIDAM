@@ -994,7 +994,8 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const C=window.MUIN_CHARS,G=window.MUIN_GROUPS,BY={};C.forEach(c=>BY[c.id]=c);
 const GNAME={orthodox:'정파 9문파',clans:'오대세가',alliance:'무림맹',beggars:'개방',tianluo:'천라교',bloodcult:'혈교',unorthodox:'사파',life:'생활·생업',free:'독립'};
-const img=id=>`img/char/${id.toLowerCase()}.jpg`, full=id=>`img/char/${id.toLowerCase()}_full.webp`;
+const IV='?v=16';/* 이미지를 바꾸면 숫자를 올려 브라우저 캐시를 비운다 */
+const img=id=>`img/char/${id.toLowerCase()}.jpg${IV}`, full=id=>`img/char/${id.toLowerCase()}_full.webp${IV}`;
 const rich=t=>esc(t).replace(/\[\[([A-Z]{2,3}\d{2})\|([^\]]+)\]\]/g,(m,id,n)=>`<a class="lnk" href="#c/${id}">${n}</a>`);
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800);}
 
@@ -1204,7 +1205,7 @@ const memberChip=c=>`<a class="member" href="#c/${c.id}"><img src="${img(c.id)}"
 const UT=window.MUIN_UNITAGS||{},UV=[['formal','m'],['formal','f'],['active','m'],['active','f']];
 const uvName=(k,x)=>(k==='formal'?'정복':'활동복')+' · '+(x==='m'?'남':'여');
 const UD=new Set(window.MUIN_UNIDRAFT||[]);
-function uniFig(slug,label,sx){return `<figure${UD.has(slug)?' class="nai-ph"':''}><img src="img/uni/${slug}_${label}_${sx}.webp" alt="${uvName(label,sx)}" loading="lazy" data-zoom onerror="this.parentNode.classList.add('nai-ph')"><span class="uph">모델컷<br>준비 중</span><figcaption>${label==='formal'?'정복':'활동'} · ${sx==='m'?'남':'여'}</figcaption></figure>`;}
+function uniFig(slug,label,sx){return `<figure${UD.has(slug)?' class="nai-ph"':''}><img src="img/uni/${slug}_${label}_${sx}.webp${IV}" alt="${uvName(label,sx)}" loading="lazy" data-zoom onerror="this.parentNode.classList.add('nai-ph')"><span class="uph">모델컷<br>준비 중</span><figcaption>${label==='formal'?'정복':'활동'} · ${sx==='m'?'남':'여'}</figcaption></figure>`;}
 function uniList(f){return f.unis?f.unis.map((s,i)=>({s,n:f.uniNames[i]})):f.uni?[{s:f.uni,n:''}]:[];}
 function uniPanel(list){if(!list.length)return '';
   return `<div class="uw" data-mode="img"><div class="uwt" role="tablist"><button type="button" role="tab" data-ut="img" aria-selected="true">복식</button><button type="button" role="tab" data-ut="tag" aria-selected="false">NAI 태그</button><span>服飾</span></div>
